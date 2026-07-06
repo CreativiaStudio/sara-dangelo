@@ -10,6 +10,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:3003',
     trace: 'on-first-retry',
+    // @ts-ignore
     initScript: `
       try {
         Object.defineProperty(HTMLVideoElement.prototype, 'paused', {
