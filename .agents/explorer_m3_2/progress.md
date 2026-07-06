@@ -1,0 +1,2 @@
+- Last visited: 2026-06-10T19:48:37+02:00
+- Status: Investigation complete, wrote handoff.md.

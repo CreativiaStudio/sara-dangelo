@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FDFBF7;
+  --foreground: #4A3B32;
+  --accent-gold: #B89768;
+  --accent-gold-dark: #B5952F;
+  --beige: #F5EFE6;
+  --beige-light: #FAF7F2;
+  --cream: #F8F4ED;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gold: var(--accent-gold);
+  --color-gold-dark: var(--accent-gold-dark);
+  --color-beige: var(--beige);
+  --color-cream: var(--cream);
+  --font-serif: var(--font-playfair), var(--font-cormorant), serif;
+  --font-sans: var(--font-lato), sans-serif;
+}
+
+/* Force light/cream - no dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #FDFBF7;
+    --foreground: #4A3B32;
+  }
+}
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline-color: var(--accent-gold);
+}
+
+/* ─── Glass Navbar ─── */
+.glass-nav {
+  background: rgba(253, 251, 247, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+/* ─── Noise Texture Overlay ─── */
+.noise-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Custom Cursor (desktop only) ─── */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, input, select, textarea { cursor: none; }
+}
+
+/* ─── Ken Burns Animation ─── */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.ken-burns {
+  animation: kenBurns 25s ease-in-out infinite;
+}
+
+.ken-burns-slow {
+  animation: kenBurns 40s ease-in-out infinite;
+}
+
+/* ─── Gold Shimmer ─── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--accent-gold) 0%,
+    #CFB476 25%,
+    var(--accent-gold) 50%,
+    #CFB476 75%,
+    var(--accent-gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 15s linear infinite;
+}
+
+/* ─── Title Shimmer (Subtle) ─── */
+.title-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--foreground) 0%,
+    var(--foreground) 40%,
+    #5A483D 50%,
+    var(--foreground) 60%,
+    var(--foreground) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 20s linear infinite;
+}
+
+/* ─── Editorial Separator ─── */
+.editorial-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.editorial-line-wide {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+/* ─── Photo Frame Styles ─── */
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Elegant Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* ─── Selection Color ─── */
+::selection {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--foreground);
+}
+
+/* ─── Label Utility ─── */
+.label-caps {
+  font-family: var(--font-lato), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+/* ─── Large Quote Mark ─── */
+.quote-mark {
+  font-family: var(--font-playfair), serif;
+  font-size: 8rem;
+  line-height: 1;
+  color: rgba(212, 175, 55, 0.12);
+  position: absolute;
+  top: -1rem;
+  left: -0.5rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── Soft Divider ─── */
+.soft-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.15) 30%, rgba(212, 175, 55, 0.15) 70%, transparent 100%);
+}
+
+/* ─── CTA Button Styles ─── */
+.cta-primary {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 18px 48px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--foreground);
+  font-family: var(--font-lato), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-gold);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.cta-primary:hover::before {
+  transform: scaleY(1);
+}
+
+.cta-primary:hover {
+  color: var(--background);
+  border-color: var(--accent-gold);
+}
+
+.cta-primary span {
+  position: relative;
+  z-index: 1;
+}
