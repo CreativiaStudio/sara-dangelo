@@ -2,30 +2,30 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ScanLine, PencilRuler, PieChart, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const points = [
   {
     num: "01",
-    Icon: ScanLine,
+    imgSrc: "/media/icone/1.webp",
     title: "Visione d'Insieme",
     desc: "Guardare oltre i dettagli per comprendere l'anima del vostro evento. Studio le potenzialità della location e la luce dei vostri desideri per tracciare le linee guida di un sogno su misura."
   },
   {
     num: "02",
-    Icon: PencilRuler,
+    imgSrc: "/media/icone/2.webp",
     title: "Design degli Spazi",
     desc: "Le proporzioni perfette tra estetica e fluidità. Disegno planimetrie, scenografie e percorsi per farvi vivere ogni momento con naturalezza, senza mai forzare la magia."
   },
   {
     num: "03",
-    Icon: PieChart,
+    imgSrc: "/media/icone/3.webp",
     title: "Eleganza Logica",
     desc: "Un'estetica impeccabile richiede fondamenta solide. Ottimizzo le risorse e dirigo una selezione di fornitori d'eccellenza, affinché la bellezza non incontri mai ostacoli o sprechi."
   },
   {
     num: "04",
-    Icon: Sparkles,
+    imgSrc: "/media/icone/4.webp",
     title: "Regia Invisibile",
     desc: "Il giorno in cui il progetto si trasforma in pura emozione. Una gestione rigorosa e silenziosa che vi lascerà un unico, meraviglioso compito: vivere il vostro momento."
   }
@@ -72,9 +72,9 @@ export default function MethodSection() {
               </div>
               
               {/* Icon */}
-              <div className="mb-8 text-[#B89768] z-10 relative mt-12 md:mt-0">
-                <div className="w-24 h-24 rounded-full border border-[#B89768]/20 flex items-center justify-center bg-[#FDFBF7]/80 backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(184,151,104,0.15)] transition-all duration-700 group-hover:border-[#B89768]/50 group-hover:-translate-y-2">
-                  <point.Icon size={40} strokeWidth={1.5} className="text-[#B89768]" />
+              <div className="mb-8 z-10 relative mt-12 md:mt-0">
+                <div className="w-32 h-32 md:w-36 md:h-36 rounded-full border border-[#B89768]/30 flex items-center justify-center bg-[#FFFFFF] shadow-[0_10px_40px_-10px_rgba(184,151,104,0.15)] transition-all duration-700 group-hover:border-[#B89768]/80 group-hover:-translate-y-2 overflow-hidden relative">
+                  <Image src={point.imgSrc} alt={point.title} fill className="object-contain p-6 mix-blend-multiply" sizes="(max-width: 768px) 128px, 144px" />
                 </div>
               </div>
               
