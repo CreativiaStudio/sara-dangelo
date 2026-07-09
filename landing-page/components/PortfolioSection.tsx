@@ -4,60 +4,6 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
-/* ─── Photo & text tiles data ─── */
-type Tile =
-  | { type: "photo"; src: string; alt: string; aspect: string }
-  | { type: "text"; line1: string; line2?: string; line3?: string; wide?: boolean; highlightLine?: 1 | 2 | 3 };
-
-const col1: Tile[] = [
-  { type: "photo", src: "/media/mosaic/lancellotti-1.webp", alt: "Atmosfera al castello", aspect: "aspect-[3/4]" },
-  { type: "text", line1: "Ogni", line2: "dettaglio", line3: "conta", highlightLine: 2 },
-  { type: "photo", src: "/media/mosaic/campolieto-1.webp", alt: "Allestimento regale", aspect: "aspect-[4/5]" },
-  { type: "photo", src: "/media/mosaic/detail-1.webp", alt: "Dettaglio floreale", aspect: "aspect-[3/4]" },
-  { type: "photo", src: "/media/mosaic/lancellotti-2.webp", alt: "Atmosfera serale", aspect: "aspect-[4/5]" },
-];
-
-const col2: Tile[] = [
-  { type: "photo", src: "/media/mosaic/marechiaro-1.webp", alt: "Vista mare a Marechiaro", aspect: "aspect-[3/4]" },
-  { type: "photo", src: "/media/mosaic/caruso-1.webp", alt: "Vista mare da Ravello", aspect: "aspect-[4/5]" },
-  { type: "photo", src: "/media/mosaic/bellevue-1.webp", alt: "Eleganza al tramonto", aspect: "aspect-[3/4]" },
-  { type: "text", line1: "La bellezza", line2: "che resta" },
-  { type: "photo", src: "/media/mosaic/daniela-1.webp", alt: "Emozione degli sposi", aspect: "aspect-[4/5]" },
-];
-
-const col3: Tile[] = [
-  { type: "photo", src: "/media/mosaic/capri-1.webp", alt: "Capri al crepuscolo", aspect: "aspect-[4/5]" },
-  { type: "photo", src: "/media/mosaic/taurinus-1.webp", alt: "Mise en place di gala", aspect: "aspect-[3/4]" },
-  { type: "text", line1: "Non esistono", line2: "Eventi", line3: "Banali", highlightLine: 2 },
-  { type: "photo", src: "/media/mosaic/cristoforo-1.webp", alt: "Scenografia luminosa", aspect: "aspect-[4/5]" },
-];
-
-const col4: Tile[] = [
-  { type: "text", line1: "Sogni", line2: "su misura" },
-  { type: "photo", src: "/media/mosaic/scraio-1.webp", alt: "Banchetto sulla costa", aspect: "aspect-[3/4]" },
-  { type: "photo", src: "/media/mosaic/angelina-1.webp", alt: "Giardino incantato", aspect: "aspect-[4/5]" },
-  { type: "photo", src: "/media/mosaic/detail-2.webp", alt: "Composizione floreale", aspect: "aspect-[3/4]" },
-  { type: "text", line1: "Ogni storia merita", line2: "un progetto", line3: "che nasca solo per lei", wide: true, highlightLine: 2 },
-];
-
-// Mobile gets 2 columns with interleaved tiles from all 4 columns
-const mobileTiles: Tile[] = [
-  col1[0], col2[0], // two photos
-  col1[1], // text: Ogni dettaglio conta
-  col3[0], col4[1], // two photos
-  col2[3], // text: La bellezza che resta
-  col1[2], col3[1], // two photos
-  col3[2], // text: Non esistono momenti banali
-  col2[1], col4[2], // two photos
-  col4[0], // text: Sogni su misura
-  col1[3], col2[2], // two photos
-  col1[4], col2[4], // two photos
-  col3[3], col4[3], // two photos
-  col4[4], // text: Ogni storia merita...
-];
-
-const columns = [col1, col2, col3, col4];
-
 /* ─── Parallax photo tile ─── */
 function PhotoTile({ src, alt, aspect, index }: { src: string; alt: string; aspect: string; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -85,8 +31,8 @@ function PhotoTile({ src, alt, aspect, index }: { src: string; alt: string; aspe
           alt={alt}
           fill
           className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
-          sizes="(max-width: 768px) 50vw, 25vw"
-          quality={80}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={85}
         />
       </motion.div>
       {/* Subtle vignette */}
@@ -96,12 +42,7 @@ function PhotoTile({ src, alt, aspect, index }: { src: string; alt: string; aspe
 }
 
 /* ─── Text tile ─── */
-function TextTile({ line1, line2, line3, wide, highlightLine = 1, index }: { line1: string; line2?: string; line3?: string; wide?: boolean; highlightLine?: 1 | 2 | 3; index: number }) {
-  // If wide, we break out of the column to the left so the text has more horizontal space
-  const containerClass = wide 
-    ? "md:w-[150%] md:-ml-[50%] lg:w-[180%] lg:-ml-[80%] z-20 relative" 
-    : "";
-    
+function TextTile({ line1, line2, line3, highlightLine = 1, index }: { line1: string; line2?: string; line3?: string; highlightLine?: 1 | 2 | 3; index: number }) {
   const getColorClass = (lineNum: 1 | 2 | 3) => {
     return highlightLine === lineNum ? "text-[#B89768]" : "text-[#FDFBF7]/90";
   };
@@ -112,42 +53,24 @@ function TextTile({ line1, line2, line3, wide, highlightLine = 1, index }: { lin
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-30px" }}
       transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
-      className={`flex items-center justify-center py-12 md:py-16 ${containerClass}`}
+      className="flex items-center justify-center py-12 md:py-16 w-full"
     >
       <div className="text-center w-full">
-        <span className={`block font-serif italic text-3xl md:text-4xl lg:text-5xl leading-[1.2] ${getColorClass(1)}`}>
+        <span className={`block font-serif italic text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.2] ${getColorClass(1)}`}>
           {line1}
         </span>
         {line2 && (
-          <span className={`block font-serif italic text-3xl md:text-4xl lg:text-5xl leading-[1.2] mt-1 ${getColorClass(2)}`}>
+          <span className={`block font-serif italic text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.2] mt-1 ${getColorClass(2)}`}>
             {line2}
           </span>
         )}
         {line3 && (
-          <span className={`block font-serif italic text-3xl md:text-4xl lg:text-5xl leading-[1.2] mt-1 ${getColorClass(3)}`}>
+          <span className={`block font-serif italic text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.2] mt-1 ${getColorClass(3)}`}>
             {line3}
           </span>
         )}
       </div>
     </motion.div>
-  );
-}
-
-/* ─── Column renderer ─── */
-function MosaicColumn({ tiles, colIndex }: { tiles: Tile[]; colIndex: number }) {
-  // Stagger offset: odd columns start lower for asymmetry
-  const offsetClass = colIndex % 2 === 1 ? "md:mt-20" : "";
-
-  return (
-    <div className={`flex flex-col gap-4 md:gap-5 ${offsetClass}`}>
-      {tiles.map((tile, i) =>
-        tile.type === "photo" ? (
-          <PhotoTile key={i} src={tile.src} alt={tile.alt} aspect={tile.aspect} index={i} />
-        ) : (
-          <TextTile key={i} line1={tile.line1} line2={tile.line2} line3={tile.line3} wide={tile.wide} highlightLine={tile.highlightLine} index={i} />
-        )
-      )}
-    </div>
   );
 }
 
@@ -191,26 +114,93 @@ export default function PortfolioSection() {
         </motion.div>
       </div>
 
-      {/* ═══ MOSAIC GRID — Desktop: 4 columns ═══ */}
-      <div className="relative z-10 max-w-[90rem] mx-auto px-4 lg:px-10">
-        {/* Desktop grid */}
-        <div className="hidden md:grid md:grid-cols-4 gap-4 lg:gap-5">
-          {columns.map((col, i) => (
-            <MosaicColumn key={i} tiles={col} colIndex={i} />
-          ))}
+      {/* ═══ EDITORIAL GRID ═══ */}
+      <div className="relative z-10 max-w-[100rem] mx-auto px-4 lg:px-10">
+        
+        {/* Desktop Editorial Grid (3 columns) */}
+        <div className="hidden md:grid grid-cols-3 gap-6 lg:gap-8 items-center">
+          
+          {/* Row 1 */}
+          <div className="col-span-2">
+            <PhotoTile src="/media/portfolio/_MAS0828.webp" alt="Event setup" aspect="aspect-[3/2]" index={0} />
+          </div>
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/h_port_2.webp" alt="Details" aspect="aspect-[3/2]" index={1} />
+          </div>
+
+          {/* Row 2 */}
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/h_port_3.webp" alt="Decorations" aspect="aspect-[3/2]" index={2} />
+          </div>
+          <div className="col-span-1 flex items-center justify-center">
+            <TextTile line1="Ogni" line2="dettaglio" line3="conta" highlightLine={2} index={3} />
+          </div>
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/h_port_4.webp" alt="Venue" aspect="aspect-[3/2]" index={4} />
+          </div>
+
+          {/* Row 3 */}
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/h_port_5.webp" alt="Atmosphere" aspect="aspect-[3/2]" index={5} />
+          </div>
+          <div className="col-span-2">
+            <PhotoTile src="/media/portfolio/h_port_6.webp" alt="Table setting" aspect="aspect-[3/2]" index={6} />
+          </div>
+
+          {/* Row 4 */}
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/_NEW_1.webp" alt="Night view" aspect="aspect-[3/2]" index={7} />
+          </div>
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/h_port_8.webp" alt="Moments" aspect="aspect-[3/2]" index={8} />
+          </div>
+          <div className="col-span-1 flex items-center justify-center">
+            <TextTile line1="La bellezza" line2="che resta" highlightLine={1} index={9} />
+          </div>
+
+          {/* Row 5 */}
+          <div className="col-span-2">
+            <PhotoTile src="/media/portfolio/_MAS1775.webp" alt="Gala dinner" aspect="aspect-[3/2]" index={10} />
+          </div>
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/h_port_10.webp" alt="Elegance" aspect="aspect-[3/2]" index={11} />
+          </div>
+
+          {/* Row 6 */}
+          <div className="col-span-1 flex items-center justify-center">
+            <TextTile line1="Non esistono" line2="Eventi" line3="Banali" highlightLine={2} index={12} />
+          </div>
+          <div className="col-span-2">
+            <PhotoTile src="/media/portfolio/h_port_11.webp" alt="Scenography" aspect="aspect-[3/2]" index={13} />
+          </div>
+
+          {/* Row 7: Closing */}
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/_NEW_3.webp" alt="Elegance details" aspect="aspect-[3/2]" index={14} />
+          </div>
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/_NEW_4.webp" alt="Event vibes" aspect="aspect-[3/2]" index={15} />
+          </div>
+          <div className="col-span-1">
+            <PhotoTile src="/media/portfolio/_NEW_5.webp" alt="Atmosphere closing" aspect="aspect-[3/2]" index={16} />
+          </div>
+          
         </div>
 
-        {/* Mobile grid — 2 columns */}
-        <div className="grid grid-cols-2 gap-3 md:hidden">
-          {mobileTiles.map((tile, i) =>
-            tile.type === "photo" ? (
-              <PhotoTile key={i} src={tile.src} alt={tile.alt} aspect={tile.aspect} index={i} />
-            ) : (
-              <div key={i} className="col-span-2">
-                <TextTile line1={tile.line1} line2={tile.line2} line3={tile.line3} wide={tile.wide} highlightLine={tile.highlightLine} index={i} />
-              </div>
-            )
-          )}
+        {/* Mobile Grid (1 column) */}
+        <div className="flex flex-col gap-6 md:hidden">
+          <PhotoTile src="/media/portfolio/_MAS0828.webp" alt="Event setup" aspect="aspect-[3/2]" index={0} />
+          <TextTile line1="Ogni" line2="dettaglio" line3="conta" highlightLine={2} index={1} />
+          <PhotoTile src="/media/portfolio/h_port_2.webp" alt="Details" aspect="aspect-[3/2]" index={2} />
+          <PhotoTile src="/media/portfolio/h_port_3.webp" alt="Decorations" aspect="aspect-[3/2]" index={3} />
+          <PhotoTile src="/media/portfolio/h_port_6.webp" alt="Table setting" aspect="aspect-[3/2]" index={4} />
+          <TextTile line1="La bellezza" line2="che resta" highlightLine={1} index={5} />
+          <PhotoTile src="/media/portfolio/_MAS1775.webp" alt="Gala dinner" aspect="aspect-[3/2]" index={6} />
+          <PhotoTile src="/media/portfolio/h_port_11.webp" alt="Scenography" aspect="aspect-[3/2]" index={7} />
+          <TextTile line1="Non esistono" line2="Eventi" line3="Banali" highlightLine={2} index={8} />
+          <PhotoTile src="/media/portfolio/_NEW_3.webp" alt="Elegance details" aspect="aspect-[3/2]" index={9} />
+          <PhotoTile src="/media/portfolio/_NEW_4.webp" alt="Event vibes" aspect="aspect-[3/2]" index={10} />
+          <PhotoTile src="/media/portfolio/_NEW_5.webp" alt="Atmosphere closing" aspect="aspect-[3/2]" index={11} />
         </div>
       </div>
 

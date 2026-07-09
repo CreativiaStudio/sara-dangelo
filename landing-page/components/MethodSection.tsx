@@ -9,25 +9,25 @@ const points = [
     num: "01",
     imgSrc: "/media/icone/1.webp",
     title: "Visione d'Insieme",
-    desc: "Guardare oltre i dettagli per comprendere l'anima del vostro evento. Studio le potenzialità della location e la luce dei vostri desideri per tracciare le linee guida di un sogno su misura."
+    desc: "Ascolto la vostra storia, studio la location e comprendo lo stile che vi rappresenta. È il primo incontro in cui definiamo insieme la direzione creativa del vostro evento."
   },
   {
     num: "02",
     imgSrc: "/media/icone/2.webp",
     title: "Design degli Spazi",
-    desc: "Le proporzioni perfette tra estetica e fluidità. Disegno planimetrie, scenografie e percorsi per farvi vivere ogni momento con naturalezza, senza mai forzare la magia."
+    desc: "Disegno planimetrie, scenografie e percorsi ispirandomi ai principi dell'interior design. Un'armonia che si respira in ogni elemento, per farvi vivere il vostro evento con naturalezza."
   },
   {
     num: "03",
     imgSrc: "/media/icone/3.webp",
     title: "Eleganza Logica",
-    desc: "Un'estetica impeccabile richiede fondamenta solide. Ottimizzo le risorse e dirigo una selezione di fornitori d'eccellenza, affinché la bellezza non incontri mai ostacoli o sprechi."
+    desc: "Dietro ogni progetto c'è un lavoro di coordinamento che non vedrete mai. Seleziono i migliori fornitori, ottimizzo le risorse e gestisco ogni aspetto organizzativo perché tutto funzioni alla perfezione."
   },
   {
     num: "04",
     imgSrc: "/media/icone/4.webp",
     title: "Regia Invisibile",
-    desc: "Il giorno in cui il progetto si trasforma in pura emozione. Una gestione rigorosa e silenziosa che vi lascerà un unico, meraviglioso compito: vivere il vostro momento."
+    desc: "Il giorno dell'evento, tutto scorre in modo naturale. Una regia attenta e discreta, costruita nei mesi precedenti, perché il vostro unico pensiero sia vivere ogni istante."
   }
 ];
 

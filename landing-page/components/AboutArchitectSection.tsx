@@ -59,11 +59,10 @@ export default function AboutArchitectSection() {
             <div className="editorial-line mb-8" />
             <div className="w-full">
               <p className="font-sans font-light text-[#4A3B32]/80 text-base md:text-lg leading-[1.9] mb-6">
-                <span className="font-medium text-[#4A3B32]">Tutto inizia dai vostri sogni,</span>{" "}ma è la cura millimetrica a renderli reali. Il mio percorso di studi in architettura è la promessa di un design di livello superiore: linee pulite, proporzioni impeccabili e un&apos;armonia che si respira in ogni dettaglio.
+                <span className="font-medium text-[#4A3B32]">Tutto inizia dai vostri sogni,</span>{" "}ma è uno studio approfondito e professionale a renderli reali. Il mio percorso in architettura è la promessa di un design esclusivo, che prende spunto dai materiali e dagli elementi dell&apos;interior design. Un&apos;armonia che si respira in ogni elemento.
               </p>
               <p className="font-sans font-light text-[#4A3B32]/80 text-base md:text-lg leading-[1.9] mb-4">
-                Quello che vedrete è pura poesia visiva. Quello che non vedrete è la struttura che la sostiene: una macchina logistica affinata in quasi vent&apos;anni di matrimoni, che non ammette imprevisti.{" "}
-                <span className="font-medium text-[#4A3B32]">Il vostro unico compito sarà godervi la festa.</span>
+                Quello che vedrete è pura poesia visiva. Quello che non vedrete è la struttura che la sostiene: un&apos;organizzazione affinata in quasi vent&apos;anni di matrimoni, pensata per gestire ogni scenario con lucidità e prontezza.
               </p>
             </div>
             <div className="mt-12 w-48 md:w-64">
