@@ -3,121 +3,68 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Check } from "lucide-react";
-
-type TierId = "free" | "tier1" | "tier2" | "tier3";
-
-const TIERS = [
-  { 
-    id: "free", 
-    name: "Call Conoscitiva", 
-    price: 0, 
-    desc: "Parliamo del vostro sogno per scoprire se c'è sintonia per un percorso insieme." 
-  },
-  { 
-    id: "tier1", 
-    name: "Consulenza Location", 
-    price: 100, 
-    desc: "Supporto strategico e analisi per individuare la location perfetta per voi." 
-  },
-  { 
-    id: "tier2", 
-    name: "Location + Sopralluogo", 
-    price: 250, 
-    desc: "Ricerca location con sopralluogo tecnico di persona per valutare spazi e logistica." 
-  },
-  { 
-    id: "tier3", 
-    name: "Consulenza Progetto", 
-    price: 500, 
-    desc: "Sviluppo di un progetto preliminare completo di scenografia, mood e palette." 
-  },
-];
 
 export default function DoubleFunnelSection() {
-  // Contact form state
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
   const [contactDate, setContactDate] = useState("");
   const [contactLocation, setContactLocation] = useState("");
   const [contactGuests, setContactGuests] = useState("");
+  const [contactBudget, setContactBudget] = useState("");
   const [contactMessage, setContactMessage] = useState("");
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [contactStatus, setContactStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [selectedTier, setSelectedTier] = useState<TierId>("free");
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (contactStatus === "loading") return;
-    if (!contactName.trim() || !contactEmail.trim() || !contactEmail.includes("@")) {
+    if (!contactName.trim() || !contactEmail.trim() || !contactEmail.includes("@") || !privacyAccepted) {
       setContactStatus("error");
       return;
     }
 
     setContactStatus("loading");
-    
-    const activeTier = TIERS.find(t => t.id === selectedTier)!;
 
     try {
-      if (selectedTier === "free") {
-        const res = await fetch("/api/supabase", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: contactEmail,
-            name: contactName,
-            phone: contactPhone,
-            date: contactDate,
-            location: contactLocation,
-            guests: contactGuests,
-            message: contactMessage,
-            type: "consultation_free",
-          }),
-        });
-        await new Promise((resolve) => setTimeout(resolve, 800));
-        if (res.ok) setContactStatus("success");
-        else setContactStatus("error");
+      const res = await fetch("/api/supabase", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: contactEmail,
+          name: contactName,
+          phone: contactPhone,
+          date: contactDate,
+          location: contactLocation,
+          guests: contactGuests,
+          budget: contactBudget,
+          message: contactMessage,
+          privacyAccepted,
+          type: "consultation_free",
+        }),
+      });
+
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      if (res.ok) {
+        setContactStatus("success");
       } else {
-        const res = await fetch("/api/checkout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: contactEmail,
-            name: contactName,
-            phone: contactPhone,
-            date: contactDate,
-            location: contactLocation,
-            guests: contactGuests,
-            message: contactMessage,
-            tier: activeTier.id,
-            tierName: activeTier.name,
-            tierPrice: activeTier.price
-          }),
-        });
-        const data = await res.json();
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          setContactStatus("error");
-        }
+        setContactStatus("error");
       }
     } catch {
       setContactStatus("error");
     }
   };
 
-  const isFree = selectedTier === "free";
-
   return (
     <div id="contact">
-      <section id="funnel" data-theme="dark" className="w-full relative overflow-hidden">
-        {/* Background Image — subtle */}
+      <section id="funnel" data-theme="dark" className="w-full relative overflow-hidden bg-[#2A2118]">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/media/bellevue-setup.webp"
             alt=""
             fill
-            className="object-cover"
+            className="object-cover opacity-30"
             sizes="100vw"
             quality={60}
           />
@@ -125,184 +72,164 @@ export default function DoubleFunnelSection() {
         </div>
 
         <div className="relative z-10 max-w-[90rem] mx-auto px-4 lg:px-16 py-28 md:py-40">
-          {/* Section intro */}
+          {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-16 md:mb-24"
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-16 md:mb-20"
           >
-            <span className="font-sans text-[11px] md:text-xs tracking-[0.35em] uppercase text-[#B89768] mb-6 block">Il Primo Passo</span>
+            <span className="font-sans text-xs tracking-[0.35em] uppercase text-[#B89768] mb-4 block">
+              Consulenza Conoscitiva (30 Minuti)
+            </span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-[#FDFBF7]">
-              Iniziamo a{" "}
-              <span className="italic font-light text-[#B89768]">sognare.</span>
+              Iniziamo a <span className="italic font-light text-[#B89768]">progettare insieme.</span>
             </h2>
           </motion.div>
 
-          {/* Centered Form Area */}
+          {/* Form Card */}
           <div className="flex justify-center w-full">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full max-w-4xl bg-[#FDFBF7] p-6 md:p-14 shadow-2xl border border-[#B89768]/50"
+              className="w-full max-w-3xl bg-[#FDFBF7] p-8 md:p-14 shadow-2xl border border-[#B89768]/40"
               data-theme="light"
             >
               <div className="w-full mx-auto">
                 <div className="text-center mb-10">
-                  <span className="label-caps mb-4 block mx-auto">Consulenza su Misura</span>
-                  <h3 className="text-3xl md:text-4xl font-serif text-[#4A3B32] mb-6 leading-[1.2]">
-                    Scegli il Tuo Percorso
+                  <span className="label-caps mb-3 block mx-auto text-[#B89768]">Un Percorso Esclusivo</span>
+                  <h3 className="text-2xl md:text-4xl font-serif text-[#4A3B32] mb-4">
+                    Richiedi la tua Call conoscitiva
                   </h3>
                   <div className="editorial-line mx-auto mb-6" />
-                  <p className="text-[#4A3B32]/90 font-sans font-normal leading-[1.8] text-sm md:text-base max-w-2xl mx-auto">
-                    Ogni progetto è unico. Seleziona il livello di consulenza più adatto alle tue esigenze attuali, poi raccontami la tua visione.
-                  </p>
+                  
+                  {/* Soft & Warm Selection Note */}
+                  <div className="bg-[#F5EFE6] border border-[#B89768]/30 p-5 md:p-7 mb-8 text-left rounded-sm">
+                    <p className="text-xs md:text-sm font-sans font-light leading-relaxed text-[#4A3B32]/90 italic">
+                      <strong className="font-semibold text-[#4A3B32] not-italic block mb-1">Nota di Cura & Esclusività:</strong>
+                      Per garantire a ciascuna coppia una presenza totale, uno studio sartoriale e la massima cura dei dettagli, accetto solo un numero limitato di matrimoni ogni anno. Leggerò con attenzione le vostre informazioni per verificare l&apos;armonia del progetto e vi ricontatterò personalmente per fissare la nostra chiamata.
+                    </p>
+                  </div>
                 </div>
 
                 {contactStatus === "success" ? (
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-[#F5EFE6] text-[#4A3B32] p-8 text-center border border-[#B89768]/20 max-w-2xl mx-auto mt-8"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-[#F5EFE6] text-[#4A3B32] p-8 text-center border border-[#B89768]/40 max-w-xl mx-auto my-6"
                   >
-                    <p className="font-serif italic text-xl mb-2">
-                      Grazie, {contactName}.
+                    <p className="font-serif italic text-2xl text-[#B89768] mb-3">
+                      Grazie, {contactName}!
                     </p>
-                    <p className="font-sans text-sm font-light text-[#4A3B32]/70">
-                      Ho ricevuto la vostra richiesta. Vi ricontatterò al più presto per il prossimo passo.
+                    <p className="font-sans text-sm font-light text-[#4A3B32]/80 leading-relaxed">
+                      Ho ricevuto la vostra richiesta. Leggerò con cura i vostri dettagli e vi ricontatterò al più presto per il nostro appuntamento conoscitivo.
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleContactSubmit} className="flex flex-col gap-10">
-                    
-                    {/* Tiers Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {TIERS.map(tier => {
-                        const isSelected = selectedTier === tier.id;
-                        return (
-                          <div 
-                            key={tier.id}
-                            onClick={() => setSelectedTier(tier.id as TierId)}
-                            className={`relative cursor-pointer p-6 border transition-all duration-500 group flex flex-col justify-between ${
-                              isSelected 
-                                ? "border-[#B89768] bg-[#B89768]/5 shadow-inner" 
-                                : "border-[#4A3B32]/15 hover:border-[#B89768]/50 hover:bg-[#F5EFE6]/50"
-                            }`}
-                          >
-                            <div>
-                              <div className="flex justify-between items-start mb-3">
-                                <h4 className={`font-serif text-xl ${isSelected ? "text-[#B89768]" : "text-[#4A3B32]"}`}>
-                                  {tier.name}
-                                </h4>
-                                {isSelected && (
-                                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                                    <Check className="w-5 h-5 text-[#B89768]" strokeWidth={1.5} />
-                                  </motion.div>
-                                )}
-                              </div>
-                              <p className="text-[#4A3B32]/70 font-sans text-xs leading-relaxed">
-                                {tier.desc}
-                              </p>
-                            </div>
-                            <div className="mt-6 pt-4 border-t border-[#4A3B32]/10 flex justify-between items-end">
-                              <span className="text-[10px] tracking-widest uppercase text-[#4A3B32]/50">
-                                Investimento
-                              </span>
-                              <span className={`font-serif text-lg ${isSelected ? "text-[#B89768]" : "text-[#4A3B32]"}`}>
-                                {tier.price === 0 ? "Gratuito" : `€${tier.price}`}
-                              </span>
-                            </div>
-                          </div>
-                        );
-                      })}
+                  <form onSubmit={handleContactSubmit} className="flex flex-col gap-6">
+                    <input
+                      type="text"
+                      placeholder="Nomi degli Sposi *"
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
+                      required
+                      className="w-full bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
+                    />
+
+                    <div className="flex flex-col sm:flex-row gap-6">
+                      <input
+                        type="email"
+                        placeholder="Email *"
+                        value={contactEmail}
+                        onChange={(e) => setContactEmail(e.target.value)}
+                        required
+                        className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
+                      />
+                      <input
+                        type="tel"
+                        placeholder="Telefono / WhatsApp *"
+                        value={contactPhone}
+                        onChange={(e) => setContactPhone(e.target.value)}
+                        required
+                        className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
+                      />
                     </div>
 
-                    {/* Form Fields */}
-                    <div className="flex flex-col gap-6 mt-4">
-                      <div className="text-center mb-2">
-                        <h4 className="font-serif text-2xl text-[#4A3B32]">I Vostri Dettagli</h4>
-                      </div>
-                      
+                    <div className="flex flex-col sm:flex-row gap-6">
                       <input
                         type="text"
-                        placeholder="Nomi degli Sposi"
-                        value={contactName}
-                        onChange={(e) => setContactName(e.target.value)}
-                        required
-                        className="w-full bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50"
+                        placeholder="Data dell'evento (es. Giugno 2027)"
+                        value={contactDate}
+                        onChange={(e) => setContactDate(e.target.value)}
+                        className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
                       />
-                      <div className="flex flex-col sm:flex-row gap-6">
-                        <input
-                          type="email"
-                          placeholder="Email"
-                          value={contactEmail}
-                          onChange={(e) => setContactEmail(e.target.value)}
-                          required
-                          className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50"
-                        />
-                        <input
-                          type="tel"
-                          placeholder="Telefono"
-                          value={contactPhone}
-                          onChange={(e) => setContactPhone(e.target.value)}
-                          required
-                          className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50"
-                        />
-                      </div>
-                      <div className="flex flex-col sm:flex-row gap-6">
-                        <input
-                          type="text"
-                          placeholder="Data indicativa"
-                          value={contactDate}
-                          onChange={(e) => setContactDate(e.target.value)}
-                          className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50"
-                        />
-                        <input
-                          type="number"
-                          placeholder="N° Invitati (circa)"
-                          value={contactGuests}
-                          onChange={(e) => setContactGuests(e.target.value)}
-                          className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50"
-                        />
-                      </div>
                       <input
                         type="text"
-                        placeholder="Avete già una location o una zona in mente?"
+                        placeholder="N° Invitati indicativo (es. 100-120)"
+                        value={contactGuests}
+                        onChange={(e) => setContactGuests(e.target.value)}
+                        className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
+                      />
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-6">
+                      <input
+                        type="text"
+                        placeholder="Location o zona desiderata (es. Capri, Ravello...)"
                         value={contactLocation}
                         onChange={(e) => setContactLocation(e.target.value)}
-                        className="w-full bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50"
+                        className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
                       />
-                      <textarea
-                        placeholder="Raccontami il tuo sogno. Come immaginate l'atmosfera del vostro grande giorno? Qual è il dettaglio che non deve assolutamente mancare?"
-                        value={contactMessage}
-                        onChange={(e) => setContactMessage(e.target.value)}
-                        required
-                        rows={4}
-                        className="w-full bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans font-normal text-sm focus:outline-none focus:border-[#B89768] transition-colors duration-500 placeholder:text-[#4A3B32]/50 resize-none"
+                      <input
+                        type="text"
+                        placeholder="Budget indicativo di riferimento"
+                        value={contactBudget}
+                        onChange={(e) => setContactBudget(e.target.value)}
+                        className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
                       />
-                      
-                      <button
-                        type="submit"
-                        disabled={contactStatus === "loading"}
-                        className="mt-6 w-full bg-[#B89768] text-[#FDFBF7] font-sans uppercase tracking-[0.25em] text-[11px] py-5 hover:bg-[#4A3B32] disabled:opacity-50 transition-all duration-700 flex justify-center items-center gap-3"
-                      >
-                        {contactStatus === "loading"
-                          ? "Attendere prego..."
-                          : isFree ? "Richiedi Incontro Gratuito" : "Procedi al Pagamento"}
-                      </button>
-                      
-                      {contactStatus === "error" && (
-                        <p
-                          className="text-[#B5952F] text-xs mt-1 text-center"
-                          role="alert"
-                        >
-                          Si è verificato un errore. Riprova.
-                        </p>
-                      )}
                     </div>
+
+                    <textarea
+                      placeholder="Raccontatemi la vostra idea o la vostra visione del matrimonio..."
+                      value={contactMessage}
+                      onChange={(e) => setContactMessage(e.target.value)}
+                      rows={3}
+                      className="w-full bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50 resize-none"
+                    />
+
+                    {/* Privacy Policy Checkbox */}
+                    <div className="flex items-start gap-3 mt-2">
+                      <input
+                        type="checkbox"
+                        id="privacy"
+                        checked={privacyAccepted}
+                        onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                        required
+                        className="mt-1 h-4 w-4 rounded border-[#4A3B32]/30 text-[#B89768] focus:ring-[#B89768] accent-[#B89768] cursor-pointer"
+                      />
+                      <label htmlFor="privacy" className="text-xs font-sans font-light text-[#4A3B32]/80 leading-relaxed cursor-pointer select-none">
+                        Ho letto e accetto l&apos;informativa sulla <span className="underline font-normal text-[#4A3B32]">Privacy Policy</span> per il trattamento dei dati personali. *
+                      </label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={contactStatus === "loading"}
+                      className="mt-4 w-full bg-[#B89768] text-[#FDFBF7] font-sans uppercase tracking-[0.25em] text-xs font-semibold py-5 hover:bg-[#4A3B32] hover:text-[#FDFBF7] disabled:opacity-50 transition-all duration-500 shadow-md"
+                    >
+                      {contactStatus === "loading"
+                        ? "Invio in corso..."
+                        : "Invia Richiesta per la Consulenza Conoscitiva"}
+                    </button>
+
+                    {contactStatus === "error" && (
+                      <p className="text-red-700 text-xs mt-2 text-center" role="alert">
+                        Si è verificato un errore. Assicurati di aver accettato la Privacy Policy e inserito email e nome validi.
+                      </p>
+                    )}
                   </form>
                 )}
               </div>
@@ -311,13 +238,13 @@ export default function DoubleFunnelSection() {
         </div>
 
         {/* Footer */}
-        <div className="relative z-10 border-t border-[#B89768]/10 py-10">
+        <div className="relative z-10 border-t border-[#B89768]/15 py-10">
           <div className="max-w-[90rem] mx-auto px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="font-serif text-lg text-[#FDFBF7]/60 tracking-wide">
+            <p className="font-serif text-lg text-[#FDFBF7]/80 tracking-wide">
               Sara D&apos;Angelo
             </p>
-            <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#FDFBF7]/40">
-              Wedding Architect — Napoli & Costiera Amalfitana
+            <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#FDFBF7]/50">
+              Wedding Architect — Napoli, Costiera, Capri & Italia
             </p>
           </div>
         </div>

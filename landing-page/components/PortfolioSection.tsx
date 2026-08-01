@@ -1,200 +1,294 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-/* ─── Data: 4 Albums ─── */
-const albums = [
+const albumData = [
   {
-    id: "lancellotti",
-    title: "Castello Lancellotti",
-    photos: [
-      { src: "/media/portfolio/_MAS0828.webp", alt: "Event setup", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-2" },
-      { src: "/media/portfolio/h_port_2.webp", alt: "Details", aspect: "aspect-[3/2]", span: "col-span-1" },
-      { src: "/media/portfolio/h_port_3.webp", alt: "Decorations", aspect: "aspect-[3/2]", span: "col-span-1" },
-      { src: "/media/portfolio/h_port_4.webp", alt: "Atmosphere", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-2" },
+    id: "capri",
+    title: "Capri",
+    subtitle: "Villa & Panorama a Capri",
+    images: [
+      "/media/albums/capri/img_1.webp",
+      "/media/albums/capri/img_2.webp",
+      "/media/albums/capri/img_3.webp",
+      "/media/albums/capri/img_4.webp",
+      "/media/albums/capri/img_5.webp",
+      "/media/albums/capri/img_6.webp",
+      "/media/albums/capri/img_7.webp",
+      "/media/albums/capri/img_8.webp",
+      "/media/albums/capri/img_9.webp",
+      "/media/albums/capri/img_10.webp",
+      "/media/albums/capri/img_11.webp",
+      "/media/albums/capri/img_12.webp",
     ]
   },
   {
-    id: "cimbrone",
-    title: "Villa Cimbrone",
-    photos: [
-      { src: "/media/portfolio/h_port_5.webp", alt: "Green setup", aspect: "aspect-[3/2]", span: "col-span-1" },
-      { src: "/media/portfolio/h_port_6.webp", alt: "Table setting", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-2" },
-      { src: "/media/portfolio/_NEW_1.webp", alt: "Night view", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-2" },
-      { src: "/media/portfolio/h_port_8.webp", alt: "Moments", aspect: "aspect-[3/2]", span: "col-span-1" },
+    id: "lancellotti",
+    title: "Castello Lancellotti",
+    subtitle: "Dimora Storica — Lauro",
+    images: [
+      "/media/albums/lancellotti/img_1.webp",
+      "/media/albums/lancellotti/img_2.webp",
+      "/media/albums/lancellotti/img_3.webp",
+      "/media/albums/lancellotti/img_4.webp",
+      "/media/albums/lancellotti/img_5.webp",
+      "/media/albums/lancellotti/img_6.webp",
+      "/media/albums/lancellotti/img_7.webp",
+      "/media/albums/lancellotti/img_8.webp",
+      "/media/albums/lancellotti/img_9.webp",
+      "/media/albums/lancellotti/img_10.webp",
+      "/media/albums/lancellotti/img_11.webp",
+    ]
+  },
+  {
+    id: "margherita",
+    title: "Salone Margherita",
+    subtitle: "Scenografia & Design — Napoli",
+    images: [
+      "/media/albums/margherita/img_1.webp",
+      "/media/albums/margherita/img_2.webp",
+      "/media/albums/margherita/img_3.webp",
+      "/media/albums/margherita/img_4.webp",
+      "/media/albums/margherita/img_5.webp",
+      "/media/albums/margherita/img_6.webp",
+      "/media/albums/margherita/img_7.webp",
+      "/media/albums/margherita/img_8.webp",
     ]
   },
   {
     id: "campolieto",
-    title: "Tenuta di Campolieto",
-    photos: [
-      { src: "/media/portfolio/_MAS1775.webp", alt: "Gala dinner", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-2" },
-      { src: "/media/portfolio/h_port_10.webp", alt: "Elegance", aspect: "aspect-[3/2]", span: "col-span-1" },
-      { src: "/media/portfolio/h_port_11.webp", alt: "Scenography", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-3" },
-    ]
-  },
-  {
-    id: "federica",
-    title: "Il Matrimonio di Federica",
-    photos: [
-      { src: "/media/portfolio/_NEW_3.webp", alt: "Elegance details", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-2" },
-      { src: "/media/portfolio/_NEW_4.webp", alt: "Event vibes", aspect: "aspect-[3/2]", span: "col-span-1" },
-      { src: "/media/portfolio/_NEW_5.webp", alt: "Atmosphere closing", aspect: "aspect-[3/2]", span: "col-span-1 md:col-span-3" },
+    title: "Villa Campolieto",
+    subtitle: "Residenza Vesuviana — Ercolano",
+    images: [
+      "/media/albums/campolieto/img_14.webp",
+      "/media/albums/campolieto/img_1.webp",
+      "/media/albums/campolieto/img_2.webp",
+      "/media/albums/campolieto/img_3.webp",
+      "/media/albums/campolieto/img_4.webp",
+      "/media/albums/campolieto/img_5.webp",
+      "/media/albums/campolieto/img_6.webp",
+      "/media/albums/campolieto/img_7.webp",
+      "/media/albums/campolieto/img_8.webp",
+      "/media/albums/campolieto/img_9.webp",
+      "/media/albums/campolieto/img_10.webp",
+      "/media/albums/campolieto/img_11.webp",
+
     ]
   }
 ];
 
-/* ─── Parallax photo tile ─── */
-function PhotoTile({ src, alt, aspect, span, index }: { src: string; alt: string; aspect: string; span: string; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1.15, 1.05, 1.05, 1.15]);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-      className={`relative w-full overflow-hidden group ${span} ${aspect}`}
-    >
-      <motion.div style={{ y, scale }} className="absolute inset-0 w-full h-full">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          quality={85}
-        />
-      </motion.div>
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-    </motion.div>
-  );
-}
-
-
-/* ─── Main export ─── */
 export default function PortfolioSection() {
-  const [activeTab, setActiveTab] = useState(albums[0].id);
+  const [activeTab, setActiveTab] = useState(albumData[0].id);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const activeAlbum = albums.find(a => a.id === activeTab);
+  const activeAlbum = albumData.find(a => a.id === activeTab) || albumData[0];
+
+  // We slice to a multiple of 3 (e.g. 6 or 9 or 12) to ensure 100% symmetric rows on desktop & tablet
+  const displayImages = activeAlbum.images.slice(0, Math.floor(activeAlbum.images.length / 3) * 3 || 6);
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
+
+  const nextImage = () => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex + 1) % activeAlbum.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex - 1 + activeAlbum.images.length) % activeAlbum.images.length);
+    }
+  };
 
   return (
     <section
       id="portfolio"
       data-theme="dark"
-      className="relative text-[#FDFBF7] py-28 md:py-40 lg:py-48 overflow-hidden bg-[#362A22]"
+      className="relative text-[#FDFBF7] py-24 md:py-36 bg-[#2A2118] overflow-hidden"
     >
-      {/* Deep gradient background */}
+      {/* Background radial gradient */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: "radial-gradient(circle at top, #55453B 0%, #4A3B32 50%, #362A22 100%)" }}
+        style={{ background: "radial-gradient(circle at top, #4A3B32 0%, #2A2118 70%, #1A140E 100%)" }}
       />
       <div className="noise-bg opacity-10 z-0 relative" />
 
       <div className="relative z-10 max-w-[90rem] mx-auto px-6 lg:px-16">
         
-        {/* Section intro & Tabs Header */}
-        <div className="mb-20 md:mb-28 flex flex-col items-center">
+        {/* Section Intro */}
+        <div className="mb-16 md:mb-24 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center w-full max-w-4xl"
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-4xl mx-auto"
           >
-            <span className="label-caps mb-8 block text-[#B89768]">Racconti Visivi</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] text-[#FDFBF7] mb-16">
+            <span className="label-caps mb-4 block text-[#B89768]">Portfolio Matrimoni</span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif leading-[1.15] text-[#FDFBF7] mb-12">
               Spazi trasformati in <span className="italic font-light text-[#B89768]">emozione.</span>
             </h2>
 
-            {/* Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 md:gap-8 border-b border-[#FDFBF7]/10 pb-6">
-              {albums.map((album) => {
+            {/* Album Tabs Navigation */}
+            <div className="flex flex-wrap justify-center gap-3 md:gap-6 border-b border-[#FDFBF7]/10 pb-6">
+              {albumData.map((album) => {
                 const isActive = activeTab === album.id;
                 return (
                   <button
                     key={album.id}
-                    onClick={() => setActiveTab(album.id)}
-                    className="relative pb-2 px-2 transition-colors duration-500 group"
+                    onClick={() => {
+                      setActiveTab(album.id);
+                      setLightboxIndex(null);
+                    }}
+                    className="relative pb-3 px-3 md:px-5 transition-colors duration-300 group"
                   >
-                    <span className={`font-sans tracking-widest uppercase text-[10px] md:text-xs transition-colors duration-500 ${isActive ? "text-[#B89768] font-medium" : "text-[#FDFBF7]/50 group-hover:text-[#FDFBF7]/80"}`}>
+                    <span
+                      className={`font-sans tracking-[0.2em] uppercase text-xs md:text-sm transition-colors duration-300 ${
+                        isActive ? "text-[#B89768] font-semibold" : "text-[#FDFBF7]/60 group-hover:text-[#FDFBF7]"
+                      }`}
+                    >
                       {album.title}
                     </span>
                     {isActive && (
                       <motion.div
-                        layoutId="activeTabIndicator"
+                        layoutId="activeAlbumTab"
                         className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B89768]"
                         initial={false}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 32 }}
                       />
                     )}
                   </button>
                 );
               })}
             </div>
+            <p className="font-serif italic text-sm md:text-base text-[#B89768]/80 mt-4">
+              {activeAlbum.subtitle}
+            </p>
           </motion.div>
         </div>
 
-        {/* Album Grid */}
-        <div className="min-h-[800px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            >
-              {activeAlbum?.photos.map((photo, i) => (
-                <PhotoTile
-                  key={`${activeTab}-${i}`}
-                  src={photo.src}
-                  alt={photo.alt}
-                  aspect={photo.aspect}
-                  span={photo.span}
-                  index={i}
+        {/* 100% Symmetrical Photo Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -25 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            {displayImages.map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: i * 0.04 }}
+                onClick={() => openLightbox(i)}
+                className="relative cursor-pointer overflow-hidden photo-frame group aspect-[4/3] shadow-lg border border-[#B89768]/15"
+              >
+                <Image
+                  src={src}
+                  alt={`${activeAlbum.title} foto ${i + 1}`}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
                 />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="font-sans uppercase text-[11px] tracking-[0.2em] text-[#FDFBF7] bg-[#1A140E]/85 px-4 py-2 border border-[#B89768]/40 shadow-xl">
+                    Ingrandisci
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Closing CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "0px" }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-28 md:mt-40 text-center"
-        >
-          <p className="font-serif italic text-2xl md:text-3xl text-[#FDFBF7]/70 mb-10">
-            Ogni storia ha un design unico. Quale sarà il vostro?
-          </p>
+        {/* CTA */}
+        <div className="mt-16 md:mt-24 text-center">
           <a
             href="#contact"
-            className="inline-flex items-center gap-4 bg-transparent border border-[#B89768]/50 text-[#FDFBF7] px-10 py-5 font-sans uppercase tracking-[0.2em] text-[11px] hover:bg-[#B89768] hover:text-[#2A2118] hover:border-[#B89768] transition-all duration-700"
+            className="inline-flex items-center gap-4 border border-[#B89768] text-[#FDFBF7] px-8 py-4 font-sans uppercase tracking-[0.2em] text-xs hover:bg-[#B89768] hover:text-[#1A140E] transition-all duration-500"
           >
-            Inizia il Progetto
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            Richiedi Progetto Personalizzato
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-        </motion.div>
+        </div>
 
       </div>
+
+      {/* Fullscreen Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+            onClick={closeLightbox}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 right-6 text-white text-3xl font-light hover:text-[#B89768] transition-colors z-50 p-2"
+              aria-label="Chiudi"
+            >
+              ✕
+            </button>
+
+            {/* Prev Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              className="absolute left-4 md:left-8 text-white text-3xl hover:text-[#B89768] transition-colors z-50 p-3 bg-black/40 rounded-full"
+              aria-label="Foto precedente"
+            >
+              ‹
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              className="absolute right-4 md:right-8 text-white text-3xl hover:text-[#B89768] transition-colors z-50 p-3 bg-black/40 rounded-full"
+              aria-label="Foto successiva"
+            >
+              ›
+            </button>
+
+            {/* Full Image */}
+            <div 
+              className="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={activeAlbum.images[lightboxIndex]}
+                alt={activeAlbum.title}
+                fill
+                className="object-contain"
+                quality={95}
+              />
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/75 text-[#FDFBF7] px-4 py-1 font-sans text-xs tracking-widest uppercase rounded-sm border border-[#B89768]/30">
+                {activeAlbum.title} — {lightboxIndex + 1} / {activeAlbum.images.length}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

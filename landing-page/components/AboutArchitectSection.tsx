@@ -1,82 +1,75 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function AboutArchitectSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const imgY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
-
   return (
-    <section ref={sectionRef} id="about" className="py-24 md:py-36 lg:py-48 bg-[#FDFBF7] overflow-hidden">
-      <div className="max-w-[90rem] mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center gap-16 lg:gap-16">
-        
-        {/* Left: Portrait */}
-        <div className="w-full lg:w-[45%] relative">
-          <motion.div 
-            style={{ y: imgY }}
+    <section id="about" className="relative py-28 md:py-40 bg-[#FDFBF7] text-[#4A3B32] overflow-hidden">
+      <div className="max-w-[90rem] mx-auto px-6 lg:px-16">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          
+          {/* Left: Portrait */}
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="relative w-[90%] md:w-[85%] aspect-[3/4] mx-auto photo-frame z-10"
+            viewport={{ once: true }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[45%] relative aspect-[4/5] photo-frame shadow-2xl overflow-hidden shrink-0"
           >
             <Image
-               src="/media/sara-portrait.webp" 
-               alt="Sara D'Angelo Portrait"
-               fill
-               className="object-cover"
-               sizes="(max-width: 768px) 90vw, 40vw"
+              src="/media/sara-portrait.webp"
+              alt="Sara D'Angelo — Wedding Architect"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              quality={90}
             />
-            <div className="absolute inset-0 bg-[#4A3B32]/10 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-[#4A3B32]/5 pointer-events-none" />
           </motion.div>
 
-          {/* Decorative element */}
-          <div className="absolute top-1/2 -left-10 lg:-left-20 -translate-y-1/2 text-[12rem] lg:text-[18rem] font-serif italic text-[#B89768]/[0.04] select-none pointer-events-none">
-            S
-          </div>
-        </div>
-        
-        {/* Right: Text */}
-        <div className="w-full lg:w-[55%] flex flex-col">
+          {/* Right: Direct First Person Copy ("Io" -> "Voi") */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[55%] flex flex-col justify-center"
           >
-            <span className="label-caps mb-6 block">Dietro le quinte</span>
-            <h2 className="text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-serif text-[#4A3B32] leading-[1.1] mb-8">
-              <span className="block lg:whitespace-nowrap">La forma dei vostri sogni.</span>
-              <span className="block italic font-light text-[#B89768] lg:whitespace-nowrap">Costruita per non svanire mai.</span>
+            <span className="label-caps mb-6 block text-[#B89768]">La Mia Filosofia</span>
+            
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif leading-[1.15] mb-8 text-[#4A3B32]">
+              Perché scegliere me come <br className="hidden md:block" />
+              <span className="italic font-light text-[#B89768]">vostra Wedding Architect</span>
             </h2>
-            <div className="editorial-line mb-8" />
-            <div className="w-full">
-              <p className="font-sans font-light text-[#4A3B32]/80 text-base md:text-lg leading-[1.9] mb-6">
-                <span className="font-medium text-[#4A3B32]">Tutto inizia dai vostri sogni,</span>{" "}ma è uno studio approfondito e professionale a renderli reali. Il mio percorso in architettura è la promessa di un design esclusivo, che prende spunto dai materiali e dagli elementi dell&apos;interior design. Un&apos;armonia che si respira in ogni elemento.
-              </p>
-              <p className="font-sans font-light text-[#4A3B32]/80 text-base md:text-lg leading-[1.9] mb-4">
-                Quello che vedrete è pura poesia visiva. Quello che non vedrete è la struttura che la sostiene: un&apos;organizzazione affinata in quasi vent&apos;anni di matrimoni, pensata per gestire ogni scenario con lucidità e prontezza.
-              </p>
-            </div>
-            <div className="mt-12 w-48 md:w-64">
-               <Image 
-                 src="/sara-dangelo-wedding-architect-logo.png" 
-                 alt="Sara D'Angelo Wedding Architect" 
-                 width={400} 
-                 height={150} 
-                 className="w-full h-auto opacity-80 mix-blend-multiply"
-               />
-            </div>
-          </motion.div>
-        </div>
 
+            <div className="space-y-6 font-sans font-light text-base md:text-lg leading-relaxed text-[#4A3B32]/85">
+              <p>
+                Sono convinta che un matrimonio indimenticabile non nasca dalla semplice somma di fiori e decorazioni, ma da uno studio approfondito dello spazio e dei flussi del vostro evento. 
+              </p>
+              <p>
+                Come <strong className="font-semibold text-[#4A3B32]">Wedding Architect</strong>, metto il mio percorso di architettura al servizio dei vostri sogni. Il vantaggio per voi? Nessun imprevisto, un&apos;armonia visiva perfetta e la totale serenità di godervi la festa mentre la mia regia invisibile coordina ogni dettaglio.
+              </p>
+              <p className="text-sm md:text-base italic text-[#B89768] pt-2">
+                Disegno e firmo matrimoni esclusivi a Napoli, in Costiera Amalfitana, a Capri, in Puglia e nei più affascinanti castelli d&apos;Italia.
+              </p>
+            </div>
+
+            {/* Signature Badge */}
+            <div className="mt-10 pt-8 border-t border-[#4A3B32]/10 flex items-center justify-between">
+              <div>
+                <span className="font-serif italic text-2xl text-[#4A3B32] block">Sara D&apos;Angelo</span>
+                <span className="font-sans text-xs tracking-widest uppercase text-[#B89768]">Wedding Architect</span>
+              </div>
+              <div className="text-right">
+                <span className="font-serif italic text-xl text-[#B89768] block">14+ Anni</span>
+                <span className="font-sans text-xs tracking-widest uppercase text-[#4A3B32]/60">di Progettazione</span>
+              </div>
+            </div>
+
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

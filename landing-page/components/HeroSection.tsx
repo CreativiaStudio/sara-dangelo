@@ -15,11 +15,11 @@ const titleContainer = {
 };
 
 const titleItem = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: { opacity: 0, y: 50 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 2.5, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 2.2, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -37,83 +37,111 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#1A140E]"
     >
-      {/* Background Video */}
+      {/* Background Video — Vivid & Clear */}
       <div className="absolute inset-0 z-0">
         <video 
           autoPlay 
           loop 
           muted 
           playsInline 
-          className="w-full h-full object-cover opacity-80"
+          className="w-full h-full object-cover opacity-90 scale-105"
         >
           <source src="/media/hero-bg.mp4" type="video/mp4" />
         </video>
-        {/* Elegant overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2A2118]/60 via-[#2A2118]/40 to-[#2A2118]/80" />
+        {/* Soft Vignette Overlay: Keeps video clear while guaranteeing 100% text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A140E]/75 via-[#1A140E]/40 to-[#1A140E]/85 pointer-events-none" />
       </div>
 
-      {/* Content — Centered Cinematic Layout */}
+      {/* Content — Centered Layout */}
       <motion.div
-        className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-16 flex flex-col items-center justify-center text-center"
+        className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-16 pt-28 pb-16 flex flex-col items-center justify-center text-center"
         style={{ y: heroY, opacity: heroOpacity }}
       >
-        {/* Pre-title label */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="mb-8"
-        >
-          <span className="font-sans text-xs tracking-[0.35em] uppercase text-[#B89768]">
-            Wedding Architect — Napoli & Costiera
-          </span>
-        </motion.div>
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
+          
+          {/* Pre-title label */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="mb-6 md:mb-8"
+          >
+            <span className="font-sans text-xs md:text-sm tracking-[0.35em] uppercase text-[#D4AF37] font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+              Wedding Architect — Napoli, Costiera, Capri & Italia
+            </span>
+          </motion.div>
 
-        {/* Main headline */}
-        <motion.h1
-          variants={titleContainer}
-          initial="hidden"
-          animate="show"
-          className="text-[clamp(1.8rem,4vw,5rem)] md:text-[clamp(2.5rem,5vw,6rem)] font-serif leading-[1.1] tracking-tight mb-8 text-[#FDFBF7] flex flex-col items-center"
-        >
-          <div className="overflow-hidden pb-[0.2em] -mb-[0.2em]">
-            <motion.span variants={titleItem} className="block sm:whitespace-nowrap pb-[0.2em]">
-              Non organizzo Eventi,
-            </motion.span>
-          </div>
-          <div className="overflow-hidden pb-[0.2em] -mb-[0.2em]">
-            <motion.span
-              variants={titleItem}
-              className="block italic font-light text-[#B89768] pb-[0.2em] text-center"
+          {/* Main headline */}
+          <motion.h1
+            variants={titleContainer}
+            initial="hidden"
+            animate="show"
+            className="text-[clamp(2.2rem,5.5vw,5.8rem)] md:text-[clamp(2.7rem,6vw,6.8rem)] font-serif leading-[1.1] tracking-tight mb-8 text-[#FDFBF7] flex flex-col items-center max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]"
+          >
+            <div className="overflow-hidden pb-[0.2em] -mb-[0.2em]">
+              <motion.span variants={titleItem} className="block sm:whitespace-nowrap pb-[0.2em]">
+                Non organizzo Matrimoni,
+              </motion.span>
+            </div>
+            <div className="overflow-hidden pb-[0.2em] -mb-[0.2em]">
+              <motion.span
+                variants={titleItem}
+                className="block italic font-light text-[#E5D2B5] pb-[0.2em] text-center drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
+              >
+                li progetto dando vita ai vostri sogni.
+              </motion.span>
+            </div>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[clamp(1.05rem,1.3vw,1.4rem)] text-[#FDFBF7] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-10 md:mb-12 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
+          >
+            Oltre 14 anni di esperienza al servizio di matrimoni esclusivi.<br className="hidden md:block" />
+            Il mio metodo unisce armonia degli spazi, regia invisibile e<br className="hidden md:block" />
+            curare dei dettagli per farvi vivere ogni momento in serenità.
+          </motion.p>
+
+          {/* Primary CTA Button — Solid Gold with Animated Shimmer Light Sweep */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
+          >
+            <a
+              href="#contact"
+              className="relative inline-flex items-center gap-4 bg-[#B89768] text-[#1A140E] px-8 md:px-11 py-4 md:py-5 font-sans uppercase tracking-[0.25em] text-xs md:text-sm font-bold shadow-[0_10px_35px_rgba(184,151,104,0.5)] hover:shadow-[0_15px_45px_rgba(184,151,104,0.7)] hover:bg-[#FDFBF7] hover:text-[#1A140E] hover:scale-105 transition-all duration-300 rounded-sm overflow-hidden group z-20"
             >
-              li progetto dando vita ai vostri sogni.
-            </motion.span>
-          </div>
-        </motion.h1>
+              {/* Shimmer Light Beam */}
+              <motion.span 
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent w-full h-full pointer-events-none"
+              />
+              <span className="relative z-10">Prenota la Consulenza Conoscitiva (30 min)</span>
+              <svg className="relative z-10 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(1rem,1.2vw,1.25rem)] text-[#FDFBF7]/80 font-sans font-light leading-relaxed max-w-2xl"
-        >
-          Oltre 14 anni di esperienza al servizio di matrimoni esclusivi.<br className="hidden md:block" />
-          Il mio metodo unisce visione d&apos;insieme, geometrie perfette e<br className="hidden md:block" />
-          controllo dei dettagli per un progetto dal design impeccabile.
-        </motion.p>
+        </div>
       </motion.div>
-      
+
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: "auto" }}
-        transition={{ delay: 2.5, duration: 1.5 }}
+        transition={{ delay: 2.2, duration: 1.5 }}
         className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
       >
-        <div className="w-[1px] h-24 bg-gradient-to-b from-transparent via-[#B89768]/60 to-transparent" />
+        <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-[#B89768]/60 to-transparent" />
       </motion.div>
     </section>
   );

@@ -1,9 +1,9 @@
 import HeroSection from "@/components/HeroSection";
 import AboutArchitectSection from "@/components/AboutArchitectSection";
-import PhotoStripSection from "@/components/PhotoStripSection";
 import MethodSection from "@/components/MethodSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import ReviewsSection from "@/components/ReviewsSection";
+import FAQSection from "@/components/FAQSection";
 import DoubleFunnelSection from "@/components/DoubleFunnelSection";
 
 export default function Home() {
@@ -11,10 +11,10 @@ export default function Home() {
     <main>
       <HeroSection />
       <AboutArchitectSection />
-      <PhotoStripSection />
       <MethodSection />
       <PortfolioSection />
       <ReviewsSection />
+      <FAQSection />
       <DoubleFunnelSection />
     </main>
   );
