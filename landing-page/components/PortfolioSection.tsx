@@ -3,90 +3,52 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import manifest from "@/public/media/albums/manifest.json";
 
-const albumData = [
+interface AlbumItem {
+  src: string;
+  width: number;
+  height: number;
+  isVertical: boolean;
+  aspectRatio: number;
+  originalName: string;
+}
+
+interface AlbumConfig {
+  id: "capri" | "lancellotti" | "margherita" | "campolieto";
+  title: string;
+  subtitle: string;
+}
+
+const albumConfigs: AlbumConfig[] = [
   {
     id: "capri",
     title: "Capri",
     subtitle: "Villa & Panorama a Capri",
-    images: [
-      "/media/albums/capri/img_1.webp",
-      "/media/albums/capri/img_2.webp",
-      "/media/albums/capri/img_3.webp",
-      "/media/albums/capri/img_4.webp",
-      "/media/albums/capri/img_5.webp",
-      "/media/albums/capri/img_6.webp",
-      "/media/albums/capri/img_7.webp",
-      "/media/albums/capri/img_8.webp",
-      "/media/albums/capri/img_9.webp",
-      "/media/albums/capri/img_10.webp",
-      "/media/albums/capri/img_11.webp",
-      "/media/albums/capri/img_12.webp",
-    ]
   },
   {
     id: "lancellotti",
     title: "Castello Lancellotti",
     subtitle: "Dimora Storica — Lauro",
-    images: [
-      "/media/albums/lancellotti/img_1.webp",
-      "/media/albums/lancellotti/img_2.webp",
-      "/media/albums/lancellotti/img_3.webp",
-      "/media/albums/lancellotti/img_4.webp",
-      "/media/albums/lancellotti/img_5.webp",
-      "/media/albums/lancellotti/img_6.webp",
-      "/media/albums/lancellotti/img_7.webp",
-      "/media/albums/lancellotti/img_8.webp",
-      "/media/albums/lancellotti/img_9.webp",
-      "/media/albums/lancellotti/img_10.webp",
-      "/media/albums/lancellotti/img_11.webp",
-    ]
   },
   {
     id: "margherita",
     title: "Salone Margherita",
     subtitle: "Scenografia & Design — Napoli",
-    images: [
-      "/media/albums/margherita/img_1.webp",
-      "/media/albums/margherita/img_2.webp",
-      "/media/albums/margherita/img_3.webp",
-      "/media/albums/margherita/img_4.webp",
-      "/media/albums/margherita/img_5.webp",
-      "/media/albums/margherita/img_6.webp",
-      "/media/albums/margherita/img_7.webp",
-      "/media/albums/margherita/img_8.webp",
-    ]
   },
   {
     id: "campolieto",
     title: "Villa Campolieto",
     subtitle: "Residenza Vesuviana — Ercolano",
-    images: [
-      "/media/albums/campolieto/img_14.webp",
-      "/media/albums/campolieto/img_1.webp",
-      "/media/albums/campolieto/img_2.webp",
-      "/media/albums/campolieto/img_3.webp",
-      "/media/albums/campolieto/img_4.webp",
-      "/media/albums/campolieto/img_5.webp",
-      "/media/albums/campolieto/img_6.webp",
-      "/media/albums/campolieto/img_7.webp",
-      "/media/albums/campolieto/img_8.webp",
-      "/media/albums/campolieto/img_9.webp",
-      "/media/albums/campolieto/img_10.webp",
-      "/media/albums/campolieto/img_11.webp",
-
-    ]
   }
 ];
 
 export default function PortfolioSection() {
-  const [activeTab, setActiveTab] = useState(albumData[0].id);
+  const [activeTab, setActiveTab] = useState<"capri" | "lancellotti" | "margherita" | "campolieto">("capri");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const activeAlbum = albumData.find(a => a.id === activeTab) || albumData[0];
-
-  // We slice to a multiple of 3 (e.g. 6 or 9 or 12) to ensure 100% symmetric rows on desktop & tablet
-  const displayImages = activeAlbum.images.slice(0, Math.floor(activeAlbum.images.length / 3) * 3 || 6);
+  const activeConfig = albumConfigs.find(a => a.id === activeTab) || albumConfigs[0];
+  const activeImages: AlbumItem[] = (manifest as Record<string, AlbumItem[]>)[activeTab] || [];
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -98,13 +60,13 @@ export default function PortfolioSection() {
 
   const nextImage = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % activeAlbum.images.length);
+      setLightboxIndex((lightboxIndex + 1) % activeImages.length);
     }
   };
 
   const prevImage = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + activeAlbum.images.length) % activeAlbum.images.length);
+      setLightboxIndex((lightboxIndex - 1 + activeImages.length) % activeImages.length);
     }
   };
 
@@ -124,7 +86,7 @@ export default function PortfolioSection() {
       <div className="relative z-10 max-w-[90rem] mx-auto px-6 lg:px-16">
         
         {/* Section Intro */}
-        <div className="mb-16 md:mb-24 text-center">
+        <div className="mb-16 md:mb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -139,7 +101,7 @@ export default function PortfolioSection() {
 
             {/* Album Tabs Navigation */}
             <div className="flex flex-wrap justify-center gap-3 md:gap-6 border-b border-[#FDFBF7]/10 pb-6">
-              {albumData.map((album) => {
+              {albumConfigs.map((album) => {
                 const isActive = activeTab === album.id;
                 return (
                   <button
@@ -170,12 +132,12 @@ export default function PortfolioSection() {
               })}
             </div>
             <p className="font-serif italic text-sm md:text-base text-[#B89768]/80 mt-4">
-              {activeAlbum.subtitle}
+              {activeConfig.subtitle}
             </p>
           </motion.div>
         </div>
 
-        {/* 100% Symmetrical Photo Grid */}
+        {/* Masonry Uncropped Editorial Gallery (Senza Tagli, Orientamento Naturale & Ordine Numerico) */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -183,28 +145,29 @@ export default function PortfolioSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -25 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6"
           >
-            {displayImages.map((src, i) => (
+            {activeImages.map((img, i) => (
               <motion.div
-                key={i}
+                key={img.src}
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: i * 0.04 }}
                 onClick={() => openLightbox(i)}
-                className="relative cursor-pointer overflow-hidden photo-frame group aspect-[4/3] shadow-lg border border-[#B89768]/15"
+                className="relative cursor-pointer overflow-hidden photo-frame group break-inside-avoid shadow-lg border border-[#B89768]/20 bg-[#1A140E]"
+                style={{ aspectRatio: img.aspectRatio ? `${img.aspectRatio}` : "auto" }}
               >
                 <Image
-                  src={src}
-                  alt={`${activeAlbum.title} foto ${i + 1}`}
+                  src={img.src}
+                  alt={`${activeConfig.title} foto ${i + 1}`}
                   fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={85}
+                  quality={90}
                 />
-                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="font-sans uppercase text-[11px] tracking-[0.2em] text-[#FDFBF7] bg-[#1A140E]/85 px-4 py-2 border border-[#B89768]/40 shadow-xl">
-                    Ingrandisci
+                    Ingrandisci #{i + 1}
                   </span>
                 </div>
               </motion.div>
@@ -270,20 +233,20 @@ export default function PortfolioSection() {
               ›
             </button>
 
-            {/* Full Image */}
+            {/* Full Uncropped Image */}
             <div 
-              className="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center"
+              className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={activeAlbum.images[lightboxIndex]}
-                alt={activeAlbum.title}
+                src={activeImages[lightboxIndex]?.src}
+                alt={activeConfig.title}
                 fill
                 className="object-contain"
                 quality={95}
               />
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/75 text-[#FDFBF7] px-4 py-1 font-sans text-xs tracking-widest uppercase rounded-sm border border-[#B89768]/30">
-                {activeAlbum.title} — {lightboxIndex + 1} / {activeAlbum.images.length}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 text-[#FDFBF7] px-4 py-2 font-sans text-xs tracking-widest uppercase rounded-sm border border-[#B89768]/30">
+                {activeConfig.title} — {lightboxIndex + 1} / {activeImages.length}
               </div>
             </div>
           </motion.div>
