@@ -14,41 +14,23 @@ interface AlbumItem {
   originalName: string;
 }
 
-interface AlbumConfig {
-  id: "capri" | "lancellotti" | "margherita" | "campolieto";
+interface ManifestEntry {
   title: string;
   subtitle: string;
+  images: AlbumItem[];
 }
 
-const albumConfigs: AlbumConfig[] = [
-  {
-    id: "capri",
-    title: "Capri",
-    subtitle: "Villa & Panorama a Capri",
-  },
-  {
-    id: "lancellotti",
-    title: "Castello Lancellotti",
-    subtitle: "Dimora Storica — Lauro",
-  },
-  {
-    id: "margherita",
-    title: "Salone Margherita",
-    subtitle: "Scenografia & Design — Napoli",
-  },
-  {
-    id: "campolieto",
-    title: "Villa Campolieto",
-    subtitle: "Residenza Vesuviana — Ercolano",
-  }
-];
+type ManifestData = Record<string, ManifestEntry>;
+
+const albumKeys = Object.keys(manifest) as Array<keyof ManifestData>;
 
 export default function PortfolioSection() {
-  const [activeTab, setActiveTab] = useState<"capri" | "lancellotti" | "margherita" | "campolieto">("capri");
+  const [activeTab, setActiveTab] = useState<string>(albumKeys[0] || "capri");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const activeConfig = albumConfigs.find(a => a.id === activeTab) || albumConfigs[0];
-  const activeImages: AlbumItem[] = (manifest as Record<string, AlbumItem[]>)[activeTab] || [];
+  const manifestData = manifest as unknown as ManifestData;
+  const currentAlbumData = manifestData[activeTab] || manifestData[albumKeys[0]];
+  const activeImages: AlbumItem[] = currentAlbumData?.images || [];
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -101,13 +83,14 @@ export default function PortfolioSection() {
 
             {/* Album Tabs Navigation */}
             <div className="flex flex-wrap justify-center gap-3 md:gap-6 border-b border-[#FDFBF7]/10 pb-6">
-              {albumConfigs.map((album) => {
-                const isActive = activeTab === album.id;
+              {albumKeys.map((key) => {
+                const album = manifestData[key];
+                const isActive = activeTab === key;
                 return (
                   <button
-                    key={album.id}
+                    key={key}
                     onClick={() => {
-                      setActiveTab(album.id);
+                      setActiveTab(key);
                       setLightboxIndex(null);
                     }}
                     className="relative pb-3 px-3 md:px-5 transition-colors duration-300 group"
@@ -132,7 +115,7 @@ export default function PortfolioSection() {
               })}
             </div>
             <p className="font-serif italic text-sm md:text-base text-[#B89768]/80 mt-4">
-              {activeConfig.subtitle}
+              {currentAlbumData?.subtitle}
             </p>
           </motion.div>
         </div>
@@ -159,7 +142,7 @@ export default function PortfolioSection() {
               >
                 <Image
                   src={img.src}
-                  alt={`${activeConfig.title} foto ${i + 1}`}
+                  alt={`${currentAlbumData.title} foto ${i + 1}`}
                   fill
                   className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -240,13 +223,13 @@ export default function PortfolioSection() {
             >
               <Image
                 src={activeImages[lightboxIndex]?.src}
-                alt={activeConfig.title}
+                alt={currentAlbumData.title}
                 fill
                 className="object-contain"
                 quality={95}
               />
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 text-[#FDFBF7] px-4 py-2 font-sans text-xs tracking-widest uppercase rounded-sm border border-[#B89768]/30">
-                {activeConfig.title} — {lightboxIndex + 1} / {activeImages.length}
+                {currentAlbumData.title} — {lightboxIndex + 1} / {activeImages.length}
               </div>
             </div>
           </motion.div>

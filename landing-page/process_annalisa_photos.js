@@ -6,10 +6,12 @@ const baseSourceDir = path.join(__dirname, 'public', 'media', 'Foto Landing Anna
 const baseDestDir = path.join(__dirname, 'public', 'media', 'albums');
 
 const subfolders = [
-  { name: 'Capri', slug: 'capri' },
-  { name: 'Castello Lancellotti', slug: 'lancellotti' },
-  { name: 'Salone Margherita', slug: 'margherita' },
-  { name: 'Villa Campolieto', slug: 'campolieto' }
+  { name: 'Bellevue Syrene', slug: 'bellevue', title: 'Hotel Bellevue Syrene', subtitle: 'Dimora a Picco sul Mare — Sorrento' },
+  { name: 'Capri', slug: 'capri', title: 'Capri', subtitle: 'Villa & Panorama a Capri' },
+  { name: 'Castello Lancellotti', slug: 'lancellotti', title: 'Castello Lancellotti', subtitle: 'Dimora Storica — Lauro' },
+  { name: 'Salone Margherita', slug: 'margherita', title: 'Salone Margherita', subtitle: 'Scenografia & Design — Napoli' },
+  { name: 'Villa Campolieto', slug: 'campolieto', title: 'Villa Campolieto', subtitle: 'Residenza Vesuviana — Ercolano' },
+  { name: 'Villa Eliana', slug: 'eliana', title: 'Villa Eliana', subtitle: 'Eleganza & Panorama — Sorrento' }
 ];
 
 async function processFolder(folderName, slug) {
@@ -27,7 +29,7 @@ async function processFolder(folderName, slug) {
 
   const rawFiles = fs.readdirSync(srcFolder).filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
 
-  // Sort strictly numerically by the number at the start of filename (1, 2, 3... 10, 11...)
+  // Sort strictly numerically by the leading number (1, 2, 3, 4, 5...)
   rawFiles.sort((a, b) => {
     const numA = parseInt(a.match(/^(\d+)/)?.[1] || '999', 10);
     const numB = parseInt(b.match(/^(\d+)/)?.[1] || '999', 10);
@@ -43,6 +45,17 @@ async function processFolder(folderName, slug) {
     const destPath = path.join(destFolder, destName);
 
     try {
+      // 1. Optimize raw file in-place if oversized
+      const tempSrc = srcPath + '.tmp';
+      await sharp(srcPath)
+        .resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true })
+        .jpeg({ quality: 82, progressive: true })
+        .toFile(tempSrc);
+
+      fs.unlinkSync(srcPath);
+      fs.renameSync(tempSrc, srcPath);
+
+      // 2. Generate optimized WebP album file
       const metadata = await sharp(srcPath).metadata();
       const isVertical = (metadata.height || 0) > (metadata.width || 0);
       const aspectRatio = (metadata.width && metadata.height) ? (metadata.width / metadata.height) : 1;
@@ -73,7 +86,11 @@ async function runAll() {
   const manifest = {};
   for (const item of subfolders) {
     const result = await processFolder(item.name, item.slug);
-    manifest[item.slug] = result;
+    manifest[item.slug] = {
+      title: item.title,
+      subtitle: item.subtitle,
+      images: result
+    };
   }
   fs.writeFileSync(path.join(baseDestDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
   console.log('Manifest written to public/media/albums/manifest.json');

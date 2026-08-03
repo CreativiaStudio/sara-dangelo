@@ -1,298 +1,406 @@
 {
-  "capri": [
-    {
-      "src": "/media/albums/capri/img_1.webp",
-      "width": 934,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6671428571428571,
-      "originalName": "1 Sara D'Angelo Event - Capri40.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_2.webp",
-      "width": 970,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6928571428571428,
-      "originalName": "2 Sara D'Angelo Event - Capri17.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_3.webp",
-      "width": 869,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6207142857142857,
-      "originalName": "3 Sara D'Angelo Event - Capri18.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_4.webp",
-      "width": 1050,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.75,
-      "originalName": "5 Sara D'Angelo Event - Capri78.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_5.webp",
-      "width": 1400,
-      "height": 1103,
-      "isVertical": false,
-      "aspectRatio": 1.2692656391659112,
-      "originalName": "6 Sara D'Angelo Event - Capri71.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_6.webp",
-      "width": 1050,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.75,
-      "originalName": "7 Sara D'Angelo Event - Capri95.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_7.webp",
-      "width": 1400,
-      "height": 934,
-      "isVertical": false,
-      "aspectRatio": 1.4989293361884368,
-      "originalName": "8 Sara D'Angelo Event - Capri53.jpg"
-    },
-    {
-      "src": "/media/albums/capri/img_8.webp",
-      "width": 1400,
-      "height": 1051,
-      "isVertical": false,
-      "aspectRatio": 1.3320647002854424,
-      "originalName": "9 Sara D'Angelo Event - Capri57.JPG"
-    },
-    {
-      "src": "/media/albums/capri/img_9.webp",
-      "width": 1050,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.75,
-      "originalName": "10 Sara D'Angelo Event - Capri107.jpg"
-    }
-  ],
-  "lancellotti": [
-    {
-      "src": "/media/albums/lancellotti/img_1.webp",
-      "width": 1400,
-      "height": 930,
-      "isVertical": false,
-      "aspectRatio": 1.5053763440860215,
-      "originalName": "1 Sara D'angelo (171).JPG"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_2.webp",
-      "width": 1400,
-      "height": 978,
-      "isVertical": false,
-      "aspectRatio": 1.4314928425357873,
-      "originalName": "2 IMG_9847.jpg"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_3.webp",
-      "width": 1400,
-      "height": 837,
-      "isVertical": false,
-      "aspectRatio": 1.6726403823178018,
-      "originalName": "3 Sara D'angelo (78).jpg"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_4.webp",
-      "width": 1400,
-      "height": 887,
-      "isVertical": false,
-      "aspectRatio": 1.5783540022547915,
-      "originalName": "4 Sara D'angelo (99).JPG"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_5.webp",
-      "width": 1400,
-      "height": 1050,
-      "isVertical": false,
-      "aspectRatio": 1.3333333333333333,
-      "originalName": "5 MISE EN PLACE.png"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_6.webp",
-      "width": 933,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6664285714285715,
-      "originalName": "6 Sara D'angelo (7).JPG"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_7.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "7 Sara D'angelo (68).JPG"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_8.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "8 IMG_9820.jpg"
-    },
-    {
-      "src": "/media/albums/lancellotti/img_9.webp",
-      "width": 933,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6664285714285715,
-      "originalName": "9 Sara D'angelo (84).JPG"
-    }
-  ],
-  "margherita": [
-    {
-      "src": "/media/albums/margherita/img_1.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "1 IMG_4167.jpg"
-    },
-    {
-      "src": "/media/albums/margherita/img_2.webp",
-      "width": 933,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6664285714285715,
-      "originalName": "2 IMG_3752.jpg"
-    },
-    {
-      "src": "/media/albums/margherita/img_3.webp",
-      "width": 933,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6664285714285715,
-      "originalName": "3 IMG_4343.jpg"
-    },
-    {
-      "src": "/media/albums/margherita/img_4.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "4 IMG_4269.jpg"
-    },
-    {
-      "src": "/media/albums/margherita/img_5.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "5 IMG_4261.jpg"
-    }
-  ],
-  "campolieto": [
-    {
-      "src": "/media/albums/campolieto/img_1.webp",
-      "width": 1400,
-      "height": 934,
-      "isVertical": false,
-      "aspectRatio": 1.4989293361884368,
-      "originalName": "1 _MAS0749.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_2.webp",
-      "width": 1400,
-      "height": 934,
-      "isVertical": false,
-      "aspectRatio": 1.4989293361884368,
-      "originalName": "2 _MAS0753.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_3.webp",
-      "width": 934,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6671428571428571,
-      "originalName": "3 _MAS1038.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_4.webp",
-      "width": 934,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6671428571428571,
-      "originalName": "4 _MAS1041.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_5.webp",
-      "width": 934,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6671428571428571,
-      "originalName": "5 _MAS1173.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_6.webp",
-      "width": 1400,
-      "height": 935,
-      "isVertical": false,
-      "aspectRatio": 1.4973262032085561,
-      "originalName": "6 _MAS1218.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_7.webp",
-      "width": 1400,
-      "height": 934,
-      "isVertical": false,
-      "aspectRatio": 1.4989293361884368,
-      "originalName": "7 _MAS1372.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_8.webp",
-      "width": 934,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6671428571428571,
-      "originalName": "8 _MAS1693.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_9.webp",
-      "width": 1400,
-      "height": 934,
-      "isVertical": false,
-      "aspectRatio": 1.4989293361884368,
-      "originalName": "9 _MAS1775.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_10.webp",
-      "width": 934,
-      "height": 1400,
-      "isVertical": true,
-      "aspectRatio": 0.6671428571428571,
-      "originalName": "10 _MAS1822.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_11.webp",
-      "width": 1400,
-      "height": 934,
-      "isVertical": false,
-      "aspectRatio": 1.4989293361884368,
-      "originalName": "11_MAS2128.jpg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_12.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "12 image17743.jpeg"
-    },
-    {
-      "src": "/media/albums/campolieto/img_13.webp",
-      "width": 1400,
-      "height": 933,
-      "isVertical": false,
-      "aspectRatio": 1.5005359056806002,
-      "originalName": "13 image17750.jpeg"
-    }
-  ]
+  "bellevue": {
+    "title": "Hotel Bellevue Syrene",
+    "subtitle": "Dimora a Picco sul Mare — Sorrento",
+    "images": [
+      {
+        "src": "/media/albums/bellevue/img_1.webp",
+        "width": 811,
+        "height": 1215,
+        "isVertical": true,
+        "aspectRatio": 0.6674897119341564,
+        "originalName": "1 bellevue.jpg"
+      },
+      {
+        "src": "/media/albums/bellevue/img_2.webp",
+        "width": 805,
+        "height": 1215,
+        "isVertical": true,
+        "aspectRatio": 0.6625514403292181,
+        "originalName": "2 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_3.webp",
+        "width": 803,
+        "height": 1217,
+        "isVertical": true,
+        "aspectRatio": 0.6598192276088742,
+        "originalName": "3 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_4.webp",
+        "width": 803,
+        "height": 1215,
+        "isVertical": true,
+        "aspectRatio": 0.6609053497942387,
+        "originalName": "4 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_5.webp",
+        "width": 1400,
+        "height": 931,
+        "isVertical": false,
+        "aspectRatio": 1.5037593984962405,
+        "originalName": "5 bellevue.jpg"
+      }
+    ]
+  },
+  "capri": {
+    "title": "Capri",
+    "subtitle": "Villa & Panorama a Capri",
+    "images": [
+      {
+        "src": "/media/albums/capri/img_1.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "1 Sara D'Angelo Event - Capri40.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_2.webp",
+        "width": 970,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6928571428571428,
+        "originalName": "2 Sara D'Angelo Event - Capri17.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_3.webp",
+        "width": 869,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6207142857142857,
+        "originalName": "3 Sara D'Angelo Event - Capri18.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_4.webp",
+        "width": 1050,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.75,
+        "originalName": "5 Sara D'Angelo Event - Capri78.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_5.webp",
+        "width": 1400,
+        "height": 1103,
+        "isVertical": false,
+        "aspectRatio": 1.2692656391659112,
+        "originalName": "6 Sara D'Angelo Event - Capri71.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_6.webp",
+        "width": 1050,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.75,
+        "originalName": "7 Sara D'Angelo Event - Capri95.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_7.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "8 Sara D'Angelo Event - Capri53.jpg"
+      },
+      {
+        "src": "/media/albums/capri/img_8.webp",
+        "width": 1400,
+        "height": 1051,
+        "isVertical": false,
+        "aspectRatio": 1.3320647002854424,
+        "originalName": "9 Sara D'Angelo Event - Capri57.JPG"
+      },
+      {
+        "src": "/media/albums/capri/img_9.webp",
+        "width": 1050,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.75,
+        "originalName": "10 Sara D'Angelo Event - Capri107.jpg"
+      }
+    ]
+  },
+  "lancellotti": {
+    "title": "Castello Lancellotti",
+    "subtitle": "Dimora Storica — Lauro",
+    "images": [
+      {
+        "src": "/media/albums/lancellotti/img_1.webp",
+        "width": 1400,
+        "height": 930,
+        "isVertical": false,
+        "aspectRatio": 1.5053763440860215,
+        "originalName": "1 Sara D'angelo (171).JPG"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_2.webp",
+        "width": 1400,
+        "height": 978,
+        "isVertical": false,
+        "aspectRatio": 1.4314928425357873,
+        "originalName": "2 IMG_9847.jpg"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_3.webp",
+        "width": 1400,
+        "height": 837,
+        "isVertical": false,
+        "aspectRatio": 1.6726403823178018,
+        "originalName": "3 Sara D'angelo (78).jpg"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_4.webp",
+        "width": 1400,
+        "height": 887,
+        "isVertical": false,
+        "aspectRatio": 1.5783540022547915,
+        "originalName": "4 Sara D'angelo (99).JPG"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_5.webp",
+        "width": 1400,
+        "height": 1050,
+        "isVertical": false,
+        "aspectRatio": 1.3333333333333333,
+        "originalName": "5 MISE EN PLACE.png"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_6.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "6 Sara D'angelo (7).JPG"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_7.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "7 Sara D'angelo (68).JPG"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_8.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "8 IMG_9820.jpg"
+      },
+      {
+        "src": "/media/albums/lancellotti/img_9.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "9 Sara D'angelo (84).JPG"
+      }
+    ]
+  },
+  "margherita": {
+    "title": "Salone Margherita",
+    "subtitle": "Scenografia & Design — Napoli",
+    "images": [
+      {
+        "src": "/media/albums/margherita/img_1.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "1 IMG_4167.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_2.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "2 IMG_3752.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_3.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "3 IMG_4343.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_4.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "4 IMG_4269.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_5.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "5 IMG_4261.jpg"
+      }
+    ]
+  },
+  "campolieto": {
+    "title": "Villa Campolieto",
+    "subtitle": "Residenza Vesuviana — Ercolano",
+    "images": [
+      {
+        "src": "/media/albums/campolieto/img_1.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "1 _MAS0749.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_2.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "2 _MAS0753.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_3.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "3 _MAS1038.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_4.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "4 _MAS1041.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_5.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "5 _MAS1173.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_6.webp",
+        "width": 1400,
+        "height": 935,
+        "isVertical": false,
+        "aspectRatio": 1.4973262032085561,
+        "originalName": "6 _MAS1218.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_7.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "7 _MAS1372.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_8.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "8 _MAS1693.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_9.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "9 _MAS1775.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_10.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "10 _MAS1822.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_11.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "11_MAS2128.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_12.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "12 image17743.jpeg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_13.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "13 image17750.jpeg"
+      }
+    ]
+  },
+  "eliana": {
+    "title": "Villa Eliana",
+    "subtitle": "Eleganza & Panorama — Sorrento",
+    "images": [
+      {
+        "src": "/media/albums/eliana/img_1.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "1 1J4A0399.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_2.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "2 1J4A0498.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_3.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "3 1J4A0502.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_4.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "4 1.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_5.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "5 1J4A0346.jpg"
+      }
+    ]
+  }
 }
