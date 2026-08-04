@@ -21,27 +21,67 @@
       },
       {
         "src": "/media/albums/bellevue/img_3.webp",
-        "width": 803,
-        "height": 1217,
+        "width": 809,
+        "height": 1215,
         "isVertical": true,
-        "aspectRatio": 0.6598192276088742,
+        "aspectRatio": 0.665843621399177,
         "originalName": "3 bellevue.png"
       },
       {
         "src": "/media/albums/bellevue/img_4.webp",
-        "width": 803,
+        "width": 805,
         "height": 1215,
         "isVertical": true,
-        "aspectRatio": 0.6609053497942387,
+        "aspectRatio": 0.6625514403292181,
         "originalName": "4 bellevue.png"
       },
       {
         "src": "/media/albums/bellevue/img_5.webp",
+        "width": 807,
+        "height": 1215,
+        "isVertical": true,
+        "aspectRatio": 0.6641975308641975,
+        "originalName": "5 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_6.webp",
+        "width": 805,
+        "height": 1215,
+        "isVertical": true,
+        "aspectRatio": 0.6625514403292181,
+        "originalName": "6 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_7.webp",
+        "width": 803,
+        "height": 1215,
+        "isVertical": true,
+        "aspectRatio": 0.6609053497942387,
+        "originalName": "7 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_8.webp",
+        "width": 809,
+        "height": 1217,
+        "isVertical": true,
+        "aspectRatio": 0.6647493837304848,
+        "originalName": "8 bellevue.png"
+      },
+      {
+        "src": "/media/albums/bellevue/img_9.webp",
         "width": 1400,
         "height": 931,
         "isVertical": false,
         "aspectRatio": 1.5037593984962405,
-        "originalName": "5 bellevue.jpg"
+        "originalName": "9 bellevue.jpg"
+      },
+      {
+        "src": "/media/albums/bellevue/img_10.webp",
+        "width": 803,
+        "height": 1217,
+        "isVertical": true,
+        "aspectRatio": 0.6598192276088742,
+        "originalName": "10 bellevue.png"
       }
     ]
   },
