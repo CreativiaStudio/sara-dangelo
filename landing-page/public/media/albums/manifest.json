@@ -74,14 +74,6 @@
         "isVertical": false,
         "aspectRatio": 1.5037593984962405,
         "originalName": "9 bellevue.jpg"
-      },
-      {
-        "src": "/media/albums/bellevue/img_10.webp",
-        "width": 803,
-        "height": 1217,
-        "isVertical": true,
-        "aspectRatio": 0.6598192276088742,
-        "originalName": "10 bellevue.png"
       }
     ]
   },
@@ -263,6 +255,14 @@
       },
       {
         "src": "/media/albums/margherita/img_3.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "3 IMG_4340.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_4.webp",
         "width": 933,
         "height": 1400,
         "isVertical": true,
@@ -270,7 +270,7 @@
         "originalName": "3 IMG_4343.jpg"
       },
       {
-        "src": "/media/albums/margherita/img_4.webp",
+        "src": "/media/albums/margherita/img_5.webp",
         "width": 1400,
         "height": 933,
         "isVertical": false,
@@ -278,7 +278,7 @@
         "originalName": "4 IMG_4269.jpg"
       },
       {
-        "src": "/media/albums/margherita/img_5.webp",
+        "src": "/media/albums/margherita/img_6.webp",
         "width": 1400,
         "height": 933,
         "isVertical": false,
@@ -329,34 +329,10 @@
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6671428571428571,
-        "originalName": "5 _MAS1173.jpg"
-      },
-      {
-        "src": "/media/albums/campolieto/img_6.webp",
-        "width": 1400,
-        "height": 935,
-        "isVertical": false,
-        "aspectRatio": 1.4973262032085561,
-        "originalName": "6 _MAS1218.jpg"
-      },
-      {
-        "src": "/media/albums/campolieto/img_7.webp",
-        "width": 1400,
-        "height": 934,
-        "isVertical": false,
-        "aspectRatio": 1.4989293361884368,
-        "originalName": "7 _MAS1372.jpg"
-      },
-      {
-        "src": "/media/albums/campolieto/img_8.webp",
-        "width": 934,
-        "height": 1400,
-        "isVertical": true,
-        "aspectRatio": 0.6671428571428571,
         "originalName": "8 _MAS1693.jpg"
       },
       {
-        "src": "/media/albums/campolieto/img_9.webp",
+        "src": "/media/albums/campolieto/img_6.webp",
         "width": 1400,
         "height": 934,
         "isVertical": false,
@@ -364,7 +340,7 @@
         "originalName": "9 _MAS1775.jpg"
       },
       {
-        "src": "/media/albums/campolieto/img_10.webp",
+        "src": "/media/albums/campolieto/img_7.webp",
         "width": 934,
         "height": 1400,
         "isVertical": true,
@@ -372,7 +348,7 @@
         "originalName": "10 _MAS1822.jpg"
       },
       {
-        "src": "/media/albums/campolieto/img_11.webp",
+        "src": "/media/albums/campolieto/img_8.webp",
         "width": 1400,
         "height": 934,
         "isVertical": false,
@@ -380,7 +356,7 @@
         "originalName": "11_MAS2128.jpg"
       },
       {
-        "src": "/media/albums/campolieto/img_12.webp",
+        "src": "/media/albums/campolieto/img_9.webp",
         "width": 1400,
         "height": 933,
         "isVertical": false,
@@ -388,12 +364,28 @@
         "originalName": "12 image17743.jpeg"
       },
       {
-        "src": "/media/albums/campolieto/img_13.webp",
+        "src": "/media/albums/campolieto/img_10.webp",
         "width": 1400,
         "height": 933,
         "isVertical": false,
         "aspectRatio": 1.5005359056806002,
         "originalName": "13 image17750.jpeg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_11.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "_MAS1647.jpg"
+      },
+      {
+        "src": "/media/albums/campolieto/img_12.webp",
+        "width": 1400,
+        "height": 934,
+        "isVertical": false,
+        "aspectRatio": 1.4989293361884368,
+        "originalName": "_MAS2271.jpg"
       }
     ]
   },
@@ -403,14 +395,6 @@
     "images": [
       {
         "src": "/media/albums/eliana/img_1.webp",
-        "width": 933,
-        "height": 1400,
-        "isVertical": true,
-        "aspectRatio": 0.6664285714285715,
-        "originalName": "1 1J4A0399.jpg"
-      },
-      {
-        "src": "/media/albums/eliana/img_2.webp",
         "width": 934,
         "height": 1400,
         "isVertical": true,
@@ -418,7 +402,7 @@
         "originalName": "2 1J4A0498.jpg"
       },
       {
-        "src": "/media/albums/eliana/img_3.webp",
+        "src": "/media/albums/eliana/img_2.webp",
         "width": 933,
         "height": 1400,
         "isVertical": true,
@@ -426,12 +410,20 @@
         "originalName": "3 1J4A0502.jpg"
       },
       {
+        "src": "/media/albums/eliana/img_3.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "4 1J4A0346.jpg"
+      },
+      {
         "src": "/media/albums/eliana/img_4.webp",
         "width": 933,
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
-        "originalName": "4 1.jpg"
+        "originalName": "5 1J4A0399.jpg"
       },
       {
         "src": "/media/albums/eliana/img_5.webp",
@@ -439,7 +431,7 @@
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
-        "originalName": "5 1J4A0346.jpg"
+        "originalName": "6 1.jpg"
       }
     ]
   }
