@@ -43,16 +43,26 @@ export default function AboutArchitectSection() {
               <span className="italic font-light text-[#B89768]">vostra Wedding Architect</span>
             </h2>
 
-            <div className="space-y-6 font-sans font-light text-base md:text-lg leading-relaxed text-[#4A3B32]/85">
+            <div className="space-y-5 font-sans font-light text-base md:text-lg leading-relaxed text-[#4A3B32]/85">
+
+              {/* Paragrafo 1 — La convinzione */}
               <p>
-                Sono convinta che un matrimonio indimenticabile non nasca dalla semplice somma di fiori e decorazioni, ma da uno studio approfondito dello spazio e dei flussi del vostro evento. 
+                Sono convinta che un matrimonio indimenticabile non nasca dalla semplice somma di fiori, arredi e decorazioni, ma da un progetto capace di mettere in relazione <strong className="font-medium text-[#4A3B32]">spazio, estetica, funzionalità e atmosfera.</strong>
               </p>
+
+              {/* Paragrafo 2 — Il metodo architetturale */}
               <p>
-                Come <strong className="font-semibold text-[#4A3B32]">Wedding Architect</strong>, metto il mio percorso di architettura al servizio dei vostri sogni. Il vantaggio per voi? Nessun imprevisto, un&apos;armonia visiva perfetta e la totale serenità di godervi la festa mentre la mia regia invisibile coordina ogni dettaglio.
+                Come <strong className="font-semibold text-[#4A3B32]">Wedding Architect</strong>, applico al matrimonio il mio metodo di architetto: studio gli spazi, i percorsi, le proporzioni, i punti di vista e il modo in cui il progetto si integra con l&apos;identità della location, valorizzandola senza mai snaturarla. Ogni scelta viene pensata non come un elemento isolato, ma come parte di un&apos;unica esperienza.
               </p>
-              <p className="text-sm md:text-base italic text-[#B89768] pt-2">
-                Disegno e firmo matrimoni esclusivi a Napoli, in Costiera Amalfitana, a Capri, in Puglia e nei più affascinanti castelli d&apos;Italia.
-              </p>
+
+              {/* Callout — Il vantaggio per voi */}
+              <div className="border-l-2 border-[#B89768] pl-5 py-1 my-2">
+                <p className="text-sm md:text-base text-[#4A3B32]/90">
+                  <span className="font-semibold text-[#4A3B32] not-italic block mb-1">Il vantaggio per voi?</span>
+                  Avere una visione completa dell&apos;evento prima ancora che il progetto prenda forma. Una regia attenta accompagnerà ogni fase, coordinando tempi, spazi e professionisti affinché tutto prenda vita con la stessa armonia con cui è stato concepito.
+                </p>
+              </div>
+
             </div>
 
             {/* Signature Badge */}
