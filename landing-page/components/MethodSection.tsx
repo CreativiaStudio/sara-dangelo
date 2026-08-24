@@ -29,7 +29,7 @@ const steps = [
     num: "04",
     line1: "La Magia del",
     line2: "Giorno",
-    desc: "Il vostro unico compito sarà vivere la magia. La mia presenza discreta ma totale garantirà la perfezione di ogni vostro istante.",
+    desc: "Il vostro unico compito sarà vivere la magia di quel giorno. Al resto penserò io con presenza discreta, affinché tutto sia come lo avete immaginato.",
     image: "/media/bellevue-night.webp"
   }
 ];
