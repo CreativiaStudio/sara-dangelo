@@ -170,8 +170,13 @@ body {
 
 /* ─── Selection Color ─── */
 ::selection {
-  background: rgba(212, 175, 55, 0.2);
-  color: var(--foreground);
+  background: #B89768;
+  color: #1A140E;
+}
+
+::-moz-selection {
+  background: #B89768;
+  color: #1A140E;
 }
 
 /* ─── Label Utility ─── */
