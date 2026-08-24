@@ -38,9 +38,11 @@ export default function AboutArchitectSection() {
           >
             <span className="label-caps mb-6 block text-[#B89768]">La Mia Filosofia</span>
             
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] xl:text-[3.15rem] font-serif leading-[1.15] mb-8 text-[#4A3B32]">
-              Il tuo matrimonio<br />
-              <span className="italic font-light text-[#B89768]">firmato da una Wedding Architect.</span>
+            <h2 className="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] xl:text-[2.85rem] 2xl:text-[3.25rem] font-serif leading-[1.18] mb-8 text-[#4A3B32]">
+              <span className="block">Il tuo matrimonio</span>
+              <span className="italic font-light text-[#B89768] block md:whitespace-nowrap">
+                firmato da una Wedding Architect.
+              </span>
             </h2>
 
             <div className="space-y-5 font-sans font-light text-base md:text-lg leading-relaxed text-[#4A3B32]/85">
