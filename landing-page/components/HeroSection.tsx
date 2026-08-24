@@ -102,7 +102,7 @@ export default function HeroSection() {
             transition={{ duration: 1.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(1.05rem,1.3vw,1.4rem)] text-[#FDFBF7] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-10 md:mb-12 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
           >
-            Oltre 14 anni di esperienza al servizio di matrimoni esclusivi.<br className="hidden md:block" />
+            Oltre 10 anni di esperienza al servizio di matrimoni esclusivi.<br className="hidden md:block" />
             Il mio metodo unisce armonia degli spazi, regia invisibile e<br className="hidden md:block" />
             curare dei dettagli per farvi vivere ogni momento in serenità.
           </motion.p>

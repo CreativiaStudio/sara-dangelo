@@ -62,7 +62,7 @@ export default function AboutArchitectSection() {
                 <span className="font-sans text-xs tracking-widest uppercase text-[#B89768]">Wedding Architect</span>
               </div>
               <div className="text-right">
-                <span className="font-serif italic text-xl text-[#B89768] block">14+ Anni</span>
+                <span className="font-serif italic text-xl text-[#B89768] block">10+ Anni</span>
                 <span className="font-sans text-xs tracking-widest uppercase text-[#4A3B32]/60">di Progettazione</span>
               </div>
             </div>
