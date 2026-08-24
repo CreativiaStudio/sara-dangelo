@@ -65,8 +65,8 @@ export default function MethodSection() {
         >
           <span className="label-caps mb-4 block text-[#D4AF37] tracking-[0.35em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Il Mio Metodo Progettuale</span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-            Come do forma al vostro <br />
-            <span className="italic font-light text-[#E5D2B5]">Matrimonio d&apos;Autore</span>
+            Come do forma al vostro matrimonio: <br />
+            <span className="italic font-light text-[#E5D2B5]">il progetto prima della bellezza.</span>
           </h2>
         </motion.div>
 
