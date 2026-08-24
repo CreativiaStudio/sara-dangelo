@@ -61,12 +61,14 @@ export default function MethodSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-4xl mx-auto mb-20 md:mb-28"
+          className="text-center max-w-5xl mx-auto mb-20 md:mb-28"
         >
           <span className="label-caps mb-4 block text-[#D4AF37] tracking-[0.35em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Il Mio Metodo Progettuale</span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-            Come do forma al vostro matrimonio: <br />
-            <span className="italic font-light text-[#E5D2B5]">il progetto prima della bellezza.</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] xl:text-[3.4rem] font-serif leading-[1.2] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+            <span className="block md:whitespace-nowrap">Come do forma al vostro matrimonio:</span>
+            <span className="italic font-light text-[#E5D2B5] block md:whitespace-nowrap">
+              il progetto prima della bellezza.
+            </span>
           </h2>
         </motion.div>
 
