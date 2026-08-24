@@ -120,7 +120,7 @@ export default function PortfolioSection() {
           </motion.div>
         </div>
 
-        {/* Masonry Uncropped Editorial Gallery (Senza Tagli, Orientamento Naturale & Ordine Numerico) */}
+        {/* Symmetrical Luxury Grid Gallery */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -128,7 +128,7 @@ export default function PortfolioSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -25 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
             {activeImages.map((img, i) => (
               <motion.div
@@ -137,14 +137,13 @@ export default function PortfolioSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: i * 0.04 }}
                 onClick={() => openLightbox(i)}
-                className="relative cursor-pointer overflow-hidden photo-frame group break-inside-avoid shadow-lg border border-[#B89768]/20 bg-[#1A140E]"
-                style={{ aspectRatio: img.aspectRatio ? `${img.aspectRatio}` : "auto" }}
+                className="relative cursor-pointer overflow-hidden photo-frame group aspect-[4/5] shadow-lg border border-[#B89768]/20 bg-[#1A140E]"
               >
                 <Image
                   src={img.src}
                   alt={`${currentAlbumData.title} foto ${i + 1}`}
                   fill
-                  className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   quality={90}
                 />
