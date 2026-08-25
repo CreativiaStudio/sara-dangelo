@@ -130,30 +130,35 @@ export default function PortfolioSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
-            {activeImages.map((img, i) => (
-              <motion.div
-                key={img.src}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: i * 0.04 }}
-                onClick={() => openLightbox(i)}
-                className="relative cursor-pointer overflow-hidden photo-frame group aspect-[4/5] shadow-lg border border-[#B89768]/20 bg-[#1A140E]"
-              >
-                <Image
-                  src={img.src}
-                  alt={`${currentAlbumData.title} foto ${i + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={90}
-                />
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="font-sans uppercase text-[11px] tracking-[0.2em] text-[#FDFBF7] bg-[#1A140E]/85 px-4 py-2 border border-[#B89768]/40 shadow-xl">
-                    Ingrandisci #{i + 1}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+            {activeImages.map((img, i) => {
+              const mobileAspectRatio = img.width && img.height ? `${img.width} / ${img.height}` : (img.isVertical ? '4/5' : '3/2');
+
+              return (
+                <motion.div
+                  key={img.src}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: i * 0.04 }}
+                  onClick={() => openLightbox(i)}
+                  style={{ aspectRatio: mobileAspectRatio }}
+                  className="relative cursor-pointer overflow-hidden photo-frame group sm:!aspect-[4/5] shadow-lg border border-[#B89768]/20 bg-[#1A140E] w-full"
+                >
+                  <Image
+                    src={img.src}
+                    alt={`${currentAlbumData.title} foto ${i + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={90}
+                  />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="font-sans uppercase text-[11px] tracking-[0.2em] text-[#FDFBF7] bg-[#1A140E]/85 px-4 py-2 border border-[#B89768]/40 shadow-xl">
+                      Ingrandisci #{i + 1}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </AnimatePresence>
 

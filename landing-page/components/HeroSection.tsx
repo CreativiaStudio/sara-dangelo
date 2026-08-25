@@ -61,24 +61,32 @@ export default function HeroSection() {
       >
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           
-          {/* Main headline */}
+          {/* Main headline — 3 Explicit Rows on Desktop & Mobile */}
           <motion.h1
             variants={titleContainer}
             initial="hidden"
             animate="show"
-            className="text-[clamp(2rem,4.6vw,4.8rem)] md:text-[clamp(2.4rem,5vw,5.4rem)] font-serif leading-[1.12] tracking-tight mb-5 md:mb-6 text-[#FDFBF7] flex flex-col items-center max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]"
+            className="text-[clamp(1.85rem,4.2vw,4.4rem)] md:text-[clamp(2.2rem,4.6vw,5rem)] font-serif leading-[1.12] tracking-tight mb-4 md:mb-5 text-[#FDFBF7] flex flex-col items-center max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]"
           >
             <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
-              <motion.span variants={titleItem} className="block sm:whitespace-nowrap pb-[0.15em]">
+              <motion.span variants={titleItem} className="block whitespace-nowrap pb-[0.15em]">
                 Non organizzo Matrimoni,
               </motion.span>
             </div>
             <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
               <motion.span
                 variants={titleItem}
-                className="block italic font-light text-[#E5D2B5] pb-[0.15em] text-center drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
+                className="block italic font-light text-[#E5D2B5] pb-[0.15em] text-center whitespace-nowrap drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
               >
-                li progetto dando vita ai vostri sogni.
+                li progetto dando vita
+              </motion.span>
+            </div>
+            <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
+              <motion.span
+                variants={titleItem}
+                className="block italic font-light text-[#E5D2B5] pb-[0.15em] text-center whitespace-nowrap drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
+              >
+                ai vostri sogni.
               </motion.span>
             </div>
           </motion.h1>

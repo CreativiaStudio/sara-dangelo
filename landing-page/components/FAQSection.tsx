@@ -64,7 +64,23 @@ export default function FAQSection() {
   const shouldReduceMotion = useReducedMotion();
 
   const toggle = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+    const isOpening = openIndex !== index;
+    setOpenIndex(isOpening ? index : null);
+
+    if (isOpening) {
+      setTimeout(() => {
+        const el = document.getElementById(`faq-card-${index}`);
+        if (el) {
+          const navbarHeight = 90;
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 50);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -115,6 +131,7 @@ export default function FAQSection() {
             return (
               <motion.div
                 key={faq.number}
+                id={`faq-card-${idx}`}
                 initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
