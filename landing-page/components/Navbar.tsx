@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 
@@ -8,7 +8,21 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      if (hidden) {
+        document.documentElement.style.setProperty("--navbar-offset", "0px");
+      } else if (scrolled) {
+        const height = navRef.current ? navRef.current.offsetHeight : 80;
+        document.documentElement.style.setProperty("--navbar-offset", `${height}px`);
+      } else {
+        document.documentElement.style.setProperty("--navbar-offset", "0px");
+      }
+    }
+  }, [hidden, scrolled]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -16,17 +30,28 @@ export default function Navbar() {
       setScrolled(true);
       if (latest > previous && latest > 150) {
         setHidden(true); // Nascondi quando scorri in giù
+        if (typeof document !== "undefined") {
+          document.documentElement.style.setProperty("--navbar-offset", "0px");
+        }
       } else {
         setHidden(false); // Mostra quando scorri in su
+        if (typeof document !== "undefined") {
+          const height = navRef.current ? navRef.current.offsetHeight : 80;
+          document.documentElement.style.setProperty("--navbar-offset", `${height}px`);
+        }
       }
     } else {
       setScrolled(false);
       setHidden(false);
+      if (typeof document !== "undefined") {
+        document.documentElement.style.setProperty("--navbar-offset", "0px");
+      }
     }
   });
 
   return (
     <motion.nav 
+      ref={navRef}
       variants={{
         visible: { y: 0 },
         hidden: { y: "-100%" },

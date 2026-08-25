@@ -8,6 +8,7 @@
   --beige: #F5EFE6;
   --beige-light: #FAF7F2;
   --cream: #F8F4ED;
+  --navbar-offset: 0px;
 }
 
 @theme inline {
@@ -166,6 +167,15 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 175, 55, 0.5);
+}
+
+/* ─── Hide Scrollbars (Mobile Momentum Swipe) ─── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* ─── Selection Color ─── */
