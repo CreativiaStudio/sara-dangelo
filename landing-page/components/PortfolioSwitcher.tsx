@@ -64,15 +64,15 @@ export default function PortfolioSwitcher({
     container.addEventListener("wheel", handleUserInteraction, { passive: true });
 
     let direction = 1; // 1 = forward, -1 = backward
-    const speed = 0.35; // Ultra slow: 0.35px per frame (~20px per sec)
+    const speed = 0.75; // Smooth slow drift (~45px per sec, clearly visible & elegant)
 
     const step = () => {
       if (!isUserInteracting && container) {
         const maxScroll = container.scrollWidth - container.clientWidth;
         if (maxScroll > 10) {
-          if (container.scrollLeft >= maxScroll - 1) {
+          if (container.scrollLeft >= maxScroll - 2) {
             direction = -1;
-          } else if (container.scrollLeft <= 1) {
+          } else if (container.scrollLeft <= 2) {
             direction = 1;
           }
           container.scrollLeft += speed * direction;
@@ -83,7 +83,7 @@ export default function PortfolioSwitcher({
 
     const startTimeout = setTimeout(() => {
       animId = requestAnimationFrame(step);
-    }, 1500);
+    }, 800);
 
     return () => {
       clearTimeout(startTimeout);
@@ -111,10 +111,9 @@ export default function PortfolioSwitcher({
         {/* Scrollable / Centered Pill Bar */}
         <div
           ref={scrollContainerRef}
-          className="flex items-center xl:justify-center gap-2 md:gap-3 overflow-x-auto no-scrollbar scroll-smooth px-4 md:px-6 py-1"
+          className="flex items-center xl:justify-center gap-2 md:gap-3 overflow-x-auto no-scrollbar px-4 md:px-6 py-1"
           style={{
             WebkitOverflowScrolling: "touch",
-            scrollSnapType: "x proximity",
             scrollPaddingInline: "1.5rem",
           }}
           role="tablist"
@@ -136,7 +135,6 @@ export default function PortfolioSwitcher({
                 className={`relative flex-shrink-0 min-h-[44px] px-4 md:px-5 py-2.5 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer select-none group focus:outline-none focus-visible:ring-1 focus-visible:ring-[#B89768] ${
                   isActive ? "text-[#B89768]" : "text-[#FDFBF7]/70 hover:text-[#FDFBF7]"
                 }`}
-                style={{ scrollSnapAlign: "center" }}
               >
                 <span className="font-sans uppercase text-xs tracking-[0.18em] font-medium transition-colors duration-300">
                   {album.title}
