@@ -61,18 +61,6 @@ export default function HeroSection() {
       >
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           
-          {/* Pre-title label */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="mb-6 md:mb-8"
-          >
-            <span className="font-sans text-xs md:text-sm tracking-[0.35em] uppercase text-[#D4AF37] font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-              Wedding Architect — Napoli, Costiera, Capri & Italia
-            </span>
-          </motion.div>
-
           {/* Main headline */}
           <motion.h1
             variants={titleContainer}
@@ -104,7 +92,7 @@ export default function HeroSection() {
           >
             Oltre 10 anni di esperienza al servizio di matrimoni esclusivi.<br className="hidden md:block" />
             Il mio metodo unisce armonia degli spazi, regia invisibile e<br className="hidden md:block" />
-            curare dei dettagli per farvi vivere ogni momento in serenità.
+            precisione sartoriale per farvi vivere un'esperienza impeccabile.
           </motion.p>
 
           {/* Primary CTA Button — Solid Gold with Animated Shimmer Light Sweep */}
