@@ -68,18 +68,21 @@ export default function FAQSection() {
     setOpenIndex(isOpening ? index : null);
 
     if (isOpening) {
+      // Step 1: Immediate scroll call on user interaction
+      requestAnimationFrame(() => {
+        const el = document.getElementById(`faq-card-${index}`);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+
+      // Step 2: Dynamic repositioning as accordion animation proceeds to guarantee precise top alignment
       setTimeout(() => {
         const el = document.getElementById(`faq-card-${index}`);
         if (el) {
-          const navbarHeight = 90;
-          const elementPosition = el.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      }, 50);
+      }, 150);
     }
   };
 
@@ -140,7 +143,7 @@ export default function FAQSection() {
                   delay: shouldReduceMotion ? 0 : idx * 0.1,
                   ease: [0.16, 1, 0.3, 1]
                 }}
-                className={`transition-all duration-500 border ${
+                className={`scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32 transition-all duration-500 border ${
                   isOpen
                     ? "bg-[#FAF7F2] border-[#B89768]/45 shadow-[0_12px_36px_rgba(74,59,50,0.06)] ring-1 ring-[#B89768]/15"
                     : "bg-[#FAF7F2]/70 hover:bg-[#FAF7F2] border-[#B89768]/20 hover:border-[#B89768]/40 shadow-[0_4px_16px_rgba(74,59,50,0.02)] hover:shadow-[0_8px_24px_rgba(74,59,50,0.05)]"
