@@ -77,13 +77,11 @@ export default function PortfolioSection() {
         const rect = gridEl.getBoundingClientRect();
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Scrolled Navbar (~80px) + Sticky Switcher (~64px) + margin (~16px) = ~160px clearance
-        const navEl = document.querySelector("nav");
-        const navHeight = navEl ? navEl.offsetHeight : 80;
+        // Sticky Switcher (~64px) + buffer (~20px) = ~84px clearance (navbar is hidden during portfolio browsing)
         const switcherEl = stickySwitcherRef.current;
         const switcherHeight = switcherEl ? switcherEl.offsetHeight : 64;
-        const buffer = 16;
-        const totalOffset = navHeight + switcherHeight + buffer;
+        const buffer = 20;
+        const totalOffset = switcherHeight + buffer;
 
         const targetY = rect.top + currentScroll - totalOffset;
 

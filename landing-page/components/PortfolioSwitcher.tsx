@@ -38,11 +38,70 @@ export default function PortfolioSwitcher({
     }
   }, [activeTab]);
 
+  // Gentle, ultra-slow auto-drift on mobile when idle to visually hint more albums
+  useEffect(() => {
+    let animId: number;
+    let pauseTimer: NodeJS.Timeout;
+    let isUserInteracting = false;
+    const container = scrollContainerRef.current;
+
+    if (!container || typeof window === "undefined") return;
+
+    const isMobile = window.innerWidth < 1024;
+    if (!isMobile) return;
+
+    const handleUserInteraction = () => {
+      isUserInteracting = true;
+      clearTimeout(pauseTimer);
+      pauseTimer = setTimeout(() => {
+        isUserInteracting = false;
+      }, 3500); // Resume slow drift 3.5s after user touches or scrolls
+    };
+
+    container.addEventListener("touchstart", handleUserInteraction, { passive: true });
+    container.addEventListener("touchmove", handleUserInteraction, { passive: true });
+    container.addEventListener("pointerdown", handleUserInteraction, { passive: true });
+    container.addEventListener("wheel", handleUserInteraction, { passive: true });
+
+    let direction = 1; // 1 = forward, -1 = backward
+    const speed = 0.35; // Ultra slow: 0.35px per frame (~20px per sec)
+
+    const step = () => {
+      if (!isUserInteracting && container) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll > 10) {
+          if (container.scrollLeft >= maxScroll - 1) {
+            direction = -1;
+          } else if (container.scrollLeft <= 1) {
+            direction = 1;
+          }
+          container.scrollLeft += speed * direction;
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    const startTimeout = setTimeout(() => {
+      animId = requestAnimationFrame(step);
+    }, 1500);
+
+    return () => {
+      clearTimeout(startTimeout);
+      clearTimeout(pauseTimer);
+      cancelAnimationFrame(animId);
+      if (container) {
+        container.removeEventListener("touchstart", handleUserInteraction);
+        container.removeEventListener("touchmove", handleUserInteraction);
+        container.removeEventListener("pointerdown", handleUserInteraction);
+        container.removeEventListener("wheel", handleUserInteraction);
+      }
+    };
+  }, []);
+
   return (
     <div
       ref={stickyRef}
-      style={{ top: "var(--navbar-offset, 0px)" }}
-      className="sticky z-40 w-full py-3 md:py-4 bg-[#2A2118]/90 backdrop-blur-md border-y border-[#B89768]/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300"
+      className="sticky top-0 z-40 w-full py-3 md:py-4 bg-[#2A2118]/95 backdrop-blur-md border-y border-[#B89768]/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300"
     >
       <div className="relative max-w-7xl mx-auto px-4 md:px-8">
         {/* Soft edge fade cues for mobile & tablet horizontal scroll */}

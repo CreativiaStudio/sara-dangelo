@@ -8,21 +8,28 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [inPortfolio, setInPortfolio] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
 
+  // Hide navbar when user is actively inside the portfolio gallery section
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      if (hidden) {
-        document.documentElement.style.setProperty("--navbar-offset", "0px");
-      } else if (scrolled) {
-        const height = navRef.current ? navRef.current.offsetHeight : 80;
-        document.documentElement.style.setProperty("--navbar-offset", `${height}px`);
-      } else {
-        document.documentElement.style.setProperty("--navbar-offset", "0px");
+    const portfolioEl = document.getElementById("portfolio");
+    if (!portfolioEl) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInPortfolio(entry.isIntersecting);
+      },
+      {
+        rootMargin: "-80px 0px -20% 0px",
+        threshold: 0,
       }
-    }
-  }, [hidden, scrolled]);
+    );
+
+    observer.observe(portfolioEl);
+    return () => observer.disconnect();
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -30,24 +37,16 @@ export default function Navbar() {
       setScrolled(true);
       if (latest > previous && latest > 150) {
         setHidden(true); // Nascondi quando scorri in giù
-        if (typeof document !== "undefined") {
-          document.documentElement.style.setProperty("--navbar-offset", "0px");
-        }
       } else {
         setHidden(false); // Mostra quando scorri in su
-        if (typeof document !== "undefined") {
-          const height = navRef.current ? navRef.current.offsetHeight : 80;
-          document.documentElement.style.setProperty("--navbar-offset", `${height}px`);
-        }
       }
     } else {
       setScrolled(false);
       setHidden(false);
-      if (typeof document !== "undefined") {
-        document.documentElement.style.setProperty("--navbar-offset", "0px");
-      }
     }
   });
+
+  const shouldHide = hidden || inPortfolio;
 
   return (
     <motion.nav 
@@ -56,8 +55,8 @@ export default function Navbar() {
         visible: { y: 0 },
         hidden: { y: "-100%" },
       }}
-      animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      animate={shouldHide ? "hidden" : "visible"}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled 
           ? "glass-nav py-4 text-[#4A3B32]" 
