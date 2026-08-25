@@ -54,9 +54,9 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#1A140E]/75 via-[#1A140E]/40 to-[#1A140E]/85 pointer-events-none" />
       </div>
 
-      {/* Content — Centered Layout */}
+      {/* Content — Centered Layout Above-the-Fold */}
       <motion.div
-        className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-16 pt-40 md:pt-44 lg:pt-48 pb-16 flex flex-col items-center justify-center text-center"
+        className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-16 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 flex flex-col items-center justify-center text-center"
         style={{ y: heroY, opacity: heroOpacity }}
       >
         <div className="max-w-5xl mx-auto flex flex-col items-center">
@@ -66,17 +66,17 @@ export default function HeroSection() {
             variants={titleContainer}
             initial="hidden"
             animate="show"
-            className="text-[clamp(2.2rem,5.5vw,5.8rem)] md:text-[clamp(2.7rem,6vw,6.8rem)] font-serif leading-[1.1] tracking-tight mb-8 text-[#FDFBF7] flex flex-col items-center max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]"
+            className="text-[clamp(2rem,4.6vw,4.8rem)] md:text-[clamp(2.4rem,5vw,5.4rem)] font-serif leading-[1.12] tracking-tight mb-5 md:mb-6 text-[#FDFBF7] flex flex-col items-center max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]"
           >
-            <div className="overflow-hidden pb-[0.2em] -mb-[0.2em]">
-              <motion.span variants={titleItem} className="block sm:whitespace-nowrap pb-[0.2em]">
+            <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
+              <motion.span variants={titleItem} className="block sm:whitespace-nowrap pb-[0.15em]">
                 Non organizzo Matrimoni,
               </motion.span>
             </div>
-            <div className="overflow-hidden pb-[0.2em] -mb-[0.2em]">
+            <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
               <motion.span
                 variants={titleItem}
-                className="block italic font-light text-[#E5D2B5] pb-[0.2em] text-center drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
+                className="block italic font-light text-[#E5D2B5] pb-[0.15em] text-center drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
               >
                 li progetto dando vita ai vostri sogni.
               </motion.span>
@@ -85,10 +85,10 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(1.05rem,1.3vw,1.4rem)] text-[#FDFBF7] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-10 md:mb-12 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
+            transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[clamp(0.95rem,1.15vw,1.25rem)] text-[#FDFBF7] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-7 md:mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
           >
             Oltre 10 anni di esperienza al servizio di matrimoni esclusivi.<br className="hidden md:block" />
             Il mio metodo unisce armonia degli spazi, regia invisibile e<br className="hidden md:block" />
@@ -99,12 +99,12 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.5, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
             <a
               href="#contact"
-              className="relative inline-flex items-center gap-4 bg-[#B89768] text-[#1A140E] px-8 md:px-11 py-4 md:py-5 font-sans uppercase tracking-[0.25em] text-xs md:text-sm font-bold shadow-[0_10px_35px_rgba(184,151,104,0.5)] hover:shadow-[0_15px_45px_rgba(184,151,104,0.7)] hover:bg-[#FDFBF7] hover:text-[#1A140E] hover:scale-105 transition-all duration-300 rounded-sm overflow-hidden group z-20"
+              className="relative inline-flex items-center gap-3.5 bg-[#B89768] text-[#1A140E] px-7 md:px-10 py-3.5 md:py-4 font-sans uppercase tracking-[0.22em] text-xs md:text-sm font-bold shadow-[0_10px_35px_rgba(184,151,104,0.5)] hover:shadow-[0_15px_45px_rgba(184,151,104,0.7)] hover:bg-[#FDFBF7] hover:text-[#1A140E] hover:scale-105 transition-all duration-300 rounded-sm overflow-hidden group z-20"
             >
               {/* Shimmer Light Beam */}
               <motion.span 
@@ -126,10 +126,10 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: "auto" }}
-        transition={{ delay: 2.2, duration: 1.5 }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
+        transition={{ delay: 1.8, duration: 1.2 }}
+        className="hidden md:flex absolute bottom-2 left-1/2 -translate-x-1/2 flex-col items-center z-10 pointer-events-none"
       >
-        <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-[#B89768]/60 to-transparent" />
+        <div className="w-[1px] h-8 lg:h-12 bg-gradient-to-b from-transparent via-[#B89768]/60 to-transparent" />
       </motion.div>
     </section>
   );
