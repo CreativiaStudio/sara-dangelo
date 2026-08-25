@@ -56,7 +56,7 @@ export default function HeroSection() {
 
       {/* Content — Centered Layout */}
       <motion.div
-        className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-16 pt-28 pb-16 flex flex-col items-center justify-center text-center"
+        className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-16 pt-40 md:pt-44 lg:pt-48 pb-16 flex flex-col items-center justify-center text-center"
         style={{ y: heroY, opacity: heroOpacity }}
       >
         <div className="max-w-5xl mx-auto flex flex-col items-center">
