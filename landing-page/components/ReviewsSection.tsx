@@ -53,7 +53,7 @@ export default function ReviewsSection() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 md:mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6 border-b border-[#4A3B32]/10 pb-8"
         >
-          <span className="label-caps block">Esperienze Autentiche</span>
+          <span className="label-caps block">Dicono di me</span>
           
           {/* Controls */}
           <div className="flex gap-4">

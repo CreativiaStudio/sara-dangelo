@@ -14,17 +14,6 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     number: "01",
-    question: "I fornitori devono essere necessariamente quelli scelti da te oppure possiamo proporne anche di nostri?",
-    lead: "Non necessariamente, ma la scelta dei fornitori è una parte fondamentale del progetto.",
-    paragraphs: [
-      "Io paragono sempre l’organizzazione di un matrimonio importante a un grande progetto di architettura: anche il miglior progetto, per essere realizzato esattamente come è stato pensato, ha bisogno di un’impresa e di professionisti all’altezza.",
-      "Lo stesso accade in un matrimonio. Un progetto di livello richiede fornitori con esperienza, affidabilità e soprattutto abituati a lavorare in eventi complessi e di una determinata qualità. Per questo motivo preferisco affidarmi a professionisti che conosco, che ho già selezionato nel tempo e dei quali conosco perfettamente metodo di lavoro e standard qualitativi.",
-      "Questo non significa assolutamente escludere eventuali fornitori proposti dagli sposi. Possiamo certamente valutarli insieme. È però importante che siano professionisti specializzati nei grandi eventi e che possano garantire il livello necessario per realizzare correttamente il progetto."
-    ],
-    quote: "In fondo, il mio compito non è semplicemente scegliere dei fornitori, ma costruire una squadra capace di trasformare il progetto in realtà."
-  },
-  {
-    number: "02",
     question: "Organizzare il matrimonio con una wedding planner costa di più rispetto a fare tutto da soli?",
     lead: "Dipende da cosa si vuole ottenere.",
     paragraphs: [
@@ -35,6 +24,17 @@ const faqs: FAQItem[] = [
       "A parità di budget, un matrimonio progettato e seguito da una professionista permette di utilizzare molto meglio le risorse disponibili, evitando anche scelte sbagliate, spese inutili o elementi che, presi singolarmente, possono essere bellissimi ma che insieme non funzionano."
     ],
     quote: "Non amo dire che con una wedding planner si spende di più: preferisco dire che si progetta di più e, soprattutto, si spende meglio."
+  },
+  {
+    number: "02",
+    question: "I fornitori devono essere necessariamente quelli scelti da te oppure possiamo proporne anche di nostri?",
+    lead: "Non necessariamente, ma la scelta dei fornitori è una parte fondamentale del progetto.",
+    paragraphs: [
+      "Io paragono sempre l'organizzazione di un matrimonio importante a un grande progetto di architettura: anche il miglior progetto, per essere realizzato esattamente come è stato pensato, ha bisogno di un'impresa e di professionisti all'altezza.",
+      "Lo stesso accade in un matrimonio. Un progetto di livello richiede fornitori con esperienza, affidabilità e soprattutto abituati a lavorare in eventi complessi e di una determinata qualità. Per questo motivo preferisco affidarmi a professionisti che conosco, che ho già selezionato nel tempo e dei quali conosco perfettamente metodo di lavoro e standard qualitativi.",
+      "Questo non significa assolutamente escludere eventuali fornitori proposti dagli sposi. Possiamo certamente valutarli insieme. È però importante che siano professionisti specializzati nei grandi eventi e che possano garantire il livello necessario per realizzare correttamente il progetto."
+    ],
+    quote: "In fondo, il mio compito non è semplicemente scegliere dei fornitori, ma costruire una squadra capace di trasformare il progetto in realtà."
   },
   {
     number: "03",

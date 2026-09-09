@@ -61,7 +61,7 @@ export default function AboutArchitectSection() {
               <div className="border-l-2 border-[#B89768] pl-5 py-1 my-2">
                 <p className="text-sm md:text-base text-[#4A3B32]/90">
                   <span className="font-semibold text-[#4A3B32] not-italic block mb-1">Il vantaggio per voi?</span>
-                  Avere una visione completa dell&apos;evento prima ancora che il progetto prenda forma. Una regia attenta accompagnerà ogni fase, coordinando tempi, spazi e professionisti affinché tutto prenda vita con la stessa armonia con cui è stato concepito.
+                  Avere una visione completa dell&apos;evento prima ancora che il progetto prenda forma. Una regia attenta accompagnerà ogni fase, coordinando tempi, spazi ed esperti del settore affinché tutto prenda vita con la stessa armonia con cui è stato concepito.
                 </p>
               </div>
 
@@ -74,9 +74,9 @@ export default function AboutArchitectSection() {
                 <span className="font-sans text-xs tracking-widest uppercase text-[#B89768]">Wedding Architect</span>
               </div>
               <div className="text-right">
-                <span className="font-serif italic text-xl text-[#B89768] block">10+ Anni</span>
-                <span className="font-sans text-[10px] tracking-widest uppercase text-[#4A3B32]/60 block">di Progettazione</span>
-                <span className="font-sans text-[10px] tracking-widest uppercase text-[#4A3B32]/60 block">di Eventi Esclusivi</span>
+                <span className="font-serif italic text-xl text-[#B89768] block">15 Anni</span>
+                <span className="font-sans text-[10px] tracking-widest uppercase text-[#4A3B32]/60 block">di Esperienza</span>
+                <span className="font-sans text-[10px] tracking-widest uppercase text-[#4A3B32]/60 block">oltre 150 eventi esclusivi</span>
               </div>
             </div>
 
