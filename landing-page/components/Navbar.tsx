@@ -84,7 +84,7 @@ export default function Navbar() {
           <a href="#hero" className="hover:text-[#B89768] transition-colors">Home</a>
           <a href="#metodo" className="hover:text-[#B89768] transition-colors">Il Metodo</a>
           <a href="#portfolio" className="hover:text-[#B89768] transition-colors">Portfolio</a>
-          <a href="#social-proof" className="hover:text-[#B89768] transition-colors">Dicono di noi</a>
+          <a href="#social-proof" className="hover:text-[#B89768] transition-colors">Dicono di me</a>
           <a href="#faq" className="hover:text-[#B89768] transition-colors">FAQ</a>
           <a href="#funnel" className="hover:text-[#B89768] transition-colors">Contatti</a>
         </div>
