@@ -59,8 +59,8 @@ export default function Navbar() {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled 
-          ? "glass-nav py-4 text-[#4A3B32]" 
-          : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-6 text-[#FDFBF7]"
+          ? "glass-nav py-2.5 md:py-3 shadow-[0_4px_25px_rgba(74,59,50,0.08)] text-[#4A3B32]" 
+          : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5 md:py-6 text-[#FDFBF7]"
       }`}
     >
       <h1 className="sr-only" style={{ color: '#4A3B32', backgroundColor: '#FDFBF7' }}>Sara D&apos;Angelo</h1>
@@ -72,13 +72,17 @@ export default function Navbar() {
             alt="Sara D'Angelo Logo" 
             width={300} 
             height={80} 
-            className="h-12 w-auto md:h-14 lg:h-16 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
+            className={`w-auto object-contain transition-all duration-500 ${
+              scrolled 
+                ? "h-8 sm:h-9 md:h-10 drop-shadow-none" 
+                : "h-11 sm:h-13 md:h-14 lg:h-16 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            }`}
             priority
           />
         </div>
 
         {/* Desktop Links */}
-        <div className={`hidden md:flex space-x-10 uppercase tracking-[0.2em] text-xs font-sans font-medium transition-colors duration-500 ${
+        <div className={`hidden md:flex space-x-7 lg:space-x-9 uppercase tracking-[0.2em] text-xs font-sans font-medium transition-colors duration-500 ${
           scrolled ? "text-[#4A3B32]" : "text-[#FDFBF7] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
         }`}>
           <a href="#hero" className="hover:text-[#B89768] transition-colors">Home</a>
@@ -93,11 +97,11 @@ export default function Navbar() {
         <div className="flex md:hidden items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`p-2 focus:outline-none transition-colors duration-500 ${
+            className={`p-1.5 focus:outline-none transition-colors duration-500 ${
               scrolled ? "text-[#4A3B32]" : "text-[#FDFBF7]"
             }`}
           >
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className={`transition-all duration-300 ${scrolled ? "w-6 h-6" : "w-8 h-8"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -121,7 +125,7 @@ export default function Navbar() {
               <a href="#hero" onClick={() => setIsOpen(false)}>Home</a>
               <a href="#metodo" onClick={() => setIsOpen(false)}>Il Metodo</a>
               <a href="#portfolio" onClick={() => setIsOpen(false)}>Portfolio</a>
-              <a href="#social-proof" onClick={() => setIsOpen(false)}>Recensioni</a>
+              <a href="#social-proof" onClick={() => setIsOpen(false)}>Dicono di me</a>
               <a href="#faq" onClick={() => setIsOpen(false)}>FAQ</a>
               <a href="#funnel" onClick={() => setIsOpen(false)}>Contatti</a>
             </div>
