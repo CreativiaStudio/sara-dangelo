@@ -8,28 +8,28 @@ const steps = [
     num: "01",
     line1: "Consulenza",
     line2: "Conoscitiva",
-    desc: "Ci incontriamo per 30 minuti per conoscerci, ascoltare la vostra visione dell'evento e verificare l'armonia del progetto.",
+    desc: "Ci incontriamo per 30 minuti per conoscerci, ascoltare la vostra visione dell’evento e comprendere i vostri desideri. Vi illustrerò il mio metodo di lavoro e i passaggi successivi attraverso cui svilupperò il progetto.",
     icon: "/media/icons/metodo-01-ascolto.png"
   },
   {
     num: "02",
     line1: "Design degli",
     line2: "Spazi",
-    desc: "Disegno planimetrie, scenografie floreali e luci ispirandomi all'interior design. Ogni angolo viene studiato da me per regalarvi emozione.",
+    desc: "Disegno concept, planimetrie, scenografie floreali e luci, tutto su misura, ispirandomi all’interior design e valorizzando l’identità della location. Ogni spazio viene studiato per creare armonia e regalarvi un’emozione.",
     icon: "/media/icons/metodo-02-compasso.png"
   },
   {
     num: "03",
-    line1: "Regia",
-    line2: "Invisibile",
-    desc: "Gestisco con rigore i fornitori e la produzione. Nessun imprevisto sul campo: la mia logistica lavora al servizio della vostra bellezza.",
+    line1: "Pianificazione e",
+    line2: "Regia",
+    desc: "Definisco la timeline e curo ogni aspetto del coordinamento, della logistica e della regia dell’evento, gestendo fornitori e flussi con precisione.",
     icon: "/media/icons/metodo-03-pianificazione.png"
   },
   {
     num: "04",
     line1: "La Magia del",
     line2: "Giorno",
-    desc: "Il vostro unico compito sarà vivere la magia di quel giorno. Al resto penserò io con presenza discreta, affinché tutto sia come lo avete immaginato.",
+    desc: "Nel giorno del matrimonio tutto prende forma. Il vostro unico compito sarà vivere la magia di un momento unico e indimenticabile. Al resto penserò io, con una presenza discreta, affinché tutto sia come lo avete immaginato, e anche oltre.",
     icon: "/media/icons/metodo-04-arco.png"
   }
 ];
