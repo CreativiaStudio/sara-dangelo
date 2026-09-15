@@ -32,6 +32,15 @@ export const metadata: Metadata = {
   description:
     "Matrimoni d'autore nella Costiera Amalfitana e in Campania. Sara D'Angelo progetta esperienze irripetibili dove ogni dettaglio diventa emozione.",
   keywords: "wedding planner napoli, matrimoni di lusso campania, wedding architect, sara d'angelo, costiera amalfitana",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Sara D'Angelo | Wedding Architect — Napoli",
     description:
