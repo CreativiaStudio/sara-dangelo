@@ -30,7 +30,7 @@ const googleReviews: GoogleReview[] = [
     leadQuote: "«Non ci sono parole per ringraziare abbastanza Sara. Per noi è stata un vero e proprio angelo custode.»",
     fullQuote:
       "Dire che è una professionista eccezionale è riduttivo. Ha preso per mano i nostri sogni e li ha trasformati in realtà con dolcezza, pazienza e una passione che ci hanno fatto sentire speciali in ogni momento. Ha saputo ascoltarci anche nei momenti di stress, trasmettendoci una calma incredibile e curando ogni singolo aspetto come se stesse organizzando il matrimonio di una persona di famiglia. Il giorno delle nozze è stato una favola pura: tutto era perfetto, magico, oltre ogni nostra aspettativa. Più che una wedding planner, per noi è stata un'amica preziosa.",
-    imgSrc: "/media/reviews/review_1.webp",
+    imgSrc: "/media/reviews/review_cristiana.webp",
     weddingLocation: "Napoli & Costiera",
   },
   {
@@ -43,7 +43,7 @@ const googleReviews: GoogleReview[] = [
     leadQuote: "«Sceglierla è stata una delle decisioni migliori del nostro matrimonio.»",
     fullQuote:
       "Fin dal primo momento ci ha messi completamente a nostro agio, ascoltandoci, accompagnandoci e condividendo con noi ogni aspetto del matrimonio. Una professionista straordinaria, capace di darci sempre il consiglio giusto e di trasformare le nostre e le sue idee in un evento fantastico. Ma ciò che la rende davvero speciale è la sua capacità di entrare in sintonia con gli sposi, con empatia, disponibilità e passione.",
-    imgSrc: "/media/reviews/review_2.webp",
+    imgSrc: "/media/reviews/review_umberto.webp",
     weddingLocation: "Campania Felix",
   },
   {
@@ -57,7 +57,7 @@ const googleReviews: GoogleReview[] = [
     leadQuote: "«Bravissima: mette tutto il suo amore e la sua professionalità negli eventi che realizza.»",
     fullQuote:
       "Mette tutto il suo amore, la sua dedizione e la sua autentica professionalità architettonica negli eventi che realizza. La consiglio con il cuore a chi desidera un matrimonio impeccabile, curato con assoluto rigore e calore umano.",
-    imgSrc: "/media/reviews/review_0.webp",
+    imgSrc: "/media/reviews/review_cristina.webp",
     weddingLocation: "Golfo di Napoli",
   },
   {
