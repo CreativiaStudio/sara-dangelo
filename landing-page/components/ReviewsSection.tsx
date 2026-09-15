@@ -61,18 +61,17 @@ const googleReviews: GoogleReview[] = [
     weddingLocation: "Golfo di Napoli",
   },
   {
-    id: "giuseppe",
-    author: "Giuseppe Silvestri",
-    role: "Google Local Guide",
-    googleTag: "Local Guide · 42 recensioni",
-    isLocalGuide: true,
+    id: "alessandra",
+    author: "Alessandra Sodano",
+    role: "Sposa",
+    googleTag: "1 recensione · 1 foto",
     rating: 5,
-    date: "Recensione verificata",
-    leadQuote: "«Semplicemente la numero 1!»",
+    date: "Nuova",
+    leadQuote: "«Affidarsi a Sara D’Angelo è stata la decisione migliore che potessimo prendere per il nostro matrimonio.»",
     fullQuote:
-      "Semplicemente la numero 1! Professionalità d'altissimo livello, visione estetica superiore e presenza rassicurante e impeccabile in ogni fase dell'evento.",
-    imgSrc: "/media/reviews/review_3.webp",
-    weddingLocation: "Ville Vesuviane",
+      "Affidarsi a Sara D’Angelo è stata la decisione migliore che potessimo prendere per il nostro matrimonio 💗 Grazie di cuore per aver reso il nostro giorno più bello ancora più perfetto di come lo avevamo sognato! 💗",
+    imgSrc: "/media/reviews/review_alessandra.webp",
+    weddingLocation: "Napoli & Campania",
   },
 ];
 
