@@ -36,7 +36,7 @@ const steps = [
 
 export default function MethodSection() {
   return (
-    <section id="metodo" className="py-28 md:py-40 bg-[#1A140E] text-[#FDFBF7] relative overflow-hidden">
+    <section id="metodo" className="py-28 md:py-40 bg-[#35261C] text-[#FDFBF7] relative overflow-hidden">
       
       {/* Architectural Background Image — Clearly Visible & Luminous */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -44,12 +44,13 @@ export default function MethodSection() {
           src="/media/campolieto-palazzo.webp"
           alt="Architettura Villa Campolieto"
           fill
-          className="object-cover opacity-50 filter sepia-[0.3] contrast-110 scale-105"
+          className="object-cover opacity-60 filter sepia-[0.35] contrast-105 scale-105"
           sizes="100vw"
           quality={90}
         />
-        {/* Soft Sepia Warm Mask */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2A2118]/75 via-[#1A140E]/60 to-[#2A2118]/85" />
+        {/* Soft Sepia Warm Brown Mask & Central Ambient Glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#423226]/85 via-[#35261C]/70 to-[#423226]/90" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_45%,rgba(184,151,104,0.20),transparent_75%)]" />
         <div className="noise-bg opacity-10" />
       </div>
 
@@ -63,8 +64,8 @@ export default function MethodSection() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-5xl mx-auto mb-20 md:mb-28"
         >
-          <span className="label-caps mb-4 block text-[#D4AF37] tracking-[0.35em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Il Mio Metodo Progettuale</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] xl:text-[3.4rem] font-serif leading-[1.2] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+          <span className="label-caps mb-4 block text-[#D4AF37] tracking-[0.35em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Il Mio Metodo Progettuale</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] xl:text-[3.4rem] font-serif leading-[1.2] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
             <span className="block md:whitespace-nowrap">Come do forma al vostro matrimonio:</span>
             <span className="italic font-light text-[#E5D2B5] block md:whitespace-nowrap">
               il progetto prima della bellezza.
@@ -81,7 +82,7 @@ export default function MethodSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-2xl overflow-hidden group p-8 lg:p-9 flex flex-col justify-between h-full bg-[#241C15]/75 backdrop-blur-md border border-[#B89768]/25 hover:border-[#B89768]/60 shadow-[0_20px_45px_rgba(0,0,0,0.5)] hover:shadow-[0_25px_55px_rgba(184,151,104,0.18)] hover:-translate-y-1.5 transition-all duration-500"
+              className="relative rounded-2xl overflow-hidden group p-8 lg:p-9 flex flex-col justify-between h-full bg-gradient-to-b from-[#4A3B32]/88 to-[#3A2B20]/92 backdrop-blur-md border border-[#B89768]/35 hover:border-[#D4AF37]/80 shadow-[0_20px_45px_rgba(35,24,16,0.5)] hover:shadow-[0_25px_55px_rgba(184,151,104,0.22)] hover:-translate-y-1.5 transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-[#B89768]/60 before:to-transparent"
             >
               {/* Subtle architectural ambient top glow */}
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#B89768]/[0.06] rounded-bl-full pointer-events-none group-hover:bg-[#B89768]/[0.12] transition-colors duration-500" />
