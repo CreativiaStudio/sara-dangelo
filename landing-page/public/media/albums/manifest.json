@@ -284,6 +284,46 @@
         "isVertical": false,
         "aspectRatio": 1.5005359056806002,
         "originalName": "5 IMG_4261.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_7.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "6 IMG_3926.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_8.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "7 IMG_4008.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_9.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "8 IMG_4147.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_10.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "9 IMG_4152.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_11.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "10 IMG_4266.jpg"
       }
     ]
   },
@@ -432,6 +472,30 @@
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
         "originalName": "6 1.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_6.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "7 1J4A0358.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_7.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "8 3.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_8.webp",
+        "width": 934,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "9 5.jpg"
       }
     ]
   }
