@@ -239,14 +239,6 @@
     "images": [
       {
         "src": "/media/albums/margherita/img_1.webp",
-        "width": 1400,
-        "height": 933,
-        "isVertical": false,
-        "aspectRatio": 1.5005359056806002,
-        "originalName": "1 IMG_4167.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_2.webp",
         "width": 933,
         "height": 1400,
         "isVertical": true,
@@ -254,63 +246,7 @@
         "originalName": "2 IMG_3752.jpg"
       },
       {
-        "src": "/media/albums/margherita/img_3.webp",
-        "width": 1400,
-        "height": 933,
-        "isVertical": false,
-        "aspectRatio": 1.5005359056806002,
-        "originalName": "3 IMG_4340.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_4.webp",
-        "width": 933,
-        "height": 1400,
-        "isVertical": true,
-        "aspectRatio": 0.6664285714285715,
-        "originalName": "3 IMG_4343.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_5.webp",
-        "width": 1400,
-        "height": 933,
-        "isVertical": false,
-        "aspectRatio": 1.5005359056806002,
-        "originalName": "4 IMG_4269.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_6.webp",
-        "width": 1400,
-        "height": 933,
-        "isVertical": false,
-        "aspectRatio": 1.5005359056806002,
-        "originalName": "5 IMG_4261.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_7.webp",
-        "width": 933,
-        "height": 1400,
-        "isVertical": true,
-        "aspectRatio": 0.6664285714285715,
-        "originalName": "6 IMG_3926.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_8.webp",
-        "width": 933,
-        "height": 1400,
-        "isVertical": true,
-        "aspectRatio": 0.6664285714285715,
-        "originalName": "7 IMG_4008.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_9.webp",
-        "width": 933,
-        "height": 1400,
-        "isVertical": true,
-        "aspectRatio": 0.6664285714285715,
-        "originalName": "8 IMG_4147.jpg"
-      },
-      {
-        "src": "/media/albums/margherita/img_10.webp",
+        "src": "/media/albums/margherita/img_2.webp",
         "width": 933,
         "height": 1400,
         "isVertical": true,
@@ -318,12 +254,60 @@
         "originalName": "9 IMG_4152.jpg"
       },
       {
-        "src": "/media/albums/margherita/img_11.webp",
+        "src": "/media/albums/margherita/img_3.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "1 IMG_4167.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_4.webp",
         "width": 933,
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
-        "originalName": "10 IMG_4266.jpg"
+        "originalName": "6 IMG_3926.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_5.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "7 IMG_4008.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_6.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "3 IMG_4340.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_7.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "3 IMG_4343.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_8.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "4 IMG_4269.jpg"
+      },
+      {
+        "src": "/media/albums/margherita/img_9.webp",
+        "width": 1400,
+        "height": 933,
+        "isVertical": false,
+        "aspectRatio": 1.5005359056806002,
+        "originalName": "5 IMG_4261.jpg"
       }
     ]
   },
@@ -455,7 +439,7 @@
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
-        "originalName": "4 1J4A0346.jpg"
+        "originalName": "7 1J4A0358.jpg"
       },
       {
         "src": "/media/albums/eliana/img_4.webp",
@@ -463,15 +447,15 @@
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
-        "originalName": "5 1J4A0399.jpg"
+        "originalName": "4 1J4A0346.jpg"
       },
       {
         "src": "/media/albums/eliana/img_5.webp",
-        "width": 933,
+        "width": 934,
         "height": 1400,
         "isVertical": true,
-        "aspectRatio": 0.6664285714285715,
-        "originalName": "6 1.jpg"
+        "aspectRatio": 0.6671428571428571,
+        "originalName": "9 5.jpg"
       },
       {
         "src": "/media/albums/eliana/img_6.webp",
@@ -479,10 +463,18 @@
         "height": 1400,
         "isVertical": true,
         "aspectRatio": 0.6664285714285715,
-        "originalName": "7 1J4A0358.jpg"
+        "originalName": "6 1.jpg"
       },
       {
         "src": "/media/albums/eliana/img_7.webp",
+        "width": 933,
+        "height": 1400,
+        "isVertical": true,
+        "aspectRatio": 0.6664285714285715,
+        "originalName": "5 1J4A0399.jpg"
+      },
+      {
+        "src": "/media/albums/eliana/img_8.webp",
         "width": 1400,
         "height": 933,
         "isVertical": false,
@@ -490,12 +482,13 @@
         "originalName": "8 3.jpg"
       },
       {
-        "src": "/media/albums/eliana/img_8.webp",
-        "width": 934,
-        "height": 1400,
+        "src": "/media/albums/eliana/video_9.mp4",
+        "width": 720,
+        "height": 900,
         "isVertical": true,
-        "aspectRatio": 0.6671428571428571,
-        "originalName": "9 5.jpg"
+        "aspectRatio": 0.8,
+        "isVideo": true,
+        "originalName": "instagram_reel_villa_eliana.mp4"
       }
     ]
   }

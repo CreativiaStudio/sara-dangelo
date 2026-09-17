@@ -13,6 +13,7 @@ interface AlbumItem {
   isVertical: boolean;
   aspectRatio: number;
   originalName: string;
+  isVideo?: boolean;
 }
 
 interface ManifestEntry {
@@ -168,19 +169,30 @@ export default function PortfolioSection() {
                     style={{ aspectRatio: mobileAspectRatio }}
                     className="relative cursor-pointer overflow-hidden photo-frame group sm:!aspect-[4/5] shadow-lg border border-[#B89768]/20 bg-[#1A140E] w-full"
                   >
-                    <Image
-                      src={img.src}
-                      alt={`${currentAlbumData.title} foto ${i + 1}`}
-                      fill
-                      priority={i === 0}
-                      loading={i < 3 ? "eager" : "lazy"}
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={90}
-                    />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    {img.isVideo ? (
+                      <video
+                        src={img.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    ) : (
+                      <Image
+                        src={img.src}
+                        alt={`${currentAlbumData.title} foto ${i + 1}`}
+                        fill
+                        priority={i === 0}
+                        loading={i < 3 ? "eager" : "lazy"}
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        quality={90}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                       <span className="font-sans uppercase text-[11px] tracking-[0.2em] text-[#FDFBF7] bg-[#1A140E]/85 px-4 py-2 border border-[#B89768]/40 shadow-xl">
-                        Ingrandisci #{i + 1}
+                        {img.isVideo ? `Guarda Video #${i + 1}` : `Ingrandisci #${i + 1}`}
                       </span>
                     </div>
                   </motion.div>
@@ -252,13 +264,23 @@ export default function PortfolioSection() {
               className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
-                src={activeImages[lightboxIndex]?.src}
-                alt={currentAlbumData.title}
-                fill
-                className="object-contain"
-                quality={95}
-              />
+              {activeImages[lightboxIndex]?.isVideo ? (
+                <video
+                  src={activeImages[lightboxIndex]?.src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="max-w-full max-h-[85vh] object-contain rounded shadow-2xl"
+                />
+              ) : (
+                <Image
+                  src={activeImages[lightboxIndex]?.src}
+                  alt={currentAlbumData.title}
+                  fill
+                  className="object-contain"
+                  quality={95}
+                />
+              )}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 text-[#FDFBF7] px-4 py-2 font-sans text-xs tracking-widest uppercase rounded-sm border border-[#B89768]/30">
                 {currentAlbumData.title} — {lightboxIndex + 1} / {activeImages.length}
               </div>
