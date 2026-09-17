@@ -31,7 +31,7 @@ const googleReviews: GoogleReview[] = [
     fullQuote:
       "Dire che è una professionista eccezionale è riduttivo. Ha preso per mano i nostri sogni e li ha trasformati in realtà con dolcezza, pazienza e una passione che ci hanno fatto sentire speciali in ogni momento. Ha saputo ascoltarci anche nei momenti di stress, trasmettendoci una calma incredibile e curando ogni singolo aspetto come se stesse organizzando il matrimonio di una persona di famiglia. Il giorno delle nozze è stato una favola pura: tutto era perfetto, magico, oltre ogni nostra aspettativa. Più che una wedding planner, per noi è stata un'amica preziosa.",
     imgSrc: "/media/reviews/review_cristiana.webp",
-    weddingLocation: "Napoli & Costiera",
+    weddingLocation: "Villa Doria d'Angri",
   },
   {
     id: "umberto",
@@ -44,7 +44,7 @@ const googleReviews: GoogleReview[] = [
     fullQuote:
       "Fin dal primo momento ci ha messi completamente a nostro agio, ascoltandoci, accompagnandoci e condividendo con noi ogni aspetto del matrimonio. Una professionista straordinaria, capace di darci sempre il consiglio giusto e di trasformare le nostre e le sue idee in un evento fantastico. Ma ciò che la rende davvero speciale è la sua capacità di entrare in sintonia con gli sposi, con empatia, disponibilità e passione.",
     imgSrc: "/media/reviews/review_umberto.webp",
-    weddingLocation: "Campania Felix",
+    weddingLocation: "Tenuta di Punta Licosa",
   },
   {
     id: "cristina",
@@ -71,7 +71,7 @@ const googleReviews: GoogleReview[] = [
     fullQuote:
       "Affidarsi a Sara D’Angelo è stata la decisione migliore che potessimo prendere per il nostro matrimonio 💗 Grazie di cuore per aver reso il nostro giorno più bello ancora più perfetto di come lo avevamo sognato! 💗",
     imgSrc: "/media/reviews/review_alessandra.webp",
-    weddingLocation: "Napoli & Campania",
+    weddingLocation: "Conca del Mare",
   },
 ];
 
