@@ -29,7 +29,7 @@ const steps = [
     num: "04",
     line1: "La Magia del",
     line2: "Giorno",
-    desc: "Nel giorno del matrimonio tutto prende forma. Il vostro unico compito sarà vivere la magia di un momento unico e indimenticabile. Al resto penserò io, con una presenza discreta, affinché tutto sia come lo avete immaginato, e anche oltre.",
+    desc: "Nel giorno del matrimonio tutto prende forma. Il vostro unico compito sarà vivere la magia di un momento unico e indimenticabile. Al resto penserò io, con una presenza discreta, ma incisiva, affinché tutto sia come lo avete immaginato, e anche oltre.",
     icon: "/media/icons/metodo-04-arco.png"
   }
 ];
