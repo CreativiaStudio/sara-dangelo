@@ -3,6 +3,7 @@ import { Playfair_Display, Cormorant_Garamond, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         <CustomCursor />
         <Navbar />
         {children}
+        <CookieConsentBanner />
       </body>
     </html>
   );
