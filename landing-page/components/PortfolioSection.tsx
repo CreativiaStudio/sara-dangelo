@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import manifest from "@/public/media/albums/manifest.json";
 import PortfolioSwitcher, { WeddingAlbumSummary } from "@/components/PortfolioSwitcher";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface AlbumItem {
   src: string;
@@ -27,6 +28,7 @@ type ManifestData = Record<string, ManifestEntry>;
 const albumKeys = Object.keys(manifest) as Array<keyof ManifestData>;
 
 export default function PortfolioSection() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>(albumKeys[0] || "capri");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const stickySwitcherRef = useRef<HTMLDivElement>(null);
@@ -38,10 +40,11 @@ export default function PortfolioSection() {
 
   const albumSummaries: WeddingAlbumSummary[] = albumKeys.map((key) => {
     const album = manifestData[key];
+    const translatedAlbum = (t.portfolio.albums as Record<string, { title: string; subtitle: string }>)[key];
     return {
       key,
-      title: album.title,
-      subtitle: album.subtitle,
+      title: translatedAlbum?.title || album.title,
+      subtitle: translatedAlbum?.subtitle || album.subtitle,
       count: album.images.length,
     };
   });
@@ -116,12 +119,12 @@ export default function PortfolioSection() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="w-full max-w-4xl mx-auto"
         >
-          <span className="label-caps mb-4 block text-[#B89768]">Portfolio Matrimoni</span>
+          <span className="label-caps mb-4 block text-[#B89768]">{t.portfolio.badge}</span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif leading-[1.15] text-[#FDFBF7] mb-6">
-            Spazi trasformati in <span className="italic font-light text-[#B89768]">emozione.</span>
+            {t.portfolio.titleLine1} <span className="italic font-light text-[#B89768]">{t.portfolio.titleLine2}</span>
           </h2>
           <p className="font-serif italic text-sm md:text-base text-[#B89768]/90 max-w-2xl mx-auto">
-            {currentAlbumData?.subtitle}
+            {(t.portfolio.albums as Record<string, { title: string; subtitle: string }>)[activeTab]?.subtitle || currentAlbumData?.subtitle}
           </p>
         </motion.div>
       </div>
@@ -242,7 +245,7 @@ export default function PortfolioSection() {
                 prevImage();
               }}
               className="absolute left-4 md:left-8 text-white text-3xl hover:text-[#B89768] transition-colors z-50 p-3 bg-black/40 rounded-full"
-              aria-label="Foto precedente"
+              aria-label={t.portfolio.prevPhoto}
             >
               ‹
             </button>
@@ -254,7 +257,7 @@ export default function PortfolioSection() {
                 nextImage();
               }}
               className="absolute right-4 md:right-8 text-white text-3xl hover:text-[#B89768] transition-colors z-50 p-3 bg-black/40 rounded-full"
-              aria-label="Foto successiva"
+              aria-label={t.portfolio.nextPhoto}
             >
               ›
             </button>
@@ -275,14 +278,14 @@ export default function PortfolioSection() {
               ) : (
                 <Image
                   src={activeImages[lightboxIndex]?.src}
-                  alt={currentAlbumData.title}
+                  alt={(t.portfolio.albums as Record<string, { title: string; subtitle: string }>)[activeTab]?.title || currentAlbumData.title}
                   fill
                   className="object-contain"
                   quality={95}
                 />
               )}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 text-[#FDFBF7] px-4 py-2 font-sans text-xs tracking-widest uppercase rounded-sm border border-[#B89768]/30">
-                {currentAlbumData.title} — {lightboxIndex + 1} / {activeImages.length}
+                {((t.portfolio.albums as Record<string, { title: string; subtitle: string }>)[activeTab]?.title || currentAlbumData.title)} — {lightboxIndex + 1} / {activeImages.length}
               </div>
             </div>
           </motion.div>

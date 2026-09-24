@@ -3,8 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -81,25 +84,30 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Desktop Links */}
-        <div className={`hidden md:flex space-x-7 lg:space-x-9 uppercase tracking-[0.2em] text-xs font-sans font-medium transition-colors duration-500 ${
-          scrolled ? "text-[#4A3B32]" : "text-[#FDFBF7] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
-        }`}>
-          <a href="#hero" className="hover:text-[#B89768] transition-colors">Home</a>
-          <a href="#metodo" className="hover:text-[#B89768] transition-colors">Il Metodo</a>
-          <a href="#portfolio" className="hover:text-[#B89768] transition-colors">Portfolio</a>
-          <a href="#social-proof" className="hover:text-[#B89768] transition-colors">Dicono di me</a>
-          <a href="#faq" className="hover:text-[#B89768] transition-colors">FAQ</a>
-          <a href="#funnel" className="hover:text-[#B89768] transition-colors">Contatti</a>
+        {/* Desktop Links & Language Switcher */}
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <div className={`flex space-x-6 lg:space-x-8 uppercase tracking-[0.2em] text-xs font-sans font-medium transition-colors duration-500 ${
+            scrolled ? "text-[#4A3B32]" : "text-[#FDFBF7] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
+          }`}>
+            <a href="#hero" className="hover:text-[#B89768] transition-colors">{t.nav.home}</a>
+            <a href="#metodo" className="hover:text-[#B89768] transition-colors">{t.nav.method}</a>
+            <a href="#portfolio" className="hover:text-[#B89768] transition-colors">{t.nav.portfolio}</a>
+            <a href="#social-proof" className="hover:text-[#B89768] transition-colors">{t.nav.reviews}</a>
+            <a href="#faq" className="hover:text-[#B89768] transition-colors">{t.nav.faq}</a>
+            <a href="#funnel" className="hover:text-[#B89768] transition-colors">{t.nav.contact}</a>
+          </div>
+          <LanguageSwitcher variant="desktop" />
         </div>
 
-        {/* Mobile menu button */}
-        <div className="flex md:hidden items-center">
+        {/* Mobile controls: Language Switcher + Hamburger button */}
+        <div className="flex md:hidden items-center gap-3">
+          <LanguageSwitcher variant="desktop" />
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`p-1.5 focus:outline-none transition-colors duration-500 ${
               scrolled ? "text-[#4A3B32]" : "text-[#FDFBF7]"
             }`}
+            aria-label="Menu"
           >
             <svg className={`transition-all duration-300 ${scrolled ? "w-6 h-6" : "w-8 h-8"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isOpen ? (
@@ -122,12 +130,13 @@ export default function Navbar() {
             className="absolute top-full left-0 w-full bg-[#FDFBF7] border-b border-[#B89768]/20 shadow-xl md:hidden"
           >
             <div className="flex flex-col items-center py-8 space-y-6 text-[#4A3B32] uppercase tracking-[0.2em] text-sm font-sans">
-              <a href="#hero" onClick={() => setIsOpen(false)}>Home</a>
-              <a href="#metodo" onClick={() => setIsOpen(false)}>Il Metodo</a>
-              <a href="#portfolio" onClick={() => setIsOpen(false)}>Portfolio</a>
-              <a href="#social-proof" onClick={() => setIsOpen(false)}>Dicono di me</a>
-              <a href="#faq" onClick={() => setIsOpen(false)}>FAQ</a>
-              <a href="#funnel" onClick={() => setIsOpen(false)}>Contatti</a>
+              <LanguageSwitcher variant="mobile" />
+              <a href="#hero" onClick={() => setIsOpen(false)}>{t.nav.home}</a>
+              <a href="#metodo" onClick={() => setIsOpen(false)}>{t.nav.method}</a>
+              <a href="#portfolio" onClick={() => setIsOpen(false)}>{t.nav.portfolio}</a>
+              <a href="#social-proof" onClick={() => setIsOpen(false)}>{t.nav.reviews}</a>
+              <a href="#faq" onClick={() => setIsOpen(false)}>{t.nav.faq}</a>
+              <a href="#funnel" onClick={() => setIsOpen(false)}>{t.nav.contact}</a>
             </div>
           </motion.div>
         )}

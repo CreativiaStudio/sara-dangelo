@@ -1,0 +1,223 @@
+{
+  "nav": {
+    "home": "Home",
+    "method": "Il Metodo",
+    "portfolio": "Portfolio",
+    "reviews": "Dicono di me",
+    "faq": "FAQ",
+    "contact": "Contatti",
+    "langLabel": "Lingua",
+    "currentLang": "IT"
+  },
+  "hero": {
+    "titleLine1": "Non organizzo Matrimoni,",
+    "titleLine2": "li progetto dando vita",
+    "titleLine3": "ai vostri sogni.",
+    "subtitle": "15 anni di esperienza con oltre 150 eventi esclusivi.\nIl mio metodo unisce armonia degli spazi, regia invisibile e precisione sartoriale per farvi vivere un'esperienza impeccabile.",
+    "cta": "Prenota la Consulenza Conoscitiva (30 min)"
+  },
+  "about": {
+    "badge": "La Mia Filosofia",
+    "titleLine1": "Il tuo matrimonio",
+    "titleLine2": "firmato da una Wedding Architect.",
+    "p1": "Sono convinta che un matrimonio indimenticabile non nasca dalla semplice somma di fiori, arredi e decorazioni, ma da un progetto capace di mettere in relazione spazio, estetica, funzionalità e atmosfera.",
+    "p2": "Come Wedding Architect, applico al matrimonio il mio metodo di architetto: studio gli spazi, i percorsi, le proporzioni, i punti di vista e il modo in cui il progetto si integra con l'identità della location, valorizzandola senza mai snaturarla. Ogni scelta viene pensata non come un elemento isolato, ma come parte di un'unica esperienza.",
+    "calloutTitle": "Il vantaggio per voi?",
+    "calloutText": "Avere una visione completa dell'evento prima ancora che il progetto prenda forma. Una regia attenta accompagnerà ogni fase, coordinando tempi, spazi ed esperti del settore affinché tutto prenda vita con la stessa armonia con cui è stato concepito.",
+    "role": "Wedding Architect",
+    "expYears": "15 Anni",
+    "expLabel": "di Esperienza",
+    "expEvents": "oltre 150 eventi esclusivi"
+  },
+  "method": {
+    "badge": "Il Mio Metodo Progettuale",
+    "titleLine1": "Come do forma al vostro matrimonio:",
+    "titleLine2": "il progetto prima della bellezza.",
+    "stepLabel": "Fase",
+    "steps": [
+      {
+        "num": "01",
+        "line1": "Consulenza",
+        "line2": "Conoscitiva",
+        "desc": "Ci incontriamo per 30 minuti per conoscerci, ascoltare la vostra visione dell’evento e comprendere i vostri desideri. Vi illustrerò il mio metodo di lavoro e i passaggi successivi attraverso cui svilupperò il progetto."
+      },
+      {
+        "num": "02",
+        "line1": "Design degli",
+        "line2": "Spazi",
+        "desc": "Disegno concept, planimetrie, scenografie floreali e luci, tutto su misura, ispirandomi all’interior design e valorizzando l’identità della location. Ogni spazio viene studiato per creare armonia e regalarvi un’emozione."
+      },
+      {
+        "num": "03",
+        "line1": "Pianificazione e",
+        "line2": "Regia",
+        "desc": "Definisco la timeline e curo ogni aspetto del coordinamento, della logistica e della regia dell’evento, gestendo fornitori e flussi con precisione."
+      },
+      {
+        "num": "04",
+        "line1": "La Magia del",
+        "line2": "Giorno",
+        "desc": "Nel giorno del matrimonio tutto prende forma. Il vostro unico compito sarà vivere la magia di un momento unico e indimenticabile. Al resto penserò io, con una presenza discreta, ma incisiva, affinché tutto sia come lo avete immaginato, e anche oltre."
+      }
+    ]
+  },
+  "portfolio": {
+    "badge": "Portfolio Matrimoni",
+    "titleLine1": "Spazi trasformati in",
+    "titleLine2": "emozione.",
+    "prevPhoto": "Foto precedente",
+    "nextPhoto": "Foto successiva",
+    "albums": {
+      "bellevue": {
+        "title": "Hotel Bellevue Syrene",
+        "subtitle": "Dimora a Picco sul Mare — Sorrento"
+      },
+      "capri": {
+        "title": "Capri",
+        "subtitle": "Villa & Panorama a Capri"
+      },
+      "lancellotti": {
+        "title": "Castello Lancellotti",
+        "subtitle": "Dimora Storica — Lauro"
+      },
+      "margherita": {
+        "title": "Salone Margherita",
+        "subtitle": "Scenografia & Design — Napoli"
+      },
+      "campolieto": {
+        "title": "Villa Campolieto",
+        "subtitle": "Residenza Vesuviana — Ercolano"
+      },
+      "eliana": {
+        "title": "Villa Eliana",
+        "subtitle": "Eleganza & Panorama — Sorrento"
+      }
+    }
+  },
+  "reviews": {
+    "badge": "Dicono di Me",
+    "titleLine1": "L'emozione vissuta",
+    "titleLine2": "attraverso le loro parole.",
+    "verifiedGoogle": "Recensione verificata Google",
+    "verifiedRecent": "Recensione recente",
+    "verifiedReview": "Recensione verificata",
+    "localGuideTag": "Local Guide · 14 recensioni",
+    "bride": "Sposa",
+    "groom": "Sposo",
+    "localGuide": "Google Local Guide",
+    "readMore": "Leggi tutta la recensione",
+    "readLess": "Riduci",
+    "googleRatingText": "5.0 su Google Reviews · Eccellenza Certificata",
+    "list": [
+      {
+        "id": "cristiana",
+        "author": "Cristiana Longobardi",
+        "role": "Sposa",
+        "leadQuote": "«Non ci sono parole per ringraziare abbastanza Sara. Per noi è stata un vero e proprio angelo custode.»",
+        "fullQuote": "Dire che è una professionista eccezionale è riduttivo. Ha preso per mano i nostri sogni e li ha trasformati in realtà con dolcezza, pazienza e una passione che ci hanno fatto sentire speciali in ogni momento. Ha saputo ascoltarci anche nei momenti di stress, trasmettendoci una calma incredibile e curando ogni singolo aspetto come se stesse organizzando il matrimonio di una persona di famiglia. Il giorno delle nozze è stato una favola pura: tutto era perfetto, magico, oltre ogni nostra aspettativa. Più che una wedding planner, per noi è stata un'amica preziosa.",
+        "weddingLocation": "Villa Doria d'Angri"
+      },
+      {
+        "id": "umberto",
+        "author": "Umberto Del Piano",
+        "role": "Sposo",
+        "leadQuote": "«Sceglierla è stata una delle decisioni migliori del nostro matrimonio.»",
+        "fullQuote": "Fin dal primo momento ci ha messi completamente a nostro agio, ascoltandoci, accompagnandoci e condividendo con noi ogni aspetto del matrimonio. Una professionista straordinaria, capace di darci sempre il consiglio giusto e di trasformare le nostre e le sue idee in un evento fantastico. Ma ciò che la rende davvero speciale è la sua capacità di entrare in sintonia con gli sposi, con empatia, disponibilità e passione.",
+        "weddingLocation": "Tenuta di Punta Licosa"
+      },
+      {
+        "id": "cristina",
+        "author": "Cristina Porcella",
+        "role": "Google Local Guide",
+        "leadQuote": "«Bravissima: mette tutto il suo amore e la sua professionalità negli eventi che realizza.»",
+        "fullQuote": "Mette tutto il suo amore, la sua dedizione e la sua autentica professionalità architettonica negli eventi che realizza. La consiglio con il cuore a chi desidera un matrimonio impeccabile, curato con assoluto rigore e calore umano.",
+        "weddingLocation": "Napoli & Costiera"
+      }
+    ]
+  },
+  "faq": {
+    "badge": "Domande Frequenti",
+    "titleLine1": "Tutto quello che desiderate",
+    "titleLine2": "sapere prima di iniziare.",
+    "items": [
+      {
+        "number": "01",
+        "question": "Organizzare il matrimonio con una wedding planner costa di più rispetto a fare tutto da soli?",
+        "lead": "Dipende da cosa si vuole ottenere.",
+        "paragraphs": [
+          "Una wedding planner professionista guarda il matrimonio con un occhio diverso. Non considera i singoli elementi separatamente, ma costruisce un progetto complessivo, nel quale fiori, luci, arredi, mise en place, grafica e ogni altro dettaglio devono dialogare tra loro ed essere perfettamente coerenti.",
+          "Questo porta inevitabilmente a una maggiore personalizzazione. Spesso non ci si limita semplicemente a ciò che la location mette già a disposizione, ma si interviene per trasformare gli spazi, valorizzarli e renderli davvero rappresentativi degli sposi. E naturalmente, più un progetto è personalizzato e ricco di dettagli, più può aumentare il suo valore economico.",
+          "Ma questo non significa che avere una wedding planner voglia dire necessariamente spendere di più.",
+          "Anzi, uno degli aspetti più importanti del mio lavoro è proprio gestire e distribuire correttamente il budget: capire dove vale la pena investire, dove invece si può contenere la spesa, quali elementi hanno realmente un impatto sul risultato finale e quali, al contrario, rischiano di assorbire denaro senza aggiungere valore al progetto.",
+          "A parità di budget, un matrimonio progettato e seguito da una professionista permette di utilizzare molto meglio le risorse disponibili, evitando anche scelte sbagliate, spese inutili o elementi che, presi singolarmente, possono essere bellissimi ma che insieme non funzionano."
+        ],
+        "quote": "Non amo dire che con una wedding planner si spende di più: preferisco dire che si progetta di più e, soprattutto, si spende meglio."
+      },
+      {
+        "number": "02",
+        "question": "I fornitori devono essere necessariamente quelli scelti da te oppure possiamo proporne anche di nostri?",
+        "lead": "Non necessariamente, ma la scelta dei fornitori è una parte fondamentale del progetto.",
+        "paragraphs": [
+          "Io paragono sempre l'organizzazione di un matrimonio importante a un grande progetto di architettura: anche il miglior progetto, per essere realizzato esattamente come è stato pensato, ha bisogno di un'impresa e di professionisti all'altezza.",
+          "Lo stesso accade in un matrimonio. Un progetto di livello richiede fornitori con esperienza, affidabilità e soprattutto abituati a lavorare in eventi complessi e di una determinata qualità. Per questo motivo preferisco affidarmi a professionisti che conosco, che ho già selezionato nel tempo e dei quali conosco perfettamente metodo di lavoro e standard qualitativi.",
+          "Questo non significa assolutamente escludere eventuali fornitori proposti dagli sposi. Possiamo certamente valutarli insieme. È però importante che siano professionisti specializzati nei grandi eventi e che possano garantire il livello necessario per realizzare correttamente il progetto."
+        ],
+        "quote": "In fondo, il mio compito non è semplicemente scegliere dei fornitori, ma costruire una squadra capace di trasformare il progetto in realtà."
+      },
+      {
+        "number": "03",
+        "question": "Organizzi anche matrimoni fuori dalla Campania o all’estero?",
+        "lead": "Certamente. Ci muoviamo in tutta Italia, comprese le isole, e siamo disponibili anche per matrimoni all’estero.",
+        "paragraphs": [
+          "Una parte importante del nostro lavoro riguarda proprio i destination wedding, soprattutto coppie che scelgono di venire a sposarsi in Italia e, in particolare, nel Sud: Costiera Amalfitana, Costiera Sorrentina, Capri, Ischia e altre destinazioni italiane.",
+          "Allo stesso modo, possiamo seguire anche coppie che desiderano organizzare il proprio matrimonio fuori dall’Italia. In questi casi studiamo il progetto insieme alla coppia, valutando location, logistica, fornitori e tutti gli aspetti necessari per mantenere lo stesso livello di cura e personalizzazione, indipendentemente dalla destinazione."
+        ],
+        "quote": "Il nostro lavoro non è legato a un luogo preciso: partiamo sempre dal progetto e dagli sposi, e costruiamo intorno a loro il matrimonio, ovunque abbiano scelto di celebrarlo."
+      },
+      {
+        "number": "04",
+        "question": "Nella cifra prevista per gli allestimenti è compresa anche la parcella professionale della wedding planner?",
+        "lead": "Assolutamente no. La parcella professionale e il budget destinato agli allestimenti sono due voci completamente distinte.",
+        "paragraphs": [
+          "Mi piace fare un paragone con il mondo dell’architettura: quando si realizza un progetto, da una parte c’è la parcella dell’architetto, che comprende la progettazione, la consulenza e il coordinamento del lavoro; dall’altra ci sono i costi dell’impresa e di tutto ciò che serve materialmente per realizzarlo. Nel matrimonio funziona esattamente allo stesso modo.",
+          "La parcella della Wedding Planner – o, nel mio caso, della Wedding Architect – riguarda il lavoro professionale: la progettazione dell’evento, la consulenza, la ricerca e il coordinamento dei fornitori, la supervisione e la gestione di tutto il matrimonio.",
+          "Separatamente viene poi definito il budget necessario per realizzare concretamente il progetto: fiori, luci, arredi, strutture, elementi decorativi, grafica e tutto ciò che verrà scelto per l’allestimento. E questo secondo importo non può essere uguale per tutti, perché ogni matrimonio nasce da un progetto diverso, costruito sulle esigenze, sui desideri e sul budget della singola coppia."
+        ],
+        "quote": "La mia parcella remunera il progetto e il lavoro professionale; il budget degli allestimenti serve invece a trasformare quel progetto in realtà."
+      }
+    ]
+  },
+  "funnel": {
+    "badge": "Consulenza Conoscitiva (30 Minuti)",
+    "titleLine1": "Iniziamo a",
+    "titleLine2": "progettare insieme.",
+    "cardBadge": "Un Percorso Esclusivo",
+    "cardTitle": "Richiedi la tua Call conoscitiva",
+    "exclusivityNoteTitle": "Nota di Cura & Esclusività:",
+    "exclusivityNote": "Per garantire a ciascuna coppia una presenza totale, uno studio sartoriale e la massima cura dei dettagli, accetto solo un numero limitato di matrimoni ogni anno. Leggerò con attenzione le vostre informazioni per verificare l'armonia del progetto e vi ricontatterò personalmente per fissare la nostra chiamata.",
+    "form": {
+      "namePlaceholder": "Nomi degli Sposi *",
+      "emailPlaceholder": "Email *",
+      "phonePlaceholder": "Telefono / WhatsApp *",
+      "datePlaceholder": "Data dell'evento (es. Giugno 2027)",
+      "guestsPlaceholder": "N° Invitati indicativo (es. 100-120)",
+      "locationPlaceholder": "Location o zona desiderata (es. Capri, Ravello...)",
+      "budgetPlaceholder": "Budget indicativo di riferimento",
+      "messagePlaceholder": "Raccontatemi la vostra idea o la vostra visione del matrimonio...",
+      "privacyPrefix": "Ho letto e accetto l'informativa sulla",
+      "privacyLink": "Privacy Policy",
+      "privacySuffix": "per il trattamento dei dati personali. *",
+      "submitButton": "Invia Richiesta per la Consulenza Conoscitiva",
+      "submittingButton": "Invio in corso...",
+      "errorGeneral": "Si è verificato un errore. Assicurati di aver accettato la Privacy Policy e inserito email e nome validi."
+    },
+    "success": {
+      "titlePrefix": "Grazie,",
+      "message": "Ho ricevuto la vostra richiesta. Leggerò con cura i vostri dettagli e vi ricontatterò al più presto per il nostro appuntamento conoscitivo."
+    }
+  },
+  "footer": {
+    "brand": "Sara D'Angelo",
+    "tagline": "Wedding Architect — Napoli, Costiera, Capri & Italia"
+  }
+}

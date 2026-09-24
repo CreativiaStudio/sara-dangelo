@@ -2,39 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const steps = [
-  {
-    num: "01",
-    line1: "Consulenza",
-    line2: "Conoscitiva",
-    desc: "Ci incontriamo per 30 minuti per conoscerci, ascoltare la vostra visione dell’evento e comprendere i vostri desideri. Vi illustrerò il mio metodo di lavoro e i passaggi successivi attraverso cui svilupperò il progetto.",
-    icon: "/media/icons/metodo-01-ascolto.png"
-  },
-  {
-    num: "02",
-    line1: "Design degli",
-    line2: "Spazi",
-    desc: "Disegno concept, planimetrie, scenografie floreali e luci, tutto su misura, ispirandomi all’interior design e valorizzando l’identità della location. Ogni spazio viene studiato per creare armonia e regalarvi un’emozione.",
-    icon: "/media/icons/metodo-02-compasso.png"
-  },
-  {
-    num: "03",
-    line1: "Pianificazione e",
-    line2: "Regia",
-    desc: "Definisco la timeline e curo ogni aspetto del coordinamento, della logistica e della regia dell’evento, gestendo fornitori e flussi con precisione.",
-    icon: "/media/icons/metodo-03-pianificazione.png"
-  },
-  {
-    num: "04",
-    line1: "La Magia del",
-    line2: "Giorno",
-    desc: "Nel giorno del matrimonio tutto prende forma. Il vostro unico compito sarà vivere la magia di un momento unico e indimenticabile. Al resto penserò io, con una presenza discreta, ma incisiva, affinché tutto sia come lo avete immaginato, e anche oltre.",
-    icon: "/media/icons/metodo-04-arco.png"
-  }
+const stepIcons = [
+  "/media/icons/metodo-01-ascolto.png",
+  "/media/icons/metodo-02-compasso.png",
+  "/media/icons/metodo-03-pianificazione.png",
+  "/media/icons/metodo-04-arco.png"
 ];
 
 export default function MethodSection() {
+  const { t } = useLanguage();
   return (
     <section id="metodo" className="py-28 md:py-40 bg-[#35261C] text-[#FDFBF7] relative overflow-hidden">
       
@@ -64,18 +42,18 @@ export default function MethodSection() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-5xl mx-auto mb-20 md:mb-28"
         >
-          <span className="label-caps mb-4 block text-[#D4AF37] tracking-[0.35em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Il Mio Metodo Progettuale</span>
+          <span className="label-caps mb-4 block text-[#D4AF37] tracking-[0.35em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{t.method.badge}</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] xl:text-[3.4rem] font-serif leading-[1.2] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
-            <span className="block md:whitespace-nowrap">Come do forma al vostro matrimonio:</span>
+            <span className="block md:whitespace-nowrap">{t.method.titleLine1}</span>
             <span className="italic font-light text-[#E5D2B5] block md:whitespace-nowrap">
-              il progetto prima della bellezza.
+              {t.method.titleLine2}
             </span>
           </h2>
         </motion.div>
 
         {/* 4 Architectural Method Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch">
-          {steps.map((step, idx) => (
+          {t.method.steps.map((step, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 40 }}
@@ -94,7 +72,7 @@ export default function MethodSection() {
                     {step.num}
                   </span>
                   <span className="text-[10px] tracking-[0.25em] uppercase text-[#E5D2B5]/50 font-sans">
-                    Fase {step.num}
+                    {t.method.stepLabel} {step.num}
                   </span>
                 </div>
 
@@ -102,7 +80,7 @@ export default function MethodSection() {
                 <div className="relative h-24 my-6 flex items-center justify-center">
                   <div className="absolute w-20 h-20 rounded-full bg-[#B89768]/[0.08] blur-md group-hover:bg-[#B89768]/[0.18] transition-colors duration-500 pointer-events-none" />
                   <Image
-                    src={step.icon}
+                    src={stepIcons[idx] || "/media/icons/metodo-01-ascolto.png"}
                     alt={`${step.line1} ${step.line2}`}
                     width={90}
                     height={90}

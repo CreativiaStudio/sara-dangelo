@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function DoubleFunnelSection() {
+  const { t } = useLanguage();
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
@@ -81,10 +83,10 @@ export default function DoubleFunnelSection() {
             className="text-center mb-16 md:mb-20"
           >
             <span className="font-sans text-xs tracking-[0.35em] uppercase text-[#B89768] mb-4 block">
-              Consulenza Conoscitiva (30 Minuti)
+              {t.funnel.badge}
             </span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-[#FDFBF7]">
-              Iniziamo a <span className="italic font-light text-[#B89768]">progettare insieme.</span>
+              {t.funnel.titleLine1} <span className="italic font-light text-[#B89768]">{t.funnel.titleLine2}</span>
             </h2>
           </motion.div>
 
@@ -100,17 +102,17 @@ export default function DoubleFunnelSection() {
             >
               <div className="w-full mx-auto">
                 <div className="text-center mb-10">
-                  <span className="label-caps mb-3 block mx-auto text-[#B89768]">Un Percorso Esclusivo</span>
+                  <span className="label-caps mb-3 block mx-auto text-[#B89768]">{t.funnel.cardBadge}</span>
                   <h3 className="text-2xl md:text-4xl font-serif text-[#4A3B32] mb-4">
-                    Richiedi la tua Call conoscitiva
+                    {t.funnel.cardTitle}
                   </h3>
                   <div className="editorial-line mx-auto mb-6" />
                   
                   {/* Soft & Warm Selection Note */}
                   <div className="bg-[#F5EFE6] border border-[#B89768]/30 p-5 md:p-7 mb-8 text-left rounded-sm">
                     <p className="text-xs md:text-sm font-sans font-light leading-relaxed text-[#4A3B32]/90 italic">
-                      <strong className="font-semibold text-[#4A3B32] not-italic block mb-1">Nota di Cura & Esclusività:</strong>
-                      Per garantire a ciascuna coppia una presenza totale, uno studio sartoriale e la massima cura dei dettagli, accetto solo un numero limitato di matrimoni ogni anno. Leggerò con attenzione le vostre informazioni per verificare l&apos;armonia del progetto e vi ricontatterò personalmente per fissare la nostra chiamata.
+                      <strong className="font-semibold text-[#4A3B32] not-italic block mb-1">{t.funnel.exclusivityNoteTitle}</strong>
+                      {t.funnel.exclusivityNote}
                     </p>
                   </div>
                 </div>
@@ -122,17 +124,17 @@ export default function DoubleFunnelSection() {
                     className="bg-[#F5EFE6] text-[#4A3B32] p-8 text-center border border-[#B89768]/40 max-w-xl mx-auto my-6"
                   >
                     <p className="font-serif italic text-2xl text-[#B89768] mb-3">
-                      Grazie, {contactName}!
+                      {t.funnel.success.titlePrefix} {contactName}!
                     </p>
                     <p className="font-sans text-sm font-light text-[#4A3B32]/80 leading-relaxed">
-                      Ho ricevuto la vostra richiesta. Leggerò con cura i vostri dettagli e vi ricontatterò al più presto per il nostro appuntamento conoscitivo.
+                      {t.funnel.success.message}
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleContactSubmit} className="flex flex-col gap-6">
                     <input
                       type="text"
-                      placeholder="Nomi degli Sposi *"
+                      placeholder={t.funnel.form.namePlaceholder}
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       required
@@ -142,7 +144,7 @@ export default function DoubleFunnelSection() {
                     <div className="flex flex-col sm:flex-row gap-6">
                       <input
                         type="email"
-                        placeholder="Email *"
+                        placeholder={t.funnel.form.emailPlaceholder}
                         value={contactEmail}
                         onChange={(e) => setContactEmail(e.target.value)}
                         required
@@ -150,7 +152,7 @@ export default function DoubleFunnelSection() {
                       />
                       <input
                         type="tel"
-                        placeholder="Telefono / WhatsApp *"
+                        placeholder={t.funnel.form.phonePlaceholder}
                         value={contactPhone}
                         onChange={(e) => setContactPhone(e.target.value)}
                         required
@@ -161,14 +163,14 @@ export default function DoubleFunnelSection() {
                     <div className="flex flex-col sm:flex-row gap-6">
                       <input
                         type="text"
-                        placeholder="Data dell'evento (es. Giugno 2027)"
+                        placeholder={t.funnel.form.datePlaceholder}
                         value={contactDate}
                         onChange={(e) => setContactDate(e.target.value)}
                         className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
                       />
                       <input
                         type="text"
-                        placeholder="N° Invitati indicativo (es. 100-120)"
+                        placeholder={t.funnel.form.guestsPlaceholder}
                         value={contactGuests}
                         onChange={(e) => setContactGuests(e.target.value)}
                         className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
@@ -178,14 +180,14 @@ export default function DoubleFunnelSection() {
                     <div className="flex flex-col sm:flex-row gap-6">
                       <input
                         type="text"
-                        placeholder="Location o zona desiderata (es. Capri, Ravello...)"
+                        placeholder={t.funnel.form.locationPlaceholder}
                         value={contactLocation}
                         onChange={(e) => setContactLocation(e.target.value)}
                         className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
                       />
                       <input
                         type="text"
-                        placeholder="Budget indicativo di riferimento"
+                        placeholder={t.funnel.form.budgetPlaceholder}
                         value={contactBudget}
                         onChange={(e) => setContactBudget(e.target.value)}
                         className="w-full sm:w-1/2 bg-transparent border-b border-[#4A3B32]/30 py-3 text-[#4A3B32] font-sans text-sm focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/50"
@@ -193,7 +195,7 @@ export default function DoubleFunnelSection() {
                     </div>
 
                     <textarea
-                      placeholder="Raccontatemi la vostra idea o la vostra visione del matrimonio..."
+                      placeholder={t.funnel.form.messagePlaceholder}
                       value={contactMessage}
                       onChange={(e) => setContactMessage(e.target.value)}
                       rows={3}
@@ -211,7 +213,7 @@ export default function DoubleFunnelSection() {
                         className="mt-1 h-4 w-4 rounded border-[#4A3B32]/30 text-[#B89768] focus:ring-[#B89768] accent-[#B89768] cursor-pointer"
                       />
                       <label htmlFor="privacy" className="text-xs font-sans font-light text-[#4A3B32]/80 leading-relaxed cursor-pointer select-none">
-                        Ho letto e accetto l&apos;informativa sulla <span className="underline font-normal text-[#4A3B32]">Privacy Policy</span> per il trattamento dei dati personali. *
+                        {t.funnel.form.privacyPrefix} <span className="underline font-normal text-[#4A3B32]">{t.funnel.form.privacyLink}</span> {t.funnel.form.privacySuffix}
                       </label>
                     </div>
 
@@ -221,13 +223,13 @@ export default function DoubleFunnelSection() {
                       className="mt-4 w-full bg-[#B89768] text-[#FDFBF7] font-sans uppercase tracking-[0.25em] text-xs font-semibold py-5 hover:bg-[#4A3B32] hover:text-[#FDFBF7] disabled:opacity-50 transition-all duration-500 shadow-md"
                     >
                       {contactStatus === "loading"
-                        ? "Invio in corso..."
-                        : "Invia Richiesta per la Consulenza Conoscitiva"}
+                        ? t.funnel.form.submittingButton
+                        : t.funnel.form.submitButton}
                     </button>
 
                     {contactStatus === "error" && (
                       <p className="text-red-700 text-xs mt-2 text-center" role="alert">
-                        Si è verificato un errore. Assicurati di aver accettato la Privacy Policy e inserito email e nome validi.
+                        {t.funnel.form.errorGeneral}
                       </p>
                     )}
                   </form>
@@ -241,10 +243,10 @@ export default function DoubleFunnelSection() {
         <div className="relative z-10 border-t border-[#B89768]/15 py-10">
           <div className="max-w-[90rem] mx-auto px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-serif text-lg text-[#FDFBF7]/80 tracking-wide">
-              Sara D&apos;Angelo
+              {t.footer.brand}
             </p>
             <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#FDFBF7]/50">
-              Wedding Architect — Napoli, Costiera, Capri & Italia
+              {t.footer.tagline}
             </p>
           </div>
         </div>

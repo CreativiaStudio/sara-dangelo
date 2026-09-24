@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Star, ExternalLink, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface GoogleReview {
   id: string;
@@ -120,7 +121,21 @@ export default function ReviewsSection() {
     setCurrent((prev) => (prev - 1 + googleReviews.length) % googleReviews.length);
   };
 
-  const active = googleReviews[current];
+  const { t } = useLanguage();
+
+  const translatedReviews = googleReviews.map((rev) => {
+    const tr = t.reviews.list.find((item) => item.id === rev.id);
+    if (!tr) return rev;
+    return {
+      ...rev,
+      role: tr.role || rev.role,
+      leadQuote: tr.leadQuote || rev.leadQuote,
+      fullQuote: tr.fullQuote || rev.fullQuote,
+      weddingLocation: tr.weddingLocation || rev.weddingLocation,
+    };
+  });
+
+  const active = translatedReviews[current];
 
   return (
     <section
@@ -139,11 +154,11 @@ export default function ReviewsSection() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B89768]/10 text-[#B89768] text-xs font-sans tracking-[0.2em] uppercase font-semibold mb-4">
               <GoogleColorIcon className="w-3.5 h-3.5" />
-              <span>Dicono di me</span>
+              <span>{t.reviews.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#4A3B32] font-normal tracking-tight">
-              Esperienze autentiche, <br className="hidden md:block" />
-              <span className="italic text-[#B89768]">verificate su Google.</span>
+              {t.reviews.titleLine1} <br className="hidden md:block" />
+              <span className="italic text-[#B89768]">{t.reviews.titleLine2}</span>
             </h2>
           </div>
 
@@ -323,7 +338,7 @@ export default function ReviewsSection() {
 
         {/* Interactive Review Switcher Strip (All 4 Google Reviews) */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {googleReviews.map((rev, idx) => {
+          {translatedReviews.map((rev, idx) => {
             const isSelected = idx === current;
             return (
               <button

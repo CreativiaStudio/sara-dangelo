@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -62,10 +63,12 @@ export default function RootLayout({
       className={`${playfair.variable} ${cormorant.variable} ${lato.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[#FDFBF7] text-[#4A3B32]">
-        <CustomCursor />
-        <Navbar />
-        {children}
-        <CookieConsentBanner />
+        <LanguageProvider>
+          <CustomCursor />
+          <Navbar />
+          {children}
+          <CookieConsentBanner />
+        </LanguageProvider>
       </body>
     </html>
   );

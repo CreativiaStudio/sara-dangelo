@@ -1,0 +1,223 @@
+{
+  "nav": {
+    "home": "Home",
+    "method": "The Method",
+    "portfolio": "Portfolio",
+    "reviews": "Testimonials",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "langLabel": "Language",
+    "currentLang": "EN"
+  },
+  "hero": {
+    "titleLine1": "I do not plan Weddings,",
+    "titleLine2": "I design them, bringing life",
+    "titleLine3": "to your dreams.",
+    "subtitle": "Fifteen years of experience and more than 150 exclusive celebrations.\nMy method brings together the harmony of space, invisible direction and tailored precision, so that you live an experience that is flawless from the first moment to the last.",
+    "cta": "Book your Private Discovery Consultation (30 min)"
+  },
+  "about": {
+    "badge": "My Philosophy",
+    "titleLine1": "Your wedding,",
+    "titleLine2": "signed by a Wedding Architect.",
+    "p1": "I believe an unforgettable wedding is never the mere sum of flowers, furnishings and décor. It is born of a design that brings space, aesthetics, function and atmosphere into a single, coherent relationship.",
+    "p2": "As a Wedding Architect, I bring my architect's method to your wedding: I study the spaces, the pathways, the proportions, the sightlines, and the way the design engages with the identity of the venue, enhancing it without ever distorting it. No choice is made in isolation; each one belongs to a single, unified experience.",
+    "calloutTitle": "What does this mean for you?",
+    "calloutText": "A complete vision of your celebration before the design even takes shape. From there, attentive direction guides every phase, aligning timing, spaces and specialists so that everything comes to life with the same harmony in which it was conceived.",
+    "role": "Wedding Architect",
+    "expYears": "15 Years",
+    "expLabel": "of Experience",
+    "expEvents": "more than 150 exclusive celebrations"
+  },
+  "method": {
+    "badge": "My Design Method",
+    "titleLine1": "How I give shape to your wedding:",
+    "titleLine2": "the design comes before the beauty.",
+    "stepLabel": "Phase",
+    "steps": [
+      {
+        "num": "01",
+        "line1": "Discovery",
+        "line2": "Consultation",
+        "desc": "We meet for thirty minutes to get to know one another, to listen to your vision of the day and to understand your wishes. I will walk you through my working method and the steps that follow, through which the design will unfold."
+      },
+      {
+        "num": "02",
+        "line1": "Spatial",
+        "line2": "Design",
+        "desc": "I draw the concept, the floor plans, the floral scenography and the lighting, every element made to measure, informed by interior design and shaped around the identity of the venue. Each space is studied to create harmony and to move you."
+      },
+      {
+        "num": "03",
+        "line1": "Planning and",
+        "line2": "Direction",
+        "desc": "I define the timeline and oversee every aspect of coordination, logistics and direction, managing suppliers and the flow of the day with exacting precision."
+      },
+      {
+        "num": "04",
+        "line1": "The Magic of",
+        "line2": "the Day",
+        "desc": "On your wedding day, everything takes form. Your only task is to live the magic of a moment that is singular and unrepeatable. I will take care of the rest, with a presence that is discreet yet decisive, so that everything is exactly as you imagined it, and then some."
+      }
+    ]
+  },
+  "portfolio": {
+    "badge": "Wedding Portfolio",
+    "titleLine1": "Spaces transformed into",
+    "titleLine2": "emotion.",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "albums": {
+      "bellevue": {
+        "title": "Hotel Bellevue Syrene",
+        "subtitle": "A Residence Above the Sea — Sorrento"
+      },
+      "capri": {
+        "title": "Capri",
+        "subtitle": "Villa & Panorama on the Island of Capri"
+      },
+      "lancellotti": {
+        "title": "Castello Lancellotti",
+        "subtitle": "A Historic Estate — Lauro"
+      },
+      "margherita": {
+        "title": "Salone Margherita",
+        "subtitle": "Scenography & Design — Naples"
+      },
+      "campolieto": {
+        "title": "Villa Campolieto",
+        "subtitle": "A Vesuvian Residence — Herculaneum"
+      },
+      "eliana": {
+        "title": "Villa Eliana",
+        "subtitle": "Elegance & Panorama — Sorrento"
+      }
+    }
+  },
+  "reviews": {
+    "badge": "Testimonials",
+    "titleLine1": "The emotion they lived,",
+    "titleLine2": "in their own words.",
+    "verifiedGoogle": "Verified Google Review",
+    "verifiedRecent": "Recent Review",
+    "verifiedReview": "Verified Review",
+    "localGuideTag": "Local Guide · 14 reviews",
+    "bride": "Bride",
+    "groom": "Groom",
+    "localGuide": "Google Local Guide",
+    "readMore": "Read the full review",
+    "readLess": "Show less",
+    "googleRatingText": "5.0 on Google Reviews · Certified Excellence",
+    "list": [
+      {
+        "id": "cristiana",
+        "author": "Cristiana Longobardi",
+        "role": "Bride",
+        "leadQuote": "“There are no words to thank Sara enough. For us, she was truly a guardian angel.”",
+        "fullQuote": "To say she is an exceptional professional would be an understatement. She took our dreams by the hand and turned them into reality with such gentleness, patience and passion that we felt special at every single moment. She knew how to listen to us even at the most stressful times, giving us an incredible sense of calm and caring for every last detail as if she were planning the wedding of someone in her own family. Our wedding day was pure fairytale: everything was perfect, magical, beyond anything we had hoped for. More than a wedding planner, she became a treasured friend.",
+        "weddingLocation": "Villa Doria d'Angri"
+      },
+      {
+        "id": "umberto",
+        "author": "Umberto Del Piano",
+        "role": "Groom",
+        "leadQuote": "“Choosing her was one of the best decisions of our entire wedding.”",
+        "fullQuote": "From the very first moment she put us completely at ease, listening to us, guiding us and sharing every aspect of the wedding with us. An extraordinary professional, always ready with the right advice and able to turn our ideas, and her own, into a truly wonderful event. But what makes her genuinely special is her ability to connect with the couple, with empathy, generosity and passion.",
+        "weddingLocation": "Tenuta di Punta Licosa"
+      },
+      {
+        "id": "cristina",
+        "author": "Cristina Porcella",
+        "role": "Google Local Guide",
+        "leadQuote": "“Simply wonderful: she pours all her love and professionalism into every event she creates.”",
+        "fullQuote": "She pours all her love, her dedication and her genuine architectural expertise into every event she creates. I recommend her wholeheartedly to anyone who wants a flawless wedding, delivered with absolute rigour and real human warmth.",
+        "weddingLocation": "Naples & the Amalfi Coast"
+      }
+    ]
+  },
+  "faq": {
+    "badge": "Frequently Asked Questions",
+    "titleLine1": "Everything you wish to know",
+    "titleLine2": "before we begin.",
+    "items": [
+      {
+        "number": "01",
+        "question": "Does planning a wedding with a wedding planner cost more than doing everything ourselves?",
+        "lead": "It depends on what you wish to achieve.",
+        "paragraphs": [
+          "A professional wedding planner sees a wedding through a different lens. Rather than treating each element separately, she builds an overall design in which flowers, lighting, furnishings, table settings, stationery and every other detail must speak to one another and remain perfectly coherent.",
+          "This inevitably leads to a higher degree of personalisation. Often, one does not simply settle for what the venue already provides, but intervenes to transform the spaces, to enhance them and to make them truly expressive of the couple. Naturally, the more personalised and detailed a design becomes, the more its economic value may rise.",
+          "But this does not mean that having a wedding planner necessarily means spending more.",
+          "On the contrary, one of the most important parts of my work is precisely to manage and allocate the budget wisely: to understand where it is worth investing, where costs can be contained, which elements genuinely shape the final result and which, by contrast, risk absorbing money without adding anything of value to the design.",
+          "With the same budget, a wedding designed and guided by a professional makes far better use of the resources available, while also avoiding misguided choices, needless expenses or elements that may be beautiful on their own yet simply do not work together."
+        ],
+        "quote": "I do not like to say that with a wedding planner you spend more. I prefer to say that you design more and, above all, you spend better."
+      },
+      {
+        "number": "02",
+        "question": "Must the suppliers necessarily be the ones you choose, or may we propose our own?",
+        "lead": "Not necessarily, but the choice of suppliers is a fundamental part of the design.",
+        "paragraphs": [
+          "I always compare the planning of an important wedding to a major architectural project: even the finest design, if it is to be realised exactly as conceived, requires a contractor and craftspeople who are equal to the task.",
+          "The same is true of a wedding. A design of this calibre calls for suppliers with experience, reliability and, above all, a proven ease with complex events of a certain standard. This is why I prefer to rely on professionals I know, whom I have selected over time, and whose working methods and quality standards I understand completely.",
+          "This in no way means excluding suppliers proposed by the couple. We can certainly consider them together. It is important, however, that they are professionals who specialise in large-scale events and can guarantee the level required to realise the design as it deserves."
+        ],
+        "quote": "In the end, my role is not simply to choose suppliers, but to build a team capable of turning the design into reality."
+      },
+      {
+        "number": "03",
+        "question": "Do you also design weddings outside Campania, or abroad?",
+        "lead": "Certainly. We work throughout Italy, including the islands, and we are also available for weddings abroad.",
+        "paragraphs": [
+          "A significant part of our work is devoted to destination weddings, above all for couples who choose to marry in Italy and, in particular, in the South: the Amalfi Coast, the Sorrento Peninsula, Capri, Ischia and other Italian destinations.",
+          "In the same way, we can accompany couples who wish to hold their wedding outside Italy. In these cases we develop the design together with the couple, considering the venue, the logistics, the suppliers and every aspect required to preserve the same level of care and personalisation, whatever the destination."
+        ],
+        "quote": "Our work is not tied to a single place. We always begin with the design and with the couple, and we build the wedding around them, wherever they have chosen to celebrate it."
+      },
+      {
+        "number": "04",
+        "question": "Does the amount allocated to the décor and installations also include the wedding planner's professional fee?",
+        "lead": "Absolutely not. The professional fee and the budget for the décor and installations are two entirely separate items.",
+        "paragraphs": [
+          "I like to draw a parallel with the world of architecture: when a project is built, on one side there is the architect's fee, which covers the design, the consultancy and the coordination of the work; on the other, there are the costs of the contractor and of everything materially needed to bring it into being. A wedding works in exactly the same way.",
+          "The fee of the Wedding Planner, or in my case the Wedding Architect, covers the professional work: the design of the event, the consultancy, the sourcing and coordination of suppliers, and the supervision and management of the entire wedding.",
+          "Separately, we then define the budget required to physically realise the design: flowers, lighting, furnishings, structures, decorative elements, stationery and everything else chosen for the installation. This second amount cannot be the same for everyone, because every wedding is born of a different design, built around the needs, the wishes and the budget of each individual couple."
+        ],
+        "quote": "My fee compensates the design and the professional work; the budget for the installations is what turns that design into reality."
+      }
+    ]
+  },
+  "funnel": {
+    "badge": "Private Discovery Consultation (30 Minutes)",
+    "titleLine1": "Let us begin",
+    "titleLine2": "designing together.",
+    "cardBadge": "An Exclusive Journey",
+    "cardTitle": "Request your Discovery Call",
+    "exclusivityNoteTitle": "A Note on Care & Exclusivity:",
+    "exclusivityNote": "To offer each couple my complete presence, a truly bespoke design and the utmost attention to every detail, I accept only a limited number of weddings each year. I will read your details with care to ensure the design is in harmony with my approach, and I will contact you personally to arrange our call.",
+    "form": {
+      "namePlaceholder": "Names of the Couple *",
+      "emailPlaceholder": "Email *",
+      "phonePlaceholder": "Phone / WhatsApp *",
+      "datePlaceholder": "Wedding date (e.g. June 2027)",
+      "guestsPlaceholder": "Approximate number of guests (e.g. 100-120)",
+      "locationPlaceholder": "Desired venue or area (e.g. Capri, Ravello...)",
+      "budgetPlaceholder": "Indicative budget range",
+      "messagePlaceholder": "Tell me about your idea, or your vision of the wedding...",
+      "privacyPrefix": "I have read and accept the",
+      "privacyLink": "Privacy Policy",
+      "privacySuffix": "regarding the processing of my personal data. *",
+      "submitButton": "Request your Discovery Consultation",
+      "submittingButton": "Sending...",
+      "errorGeneral": "Something went wrong. Please make sure you have accepted the Privacy Policy and entered a valid name and email address."
+    },
+    "success": {
+      "titlePrefix": "Thank you,",
+      "message": "I have received your request. I will read your details with care and will be in touch very soon to arrange our discovery call."
+    }
+  },
+  "footer": {
+    "brand": "Sara D'Angelo",
+    "tagline": "Wedding Architect — Naples, Amalfi Coast, Capri & Italy"
+  }
+}

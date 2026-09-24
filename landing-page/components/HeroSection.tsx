@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const titleContainer = {
   hidden: { opacity: 0 },
@@ -24,6 +25,7 @@ const titleItem = {
 };
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -70,7 +72,7 @@ export default function HeroSection() {
           >
             <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
               <motion.span variants={titleItem} className="block whitespace-nowrap pb-[0.15em]">
-                Non organizzo Matrimoni,
+                {t.hero.titleLine1}
               </motion.span>
             </div>
             <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
@@ -78,7 +80,7 @@ export default function HeroSection() {
                 variants={titleItem}
                 className="block italic font-light text-[#E5D2B5] pb-[0.15em] text-center whitespace-nowrap drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
               >
-                li progetto dando vita
+                {t.hero.titleLine2}
               </motion.span>
             </div>
             <div className="overflow-hidden pb-[0.15em] -mb-[0.15em]">
@@ -86,7 +88,7 @@ export default function HeroSection() {
                 variants={titleItem}
                 className="block italic font-light text-[#E5D2B5] pb-[0.15em] text-center whitespace-nowrap drop-shadow-[0_4px_24px_rgba(184,151,104,0.5)]"
               >
-                ai vostri sogni.
+                {t.hero.titleLine3}
               </motion.span>
             </div>
           </motion.h1>
@@ -96,11 +98,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(0.95rem,1.15vw,1.25rem)] text-[#FDFBF7] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-7 md:mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
+            className="text-[clamp(0.95rem,1.15vw,1.25rem)] text-[#FDFBF7] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-7 md:mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] whitespace-pre-line"
           >
-            15 anni di esperienza con oltre 150 eventi esclusivi.<br className="hidden md:block" />
-            Il mio metodo unisce armonia degli spazi, regia invisibile e<br className="hidden md:block" />
-            precisione sartoriale per farvi vivere un'esperienza impeccabile.
+            {t.hero.subtitle}
           </motion.p>
 
           {/* Primary CTA Button — Solid Gold with Animated Shimmer Light Sweep */}
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent w-full h-full pointer-events-none"
               />
-              <span className="relative z-10">Prenota la Consulenza Conoscitiva (30 min)</span>
+              <span className="relative z-10">{t.hero.cta}</span>
               <svg className="relative z-10 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
