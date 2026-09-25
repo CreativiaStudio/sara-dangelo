@@ -139,7 +139,9 @@ export default function CustomCursor() {
     ? onDark
       ? "rgba(255, 255, 255, 0.18)"
       : "rgba(140, 109, 70, 0.18)"
-    : "rgba(0, 0, 0, 0)";
+    : onDark
+      ? "rgba(255, 255, 255, 0)"
+      : "rgba(140, 109, 70, 0)";
 
   return (
     <>
