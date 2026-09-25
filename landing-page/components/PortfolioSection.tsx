@@ -195,7 +195,7 @@ export default function PortfolioSection() {
                     )}
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                       <span className="font-sans uppercase text-[11px] tracking-[0.2em] text-[#FDFBF7] bg-[#1A140E]/85 px-4 py-2 border border-[#B89768]/40 shadow-xl">
-                        {img.isVideo ? `Guarda Video #${i + 1}` : `Ingrandisci #${i + 1}`}
+                        {img.isVideo ? `${t.portfolio.watchVideo || "Guarda Video"} #${i + 1}` : `${t.portfolio.enlarge || "Ingrandisci"} #${i + 1}`}
                       </span>
                     </div>
                   </motion.div>
@@ -211,7 +211,7 @@ export default function PortfolioSection() {
             href="#contact"
             className="inline-flex items-center gap-4 border border-[#B89768] text-[#FDFBF7] px-8 py-4 font-sans uppercase tracking-[0.2em] text-xs hover:bg-[#B89768] hover:text-[#1A140E] transition-all duration-500"
           >
-            Richiedi Progetto Personalizzato
+            {t.portfolio.ctaRequest || "Richiedi Progetto Personalizzato"}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
@@ -233,7 +233,7 @@ export default function PortfolioSection() {
             <button
               onClick={closeLightbox}
               className="absolute top-6 right-6 text-white text-3xl font-light hover:text-[#B89768] transition-colors z-50 p-2"
-              aria-label="Chiudi"
+              aria-label={t.portfolio.close || "Chiudi"}
             >
               ✕
             </button>

@@ -92,7 +92,11 @@
         "title": "Villa Eliana",
         "subtitle": "Elegance & Panorama — Sorrento"
       }
-    }
+    },
+    "ctaRequest": "Request a Bespoke Project",
+    "watchVideo": "Watch Video",
+    "enlarge": "Enlarge",
+    "close": "Close"
   },
   "reviews": {
     "badge": "Testimonials",
@@ -115,7 +119,9 @@
         "role": "Bride",
         "leadQuote": "“There are no words to thank Sara enough. For us, she was truly a guardian angel.”",
         "fullQuote": "To say she is an exceptional professional would be an understatement. She took our dreams by the hand and turned them into reality with such gentleness, patience and passion that we felt special at every single moment. She knew how to listen to us even at the most stressful times, giving us an incredible sense of calm and caring for every last detail as if she were planning the wedding of someone in her own family. Our wedding day was pure fairytale: everything was perfect, magical, beyond anything we had hoped for. More than a wedding planner, she became a treasured friend.",
-        "weddingLocation": "Villa Doria d'Angri"
+        "weddingLocation": "Villa Doria d'Angri",
+        "googleTag": "Verified Google Review",
+        "date": "Recent review"
       },
       {
         "id": "umberto",
@@ -123,7 +129,9 @@
         "role": "Groom",
         "leadQuote": "“Choosing her was one of the best decisions of our entire wedding.”",
         "fullQuote": "From the very first moment she put us completely at ease, listening to us, guiding us and sharing every aspect of the wedding with us. An extraordinary professional, always ready with the right advice and able to turn our ideas, and her own, into a truly wonderful event. But what makes her genuinely special is her ability to connect with the couple, with empathy, generosity and passion.",
-        "weddingLocation": "Tenuta di Punta Licosa"
+        "weddingLocation": "Tenuta di Punta Licosa",
+        "googleTag": "Verified Google Review",
+        "date": "Recent review"
       },
       {
         "id": "cristina",
@@ -131,9 +139,30 @@
         "role": "Google Local Guide",
         "leadQuote": "“Simply wonderful: she pours all her love and professionalism into every event she creates.”",
         "fullQuote": "She pours all her love, her dedication and her genuine architectural expertise into every event she creates. I recommend her wholeheartedly to anyone who wants a flawless wedding, delivered with absolute rigour and real human warmth.",
-        "weddingLocation": "Naples & the Amalfi Coast"
+        "weddingLocation": "Naples & the Amalfi Coast",
+        "googleTag": "Local Guide · 14 reviews",
+        "date": "Verified review"
+      },
+      {
+        "id": "alessandra",
+        "author": "Alessandra Sodano",
+        "role": "Bride",
+        "googleTag": "1 review · 1 photo",
+        "date": "New",
+        "leadQuote": "“Trusting Sara D’Angelo was the best decision we could have made for our wedding.”",
+        "fullQuote": "Trusting Sara D’Angelo was the best decision we could have made for our wedding 💗 Thank you from the bottom of our hearts for making our most beautiful day even more perfect than we had ever dreamed it would be! 💗",
+        "weddingLocation": "Conca del Mare"
       }
-    ]
+    ],
+    "readOnGoogle": "Read on Google My Business",
+    "officialGoogleCard": "Official Google Profile",
+    "verifyProfile": "Verify profile",
+    "eventLocation": "Event Location",
+    "bespokeProject": "Bespoke Project",
+    "prevReview": "Previous review",
+    "nextReview": "Next review",
+    "disclaimerPrefix": "All reviews are authentic and publicly available on",
+    "disclaimerLink": "Google Maps & Google My Business"
   },
   "faq": {
     "badge": "Frequently Asked Questions",
@@ -219,5 +248,30 @@
   "footer": {
     "brand": "Sara D'Angelo",
     "tagline": "Wedding Architect — Naples, Amalfi Coast, Capri & Italy"
+  },
+  "cookieConsent": {
+    "badge": "Privacy & Cookies",
+    "title": "Your privacy, cared for in every detail",
+    "description": "We use technical cookies essential to the operation of the site and, with your consent, analytics and profiling cookies, so as to offer you a tailored experience. You may accept all cookies, continue with essential cookies only, or customise your preferences.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Essential Only / Reject",
+    "customize": "Customise",
+    "hidePreferences": "Hide preferences",
+    "savePreferences": "Save preferences",
+    "ariaClose": "Close and accept essential cookies only",
+    "ariaPreferences": "Cookie preferences",
+    "ariaReopen": "Reopen cookie preferences",
+    "necessary": {
+      "title": "Technical / Essential Cookies",
+      "desc": "Essential to the operation and security of the site. Always active."
+    },
+    "analytics": {
+      "title": "Analytics Cookies",
+      "desc": "They help us understand how the site is used and how to improve its content."
+    },
+    "marketing": {
+      "title": "Marketing / Profiling Cookies",
+      "desc": "Used to show you content and advertisements in line with your interests."
+    }
   }
 }

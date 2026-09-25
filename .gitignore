@@ -15,3 +15,6 @@ next-env.d.ts
 /Visual
 transcript.txt
 Riferimento di stile*
+
+.agents/
+landing-page/.agents/

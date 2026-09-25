@@ -129,6 +129,8 @@ export default function ReviewsSection() {
     return {
       ...rev,
       role: tr.role || rev.role,
+      googleTag: ('googleTag' in tr ? (tr as unknown as { googleTag?: string }).googleTag : undefined) || rev.googleTag,
+      date: ('date' in tr ? (tr as unknown as { date?: string }).date : undefined) || rev.date,
       leadQuote: tr.leadQuote || rev.leadQuote,
       fullQuote: tr.fullQuote || rev.fullQuote,
       weddingLocation: tr.weddingLocation || rev.weddingLocation,
@@ -184,10 +186,10 @@ export default function ReviewsSection() {
                 </div>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-[#4A3B32]/70 font-sans mt-1">
-                <span>Scheda Ufficiale Google</span>
+                <span>{t.reviews.officialGoogleCard || "Scheda Ufficiale Google"}</span>
                 <span className="inline-block w-1 h-1 rounded-full bg-[#B89768]" />
                 <span className="text-[#B89768] font-medium group-hover:underline flex items-center gap-0.5">
-                  Verifica profilo <ExternalLink className="w-3 h-3" />
+                  {t.reviews.verifyProfile || "Verifica profilo"} <ExternalLink className="w-3 h-3" />
                 </span>
               </div>
             </div>
@@ -222,14 +224,14 @@ export default function ReviewsSection() {
                 <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-[#FDFBF7]">
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.25em] text-[#B89768] font-semibold block">
-                      Location Evento
+                      {t.reviews.eventLocation || "Location Evento"}
                     </span>
                     <span className="font-serif italic text-lg text-[#FDFBF7]">
                       {active.weddingLocation}
                     </span>
                   </div>
                   <span className="text-xs px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 font-sans tracking-wider uppercase text-[10px]">
-                    Progetto Sartoriale
+                    {t.reviews.bespokeProject || "Progetto Sartoriale"}
                   </span>
                 </div>
               </motion.div>
@@ -308,7 +310,7 @@ export default function ReviewsSection() {
                   className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] font-sans font-semibold text-[#B89768] hover:text-[#4A3B32] transition-colors"
                 >
                   <GoogleColorIcon className="w-4 h-4" />
-                  <span>Leggi su Google My Business</span>
+                  <span>{t.reviews.readOnGoogle || "Leggi su Google My Business"}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
 
@@ -316,14 +318,14 @@ export default function ReviewsSection() {
                 <div className="flex items-center gap-2 self-end sm:self-auto">
                   <button
                     onClick={prevReview}
-                    aria-label="Recensione precedente"
+                    aria-label={t.reviews.prevReview || "Recensione precedente"}
                     className="w-10 h-10 rounded-full border border-[#4A3B32]/20 flex items-center justify-center text-[#4A3B32] hover:bg-[#B89768] hover:text-[#1A140E] hover:border-[#B89768] transition-all duration-300"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     onClick={nextReview}
-                    aria-label="Prossima recensione"
+                    aria-label={t.reviews.nextReview || "Prossima recensione"}
                     className="w-10 h-10 rounded-full border border-[#4A3B32]/20 flex items-center justify-center text-[#4A3B32] hover:bg-[#B89768] hover:text-[#1A140E] hover:border-[#B89768] transition-all duration-300"
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -379,14 +381,14 @@ export default function ReviewsSection() {
         {/* Bottom Call to Action for Google Profile */}
         <div className="mt-12 text-center">
           <p className="text-xs md:text-sm text-[#4A3B32]/70 font-sans">
-            Tutte le recensioni sono autentiche e consultabili pubblicamente su{" "}
+            {t.reviews.disclaimerPrefix || "Tutte le recensioni sono autentiche e consultabili pubblicamente su"}{" "}
             <a
               href={GOOGLE_MAPS_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#B89768] font-medium underline underline-offset-4 hover:text-[#1A140E] transition-colors"
             >
-              Google Maps & Google My Business
+              {t.reviews.disclaimerLink || "Google Maps & Google My Business"}
             </a>
             .
           </p>

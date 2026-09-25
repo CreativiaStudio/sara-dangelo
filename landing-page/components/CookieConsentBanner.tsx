@@ -2,6 +2,7 @@
 
 import { useCallback, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const CONSENT_STORAGE_KEY = "sda_cookie_consent";
 const ANONYMOUS_ID_STORAGE_KEY = "sda_anonymous_id";
@@ -228,6 +229,7 @@ function ShieldIcon() {
 }
 
 export default function CookieConsentBanner() {
+  const { t } = useLanguage();
   const shouldReduceMotion = useReducedMotion() ?? false;
   const isClient = useSyncExternalStore(subscribeToNothing, getClientSnapshot, getServerSnapshot);
   const storedConsent = useSyncExternalStore(
@@ -326,7 +328,7 @@ export default function CookieConsentBanner() {
             key="sda-cookie-banner"
             role="dialog"
             aria-modal="false"
-            aria-label="Preferenze cookie"
+            aria-label={t.cookieConsent?.ariaPreferences || "Preferenze cookie"}
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: shouldReduceMotion ? 0 : 40 }}
@@ -340,16 +342,16 @@ export default function CookieConsentBanner() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
                     <span className="block text-[0.7rem] uppercase tracking-[0.28em] text-[#B89768]">
-                      Privacy &amp; Cookie
+                      {t.cookieConsent?.badge || "Privacy & Cookie"}
                     </span>
                     <h2 className="mt-2 font-serif text-xl leading-snug text-[#FDFBF7] sm:text-2xl">
-                      La tua privacy, curata nei dettagli
+                      {t.cookieConsent?.title || "La tua privacy, curata nei dettagli"}
                     </h2>
                   </div>
                   <button
                     type="button"
                     onClick={rejectAll}
-                    aria-label="Chiudi e accetta solo i cookie necessari"
+                    aria-label={t.cookieConsent?.ariaClose || "Chiudi e accetta solo i cookie necessari"}
                     className="-mr-1 -mt-1 flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border border-transparent text-[#FDFBF7]/60 transition-colors duration-300 hover:border-[#B89768]/40 hover:text-[#B89768] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768]"
                   >
                     <CloseIcon />
@@ -357,10 +359,7 @@ export default function CookieConsentBanner() {
                 </div>
 
                 <p className="mt-4 text-sm font-light leading-relaxed text-[#FDFBF7]/70">
-                  Utilizziamo cookie tecnici necessari al funzionamento del sito e, con il tuo
-                  consenso, cookie analitici e di profilazione per offrirti un&apos;esperienza su
-                  misura. Puoi accettare tutti i cookie, proseguire con i soli cookie necessari
-                  oppure personalizzare le tue preferenze.
+                  {t.cookieConsent?.description || "Utilizziamo cookie tecnici necessari al funzionamento del sito e, con il tuo consenso, cookie analitici e di profilazione per offrirti un'esperienza su misura. Puoi accettare tutti i cookie, proseguire con i soli cookie necessari oppure personalizzare le tue preferenze."}
                 </p>
 
                 <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
@@ -369,14 +368,14 @@ export default function CookieConsentBanner() {
                     onClick={acceptAll}
                     className="w-full cursor-pointer border border-[#B89768] bg-[#B89768] px-5 py-3 text-[0.7rem] uppercase tracking-[0.22em] text-[#1A140E] transition-colors duration-300 hover:bg-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
                   >
-                    Accetta Tutti
+                    {t.cookieConsent?.acceptAll || "Accetta Tutti"}
                   </button>
                   <button
                     type="button"
                     onClick={rejectAll}
                     className="w-full cursor-pointer border border-[#B89768]/70 bg-transparent px-5 py-3 text-[0.7rem] uppercase tracking-[0.22em] text-[#FDFBF7] transition-colors duration-300 hover:border-[#B89768] hover:bg-[#B89768]/12 hover:text-[#B89768] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
                   >
-                    Solo Tecnici / Rifiuta
+                    {t.cookieConsent?.rejectAll || "Solo Tecnici / Rifiuta"}
                   </button>
                 </div>
 
@@ -387,7 +386,7 @@ export default function CookieConsentBanner() {
                   aria-controls="sda-cookie-preferences"
                   className="mt-2.5 w-full cursor-pointer border border-transparent px-5 py-2.5 text-[0.7rem] uppercase tracking-[0.22em] text-[#B89768] transition-colors duration-300 hover:text-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768]"
                 >
-                  {showDetails ? "Nascondi preferenze" : "Personalizza"}
+                  {showDetails ? (t.cookieConsent?.hidePreferences || "Nascondi preferenze") : (t.cookieConsent?.customize || "Personalizza")}
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -403,23 +402,23 @@ export default function CookieConsentBanner() {
                       <div className="mt-5 space-y-4 border-t border-[#B89768]/20 pt-5">
                         <ConsentToggle
                           id="sda-cookie-necessary"
-                          title="Cookie Tecnici / Necessari"
-                          description="Indispensabili per il funzionamento e la sicurezza del sito. Sempre attivi."
+                          title={t.cookieConsent?.necessary.title || "Cookie Tecnici / Necessari"}
+                          description={t.cookieConsent?.necessary.desc || "Indispensabili per il funzionamento e la sicurezza del sito. Sempre attivi."}
                           checked
                           disabled
                           onChange={() => undefined}
                         />
                         <ConsentToggle
                           id="sda-cookie-analytics"
-                          title="Cookie Analitici"
-                          description="Ci aiutano a capire come viene utilizzato il sito e a migliorarne i contenuti."
+                          title={t.cookieConsent?.analytics.title || "Cookie Analitici"}
+                          description={t.cookieConsent?.analytics.desc || "Ci aiutano a capire come viene utilizzato il sito e a migliorarne i contenuti."}
                           checked={analytics}
                           onChange={setAnalyticsOverride}
                         />
                         <ConsentToggle
                           id="sda-cookie-marketing"
-                          title="Cookie Marketing / Profilazione"
-                          description="Utilizzati per mostrarti contenuti e annunci in linea con i tuoi interessi."
+                          title={t.cookieConsent?.marketing.title || "Cookie Marketing / Profilazione"}
+                          description={t.cookieConsent?.marketing.desc || "Utilizzati per mostrarti contenuti e annunci in linea con i tuoi interessi."}
                           checked={marketing}
                           onChange={setMarketingOverride}
                         />
@@ -429,7 +428,7 @@ export default function CookieConsentBanner() {
                           onClick={savePreferences}
                           className="w-full cursor-pointer border border-[#B89768] bg-[#B89768] px-5 py-3 text-[0.7rem] uppercase tracking-[0.22em] text-[#1A140E] transition-colors duration-300 hover:bg-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
                         >
-                          Salva preferenze
+                          {t.cookieConsent?.savePreferences || "Salva preferenze"}
                         </button>
                       </div>
                     </motion.div>
@@ -447,8 +446,8 @@ export default function CookieConsentBanner() {
             key="sda-cookie-badge"
             type="button"
             onClick={reopenPreferences}
-            aria-label="Riapri le preferenze cookie"
-            title="Preferenze cookie"
+            aria-label={t.cookieConsent?.ariaReopen || "Riapri le preferenze cookie"}
+            title={t.cookieConsent?.ariaPreferences || "Preferenze cookie"}
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.85 }}

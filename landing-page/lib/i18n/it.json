@@ -92,7 +92,11 @@
         "title": "Villa Eliana",
         "subtitle": "Eleganza & Panorama — Sorrento"
       }
-    }
+    },
+    "ctaRequest": "Richiedi Progetto Personalizzato",
+    "watchVideo": "Guarda Video",
+    "enlarge": "Ingrandisci",
+    "close": "Chiudi"
   },
   "reviews": {
     "badge": "Dicono di Me",
@@ -115,7 +119,9 @@
         "role": "Sposa",
         "leadQuote": "«Non ci sono parole per ringraziare abbastanza Sara. Per noi è stata un vero e proprio angelo custode.»",
         "fullQuote": "Dire che è una professionista eccezionale è riduttivo. Ha preso per mano i nostri sogni e li ha trasformati in realtà con dolcezza, pazienza e una passione che ci hanno fatto sentire speciali in ogni momento. Ha saputo ascoltarci anche nei momenti di stress, trasmettendoci una calma incredibile e curando ogni singolo aspetto come se stesse organizzando il matrimonio di una persona di famiglia. Il giorno delle nozze è stato una favola pura: tutto era perfetto, magico, oltre ogni nostra aspettativa. Più che una wedding planner, per noi è stata un'amica preziosa.",
-        "weddingLocation": "Villa Doria d'Angri"
+        "weddingLocation": "Villa Doria d'Angri",
+        "googleTag": "Recensione verificata Google",
+        "date": "Recensione recente"
       },
       {
         "id": "umberto",
@@ -123,7 +129,9 @@
         "role": "Sposo",
         "leadQuote": "«Sceglierla è stata una delle decisioni migliori del nostro matrimonio.»",
         "fullQuote": "Fin dal primo momento ci ha messi completamente a nostro agio, ascoltandoci, accompagnandoci e condividendo con noi ogni aspetto del matrimonio. Una professionista straordinaria, capace di darci sempre il consiglio giusto e di trasformare le nostre e le sue idee in un evento fantastico. Ma ciò che la rende davvero speciale è la sua capacità di entrare in sintonia con gli sposi, con empatia, disponibilità e passione.",
-        "weddingLocation": "Tenuta di Punta Licosa"
+        "weddingLocation": "Tenuta di Punta Licosa",
+        "googleTag": "Recensione verificata Google",
+        "date": "Recensione recente"
       },
       {
         "id": "cristina",
@@ -131,9 +139,30 @@
         "role": "Google Local Guide",
         "leadQuote": "«Bravissima: mette tutto il suo amore e la sua professionalità negli eventi che realizza.»",
         "fullQuote": "Mette tutto il suo amore, la sua dedizione e la sua autentica professionalità architettonica negli eventi che realizza. La consiglio con il cuore a chi desidera un matrimonio impeccabile, curato con assoluto rigore e calore umano.",
-        "weddingLocation": "Napoli & Costiera"
+        "weddingLocation": "Napoli & Costiera",
+        "googleTag": "Local Guide · 14 recensioni",
+        "date": "Recensione verificata"
+      },
+      {
+        "id": "alessandra",
+        "author": "Alessandra Sodano",
+        "role": "Sposa",
+        "googleTag": "1 recensione · 1 foto",
+        "date": "Nuova",
+        "leadQuote": "«Affidarsi a Sara D’Angelo è stata la decisione migliore che potessimo prendere per il nostro matrimonio.»",
+        "fullQuote": "Affidarsi a Sara D’Angelo è stata la decisione migliore che potessimo prendere per il nostro matrimonio 💗 Grazie di cuore per aver reso il nostro giorno più bello ancora più perfetto di come lo avevamo sognato! 💗",
+        "weddingLocation": "Conca del Mare"
       }
-    ]
+    ],
+    "readOnGoogle": "Leggi su Google My Business",
+    "officialGoogleCard": "Scheda Ufficiale Google",
+    "verifyProfile": "Verifica profilo",
+    "eventLocation": "Location Evento",
+    "bespokeProject": "Progetto Sartoriale",
+    "prevReview": "Recensione precedente",
+    "nextReview": "Prossima recensione",
+    "disclaimerPrefix": "Tutte le recensioni sono autentiche e consultabili pubblicamente su",
+    "disclaimerLink": "Google Maps & Google My Business"
   },
   "faq": {
     "badge": "Domande Frequenti",
@@ -219,5 +248,30 @@
   "footer": {
     "brand": "Sara D'Angelo",
     "tagline": "Wedding Architect — Napoli, Costiera, Capri & Italia"
+  },
+  "cookieConsent": {
+    "badge": "Privacy & Cookie",
+    "title": "La tua privacy, curata nei dettagli",
+    "description": "Utilizziamo cookie tecnici necessari al funzionamento del sito e, con il tuo consenso, cookie analitici e di profilazione per offrirti un'esperienza su misura. Puoi accettare tutti i cookie, proseguire con i soli cookie necessari oppure personalizzare le tue preferenze.",
+    "acceptAll": "Accetta Tutti",
+    "rejectAll": "Solo Tecnici / Rifiuta",
+    "customize": "Personalizza",
+    "hidePreferences": "Nascondi preferenze",
+    "savePreferences": "Salva preferenze",
+    "ariaClose": "Chiudi e accetta solo i cookie necessari",
+    "ariaPreferences": "Preferenze cookie",
+    "ariaReopen": "Riapri le preferenze cookie",
+    "necessary": {
+      "title": "Cookie Tecnici / Necessari",
+      "desc": "Indispensabili per il funzionamento e la sicurezza del sito. Sempre attivi."
+    },
+    "analytics": {
+      "title": "Cookie Analitici",
+      "desc": "Ci aiutano a capire come viene utilizzato il sito e a migliorarne i contenuti."
+    },
+    "marketing": {
+      "title": "Cookie Marketing / Profilazione",
+      "desc": "Utilizzati per mostrarti contenuti e annunci in linea con i tuoi interessi."
+    }
   }
 }

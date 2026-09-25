@@ -48,6 +48,8 @@ export default function HeroSection() {
           loop 
           muted 
           playsInline 
+          preload="auto"
+          poster="/media/hero-poster.webp"
           className="w-full h-full object-cover opacity-90 scale-105"
         >
           <source src="/media/hero-bg.mp4" type="video/mp4" />
