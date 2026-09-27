@@ -64,12 +64,6 @@ body {
   mix-blend-mode: overlay;
 }
 
-/* ─── Custom Cursor (desktop only) ─── */
-@media (pointer: fine) {
-  body { cursor: none; }
-  a, button, input, select, textarea { cursor: none; }
-}
-
 /* ─── Ken Burns Animation ─── */
 @keyframes kenBurns {
   0% { transform: scale(1); }
@@ -257,4 +251,36 @@ body {
 .cta-primary span {
   position: relative;
   z-index: 1;
+}
+
+/* ============ Custom Cursor Ring (Luxury Follower) ============ */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid rgba(184, 151, 104, 0.75);
+  border-radius: 50%;
+  background-color: transparent;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform;
+  contain: layout style paint;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.cursor-ring[data-hover="1"] {
+  background-color: rgba(184, 151, 104, 0.15);
+  border-color: rgba(184, 151, 104, 1);
+  border-width: 1.5px;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .cursor-ring {
+    display: none !important;
+  }
 }
