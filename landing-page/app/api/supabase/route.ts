@@ -130,7 +130,49 @@ export async function POST(request: Request) {
     const insertedData = await hubRes.json();
     const leadId = insertedData?.[0]?.id;
 
-    // 2. Trigger Meta CAPI server-side (if Pixel & Access Token configured on client record in Hub)
+    // 2. Keep the Creativia Hub Data Lake (client_metrics) in sync.
+    //    Exactly like the n8n-master webhook architecture: read today's row for
+    //    this client, increment website_leads by 1 and upsert on (client_id, date).
+    try {
+      const metricsDate = new Date().toISOString().split('T')[0];
+
+      const existingRes = await fetch(
+        `${HUB_URL}/rest/v1/client_metrics?client_id=eq.${SARA_CLIENT_ID}&date=eq.${metricsDate}&select=website_leads`,
+        {
+          headers: {
+            'apikey': HUB_KEY,
+            'Authorization': `Bearer ${HUB_KEY}`
+          }
+        }
+      );
+      const existingMetrics = existingRes.ok ? await existingRes.json() : [];
+      const currentLeads = Number(existingMetrics?.[0]?.website_leads || 0);
+
+      const metricsRes = await fetch(`${HUB_URL}/rest/v1/client_metrics?on_conflict=client_id,date`, {
+        method: 'POST',
+        headers: {
+          'apikey': HUB_KEY,
+          'Authorization': `Bearer ${HUB_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify({
+          client_id: SARA_CLIENT_ID,
+          date: metricsDate,
+          website_leads: currentLeads + 1,
+          updated_at: new Date().toISOString()
+        })
+      });
+
+      if (!metricsRes.ok) {
+        const metricsErrText = await metricsRes.text();
+        console.error('Hub client_metrics upsert error:', metricsErrText);
+      }
+    } catch (metricsErr) {
+      console.error('Hub client_metrics upsert note:', metricsErr);
+    }
+
+    // 3. Trigger Meta CAPI server-side (if Pixel & Access Token configured on client record in Hub)
     try {
       const clientRes = await fetch(`${HUB_URL}/rest/v1/clients?id=eq.${SARA_CLIENT_ID}&select=meta_pixel_id,meta_access_token`, {
         headers: {
