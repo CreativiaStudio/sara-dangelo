@@ -33,6 +33,9 @@ export default defineConfig({
     command: 'npx next start -p 3003',
     url: 'http://localhost:3003',
     reuseExistingServer: !process.env.CI,
+    env: {
+      LEAD_TEST_BYPASS: 'true',
+    },
   },
   timeout: 120 * 1000,
 });

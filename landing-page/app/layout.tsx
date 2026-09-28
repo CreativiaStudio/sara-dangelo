@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import MetaPixel from "@/components/MetaPixel";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const playfair = Playfair_Display({
@@ -68,6 +69,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <CookieConsentBanner />
+          <MetaPixel />
         </LanguageProvider>
       </body>
     </html>

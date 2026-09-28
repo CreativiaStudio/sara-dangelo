@@ -4,6 +4,22 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import type { FbqFunction } from "@/components/MetaPixel";
+
+function createEventId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `lead-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function readCookie(name: string): string | undefined {
+  if (typeof document === "undefined") {
+    return undefined;
+  }
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
 
 export default function DoubleFunnelSection() {
   const { t } = useLanguage();
@@ -29,6 +45,28 @@ export default function DoubleFunnelSection() {
     setContactStatus("loading");
 
     try {
+      const eventId = createEventId();
+      const fbp = readCookie("_fbp");
+      const fbc = readCookie("_fbc");
+      const eventSourceUrl = typeof window !== "undefined" ? window.location.href : undefined;
+
+      // Browser-side Lead event with the same event_id used server-side for
+      // perfect deduplication between Pixel and Conversions API.
+      const fbq: FbqFunction | undefined =
+        typeof window !== "undefined" ? window.fbq : undefined;
+      if (fbq) {
+        fbq(
+          "track",
+          "Lead",
+          {
+            content_name: "Richiesta Progetto Wedding Architect",
+            currency: "EUR",
+            value: 0,
+          },
+          { eventID: eventId }
+        );
+      }
+
       const res = await fetch("/api/supabase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -43,6 +81,10 @@ export default function DoubleFunnelSection() {
           message: contactMessage,
           privacyAccepted,
           type: "consultation_free",
+          eventId,
+          fbp,
+          fbc,
+          eventSourceUrl,
         }),
       });
 
