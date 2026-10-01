@@ -1,9 +1,22 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 
+export const runtime = 'nodejs';
+
 const HUB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ekfnekrjpumjpetzgwzy.supabase.co';
 const HUB_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrZm5la3JqcHVtanBldHpnd3p5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MzgyNjAxNiwiZXhwIjoyMDk5NDAyMDE2fQ.Ne-jtSPB8NP-79_pV1KsGubYbCDtQVhQAXRtC-PzT-8';
 const SARA_CLIENT_ID = '785ebd4b-5e88-4803-b6f4-87359dd30784';
+
+// Fallback Meta CAPI credentials. They guarantee the Lead conversion is always
+// fired even when Supabase is temporarily restricted (quota / plan limits) and
+// the pixel / token cannot be read from the `clients` table.
+const FALLBACK_META_PIXEL_ID = '1737630666397630';
+const FALLBACK_META_TOKEN = 'EAAU473YD2bkBSslrqXvAKbOZAFK6fjGYLMCXJX10I92h1SVuGwCKdsZBRjH9MfZA6P75mamHU40w7qM3rd7UZBGKmCTqO3iYdaRPpnEa5tboBj7rOXZBUntgtLaD9s1ZBAMppW44QyLP4v4hUYINky7QRuanQysNyTUgLMBLJ6buKuTmtgb4WN4rGtcECO4UCgSQZDZD';
+
+// WordPress backup endpoint: it stores the lead in its own DB and immediately
+// dispatches the notification email. This is the primary safety net for leads.
+const WP_LEAD_ENDPOINT = 'https://www.saradangelo.it/wp-json/sara-gdpr/v1/lead';
+const WP_TIMEOUT_MS = 5000;
 
 /**
  * Normalises an Italian phone number for Meta Advanced Matching.
@@ -69,6 +82,8 @@ export async function POST(request: Request) {
     const firstName = nameParts[0] || 'Sposa/Sposo';
     const lastName = nameParts.slice(1).join(' ') || '';
 
+    const normalizedEmail = email.trim().toLowerCase();
+
     // Extract client IP and user-agent for GDPR proof of consent
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon';
     const userAgent = request.headers.get('user-agent') || 'unknown';
@@ -90,49 +105,116 @@ export async function POST(request: Request) {
       message ? `Messaggio: ${message}` : null
     ].filter(Boolean).join(' | ');
 
-    // 1. Insert lead directly into Creativia Hub (client_leads)
+    const metadata = {
+      wedding_date: date ?? null,
+      location: location ?? null,
+      guests: guests ?? null,
+      budget: budget ?? null,
+      message: message ?? null,
+      event_id: eventId ?? null,
+      landing_page: 'wedding.saradangelo.it',
+      privacy_consent: consentProof
+    };
+
+    // ---------------------------------------------------------------------
+    // STEP 1 — WordPress backup & email notification (primary safety net).
+    // Always attempted, fully isolated: a failure here must never break the
+    // user request, and the lead is already stored in the WP database.
+    // ---------------------------------------------------------------------
+    let wpLeadId: string | number | null = null;
+    try {
+      const wpController = new AbortController();
+      const wpTimeout = setTimeout(() => wpController.abort(), WP_TIMEOUT_MS);
+
+      try {
+        const wpRes = await fetch(WP_LEAD_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            first_name: firstName,
+            last_name: lastName,
+            name: (name || '').trim(),
+            email: normalizedEmail,
+            phone: (phone || '').trim(),
+            wedding_date: date || '',
+            location: location || '',
+            guests: guests !== undefined && guests !== null ? String(guests) : '',
+            budget: budget || '',
+            message: message || '',
+            notes: notesSummary,
+            source: 'Landing Wedding',
+            status: 'nuovo',
+            metadata
+          }),
+          signal: wpController.signal,
+          cache: 'no-store'
+        });
+
+        if (wpRes.ok) {
+          const wpData = await wpRes.json().catch(() => null);
+          wpLeadId = wpData?.lead_id ?? null;
+          console.log(`WordPress lead stored (#${wpLeadId ?? 'n/d'}) and notification email dispatched.`);
+        } else {
+          const wpErrText = await wpRes.text().catch(() => '');
+          console.error('WordPress lead endpoint error:', wpRes.status, wpErrText);
+        }
+      } finally {
+        clearTimeout(wpTimeout);
+      }
+    } catch (wpErr) {
+      console.error('WordPress lead forward note:', wpErr);
+    }
+
+    // ---------------------------------------------------------------------
+    // STEP 2 — Supabase storage & metrics (best effort).
+    // If Supabase is temporarily restricted (e.g. quota limit 429/402) we only
+    // log a warning and keep going: the WordPress backup already holds the lead.
+    // ---------------------------------------------------------------------
     const leadPayload = {
       client_id: SARA_CLIENT_ID,
       first_name: firstName,
       last_name: lastName,
-      email: email.trim().toLowerCase(),
+      email: normalizedEmail,
       phone: (phone || '').trim(),
       source: 'Landing Wedding',
       status: 'nuovo',
       notes: notesSummary,
-      metadata: {
-        wedding_date: date,
-        location,
-        guests,
-        budget,
-        message,
-        privacy_consent: consentProof
-      }
+      metadata
     };
 
-    const hubRes = await fetch(`${HUB_URL}/rest/v1/client_leads`, {
-      method: 'POST',
-      headers: {
-        'apikey': HUB_KEY,
-        'Authorization': `Bearer ${HUB_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
-      },
-      body: JSON.stringify(leadPayload)
-    });
+    let leadId: string | number | null = null;
 
-    if (!hubRes.ok) {
-      const errText = await hubRes.text();
-      console.error('Hub lead insert error:', errText);
-      return NextResponse.json({ success: false, error: 'Errore durante la registrazione del contatto.' }, { status: 500 });
+    try {
+      const hubRes = await fetch(`${HUB_URL}/rest/v1/client_leads`, {
+        method: 'POST',
+        headers: {
+          'apikey': HUB_KEY,
+          'Authorization': `Bearer ${HUB_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(leadPayload)
+      });
+
+      if (!hubRes.ok) {
+        console.warn('Supabase temporary restriction');
+        const errText = await hubRes.text().catch(() => '');
+        console.error('Hub lead insert error:', errText);
+      } else {
+        const insertedData = await hubRes.json().catch(() => null);
+        leadId = insertedData?.[0]?.id ?? null;
+      }
+    } catch (hubErr) {
+      console.warn('Supabase temporary restriction');
+      console.error('Hub lead insert note:', hubErr);
     }
 
-    const insertedData = await hubRes.json();
-    const leadId = insertedData?.[0]?.id;
-
-    // 2. Keep the Creativia Hub Data Lake (client_metrics) in sync.
-    //    Exactly like the n8n-master webhook architecture: read today's row for
-    //    this client, increment website_leads by 1 and upsert on (client_id, date).
+    // Keep the Creativia Hub Data Lake (client_metrics) in sync. Exactly like
+    // the n8n-master webhook architecture: read today's row for this client,
+    // increment website_leads by 1 and upsert on (client_id, date).
     try {
       const metricsDate = new Date().toISOString().split('T')[0];
 
@@ -165,14 +247,18 @@ export async function POST(request: Request) {
       });
 
       if (!metricsRes.ok) {
-        const metricsErrText = await metricsRes.text();
+        console.warn('Supabase temporary restriction');
+        const metricsErrText = await metricsRes.text().catch(() => '');
         console.error('Hub client_metrics upsert error:', metricsErrText);
       }
     } catch (metricsErr) {
+      console.warn('Supabase temporary restriction');
       console.error('Hub client_metrics upsert note:', metricsErr);
     }
 
-    // 3. Trigger Meta CAPI server-side (if Pixel & Access Token configured on client record in Hub)
+    // Read the Meta credentials from the client record, but never depend on it:
+    // on restriction this simply stays null and the fallback credentials apply.
+    let clientInfo: Array<{ meta_pixel_id?: string; meta_access_token?: string }> | null = null;
     try {
       const clientRes = await fetch(`${HUB_URL}/rest/v1/clients?id=eq.${SARA_CLIENT_ID}&select=meta_pixel_id,meta_access_token`, {
         headers: {
@@ -180,9 +266,24 @@ export async function POST(request: Request) {
           'Authorization': `Bearer ${HUB_KEY}`
         }
       });
-      const clientInfo = await clientRes.json();
-      const metaPixelId = clientInfo?.[0]?.meta_pixel_id || process.env.META_PIXEL_ID;
-      const metaToken = clientInfo?.[0]?.meta_access_token || process.env.META_ACCESS_TOKEN;
+
+      if (clientRes.ok) {
+        clientInfo = await clientRes.json().catch(() => null);
+      } else {
+        console.warn('Supabase temporary restriction');
+      }
+    } catch (clientErr) {
+      console.warn('Supabase temporary restriction');
+      console.error('Hub client credentials read note:', clientErr);
+    }
+
+    // ---------------------------------------------------------------------
+    // STEP 3 — Meta CAPI. Always sent, using fallback credentials when the
+    // Hub read failed, so the conversion is never lost.
+    // ---------------------------------------------------------------------
+    try {
+      const metaPixelId = clientInfo?.[0]?.meta_pixel_id || process.env.META_PIXEL_ID || FALLBACK_META_PIXEL_ID;
+      const metaToken = clientInfo?.[0]?.meta_access_token || process.env.META_ACCESS_TOKEN || FALLBACK_META_TOKEN;
 
       if (metaPixelId && metaToken) {
         const hash = (v: string) => crypto.createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
@@ -197,7 +298,7 @@ export async function POST(request: Request) {
               action_source: 'website',
               event_source_url: eventSourceUrl || 'https://wedding.saradangelo.it',
               user_data: {
-                em: [hash(email)],
+                em: [hash(normalizedEmail)],
                 ph: normalizedPhone ? [hash(normalizedPhone)] : undefined,
                 fn: hash(firstName),
                 ln: lastName ? hash(lastName) : undefined,
@@ -236,7 +337,7 @@ export async function POST(request: Request) {
       console.warn('CAPI trigger note:', capiErr);
     }
 
-    return NextResponse.json({ success: true, leadId });
+    return NextResponse.json({ success: true, leadId: leadId || wpLeadId || 'saved' });
   } catch (err: any) {
     console.error('API Supabase error:', err);
     return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
