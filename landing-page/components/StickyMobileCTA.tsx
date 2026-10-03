@@ -7,7 +7,7 @@ const CONSENT_STORAGE_KEY = "sda_cookie_consent";
 const CONSENT_UPDATED_EVENT = "sda_consent_updated";
 
 const WHATSAPP_HREF =
-  "https://wa.me/393386245838?text=Ciao%20Sara!%20Ho%20visto%20i%20tuoi%20matrimoni%20su%20Instagram%20✨%20Vorrei%20sapere%20se%20avete%20disponibilit%C3%A0%20per%20il%20nostro.%20Ci%20piacerebbe%20sposarci%20";
+  "https://wa.me/393386245838?text=Ciao%20Sara!%20Ho%20visto%20i%20tuoi%20matrimoni%20su%20Instagram%20✨%20Vorrei%20raccontarti%20come%20immaginiamo%20il%20nostro%20giorno...%20";
 
 /**
  * True while the cookie banner is (or should be) visible: the banner is shown
@@ -154,7 +154,7 @@ export default function StickyMobileCTA() {
               onClick={handleScrollToContact}
               className="flex flex-1 items-center justify-center gap-2 rounded-sm bg-[#B89768] px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#1A140E] shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-all duration-500 hover:bg-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
             >
-              <span>Verifica la vostra data</span>
+              <span>Raccontami il tuo sogno</span>
               <ArrowIcon />
             </a>
 
