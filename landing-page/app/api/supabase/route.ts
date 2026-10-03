@@ -4,14 +4,16 @@ import crypto from 'crypto';
 export const runtime = 'nodejs';
 
 const HUB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ekfnekrjpumjpetzgwzy.supabase.co';
-const HUB_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrZm5la3JqcHVtanBldHpnd3p5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MzgyNjAxNiwiZXhwIjoyMDk5NDAyMDE2fQ.Ne-jtSPB8NP-79_pV1KsGubYbCDtQVhQAXRtC-PzT-8';
+// Service-role key: never hardcoded. When the environment variable is missing
+// the Hub storage / metrics / credential reads are skipped with a warning.
+const HUB_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const SARA_CLIENT_ID = '785ebd4b-5e88-4803-b6f4-87359dd30784';
 
-// Fallback Meta CAPI credentials. They guarantee the Lead conversion is always
-// fired even when Supabase is temporarily restricted (quota / plan limits) and
-// the pixel / token cannot be read from the `clients` table.
+// Meta CAPI fallback credentials. The pixel ID is public (it is also shipped to
+// the browser), while the access token is server-only and read exclusively from
+// the environment. When it is not configured the CAPI call is skipped.
 const FALLBACK_META_PIXEL_ID = '1737630666397630';
-const FALLBACK_META_TOKEN = 'EAAU473YD2bkBSslrqXvAKbOZAFK6fjGYLMCXJX10I92h1SVuGwCKdsZBRjH9MfZA6P75mamHU40w7qM3rd7UZBGKmCTqO3iYdaRPpnEa5tboBj7rOXZBUntgtLaD9s1ZBAMppW44QyLP4v4hUYINky7QRuanQysNyTUgLMBLJ6buKuTmtgb4WN4rGtcECO4UCgSQZDZD';
+const FALLBACK_META_TOKEN = process.env.META_ACCESS_TOKEN || '';
 
 // WordPress backup endpoint: it stores the lead in its own DB and immediately
 // dispatches the notification email. This is the primary safety net for leads.
@@ -187,94 +189,108 @@ export async function POST(request: Request) {
 
     let leadId: string | number | null = null;
 
-    try {
-      const hubRes = await fetch(`${HUB_URL}/rest/v1/client_leads`, {
-        method: 'POST',
-        headers: {
-          'apikey': HUB_KEY,
-          'Authorization': `Bearer ${HUB_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=representation'
-        },
-        body: JSON.stringify(leadPayload)
-      });
-
-      if (!hubRes.ok) {
-        console.warn('Supabase temporary restriction');
-        const errText = await hubRes.text().catch(() => '');
-        console.error('Hub lead insert error:', errText);
-      } else {
-        const insertedData = await hubRes.json().catch(() => null);
-        leadId = insertedData?.[0]?.id ?? null;
-      }
-    } catch (hubErr) {
-      console.warn('Supabase temporary restriction');
-      console.error('Hub lead insert note:', hubErr);
+    // Without the service-role key there is no point in issuing Hub requests:
+    // they would only return 401 and pollute the logs. Skip them cleanly while
+    // the WordPress backup above still guarantees the lead is not lost.
+    const hasHubCredentials = HUB_KEY.length > 0;
+    if (!hasHubCredentials) {
+      console.warn(
+        'SUPABASE_SERVICE_ROLE_KEY non configurata: salvataggio Hub, metriche e lettura credenziali Meta saltati.'
+      );
     }
 
-    // Keep the Creativia Hub Data Lake (client_metrics) in sync. Exactly like
-    // the n8n-master webhook architecture: read today's row for this client,
-    // increment website_leads by 1 and upsert on (client_id, date).
-    try {
-      const metricsDate = new Date().toISOString().split('T')[0];
-
-      const existingRes = await fetch(
-        `${HUB_URL}/rest/v1/client_metrics?client_id=eq.${SARA_CLIENT_ID}&date=eq.${metricsDate}&select=website_leads`,
-        {
+    if (hasHubCredentials) {
+      try {
+        const hubRes = await fetch(`${HUB_URL}/rest/v1/client_leads`, {
+          method: 'POST',
           headers: {
             'apikey': HUB_KEY,
-            'Authorization': `Bearer ${HUB_KEY}`
-          }
+            'Authorization': `Bearer ${HUB_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=representation'
+          },
+          body: JSON.stringify(leadPayload)
+        });
+
+        if (!hubRes.ok) {
+          console.warn('Supabase temporary restriction');
+          const errText = await hubRes.text().catch(() => '');
+          console.error('Hub lead insert error:', errText);
+        } else {
+          const insertedData = await hubRes.json().catch(() => null);
+          leadId = insertedData?.[0]?.id ?? null;
         }
-      );
-      const existingMetrics = existingRes.ok ? await existingRes.json() : [];
-      const currentLeads = Number(existingMetrics?.[0]?.website_leads || 0);
-
-      const metricsRes = await fetch(`${HUB_URL}/rest/v1/client_metrics?on_conflict=client_id,date`, {
-        method: 'POST',
-        headers: {
-          'apikey': HUB_KEY,
-          'Authorization': `Bearer ${HUB_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'resolution=merge-duplicates'
-        },
-        body: JSON.stringify({
-          client_id: SARA_CLIENT_ID,
-          date: metricsDate,
-          website_leads: currentLeads + 1,
-          updated_at: new Date().toISOString()
-        })
-      });
-
-      if (!metricsRes.ok) {
+      } catch (hubErr) {
         console.warn('Supabase temporary restriction');
-        const metricsErrText = await metricsRes.text().catch(() => '');
-        console.error('Hub client_metrics upsert error:', metricsErrText);
+        console.error('Hub lead insert note:', hubErr);
       }
-    } catch (metricsErr) {
-      console.warn('Supabase temporary restriction');
-      console.error('Hub client_metrics upsert note:', metricsErr);
+
+      // Keep the Creativia Hub Data Lake (client_metrics) in sync. Exactly like
+      // the n8n-master webhook architecture: read today's row for this client,
+      // increment website_leads by 1 and upsert on (client_id, date).
+      try {
+        const metricsDate = new Date().toISOString().split('T')[0];
+
+        const existingRes = await fetch(
+          `${HUB_URL}/rest/v1/client_metrics?client_id=eq.${SARA_CLIENT_ID}&date=eq.${metricsDate}&select=website_leads`,
+          {
+            headers: {
+              'apikey': HUB_KEY,
+              'Authorization': `Bearer ${HUB_KEY}`
+            }
+          }
+        );
+        const existingMetrics = existingRes.ok ? await existingRes.json() : [];
+        const currentLeads = Number(existingMetrics?.[0]?.website_leads || 0);
+
+        const metricsRes = await fetch(`${HUB_URL}/rest/v1/client_metrics?on_conflict=client_id,date`, {
+          method: 'POST',
+          headers: {
+            'apikey': HUB_KEY,
+            'Authorization': `Bearer ${HUB_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates'
+          },
+          body: JSON.stringify({
+            client_id: SARA_CLIENT_ID,
+            date: metricsDate,
+            website_leads: currentLeads + 1,
+            updated_at: new Date().toISOString()
+          })
+        });
+
+        if (!metricsRes.ok) {
+          console.warn('Supabase temporary restriction');
+          const metricsErrText = await metricsRes.text().catch(() => '');
+          console.error('Hub client_metrics upsert error:', metricsErrText);
+        }
+      } catch (metricsErr) {
+        console.warn('Supabase temporary restriction');
+        console.error('Hub client_metrics upsert note:', metricsErr);
+      }
     }
 
     // Read the Meta credentials from the client record, but never depend on it:
     // on restriction this simply stays null and the fallback credentials apply.
     let clientInfo: Array<{ meta_pixel_id?: string; meta_access_token?: string }> | null = null;
-    try {
-      const clientRes = await fetch(`${HUB_URL}/rest/v1/clients?id=eq.${SARA_CLIENT_ID}&select=meta_pixel_id,meta_access_token`, {
-        headers: {
-          'apikey': HUB_KEY,
-          'Authorization': `Bearer ${HUB_KEY}`
-        }
-      });
+    if (hasHubCredentials) {
+      try {
+        const clientRes = await fetch(`${HUB_URL}/rest/v1/clients?id=eq.${SARA_CLIENT_ID}&select=meta_pixel_id,meta_access_token`, {
+          headers: {
+            'apikey': HUB_KEY,
+            'Authorization': `Bearer ${HUB_KEY}`
+          }
+        });
 
-      if (clientRes.ok) {
-        clientInfo = await clientRes.json().catch(() => null);
-      } else {
+        if (clientRes.ok) {
+          clientInfo = await clientRes.json().catch(() => null);
+        } else {
+          console.warn('Supabase temporary restriction');
+        }
+      } catch (clientErr) {
         console.warn('Supabase temporary restriction');
+        console.error('Hub client credentials read note:', clientErr);
       }
-    } catch (clientErr) {
-      console.warn('Supabase temporary restriction');
-      console.error('Hub client credentials read note:', clientErr);
     }
 
     // ---------------------------------------------------------------------
@@ -283,7 +299,7 @@ export async function POST(request: Request) {
     // ---------------------------------------------------------------------
     try {
       const metaPixelId = clientInfo?.[0]?.meta_pixel_id || process.env.META_PIXEL_ID || FALLBACK_META_PIXEL_ID;
-      const metaToken = clientInfo?.[0]?.meta_access_token || process.env.META_ACCESS_TOKEN || FALLBACK_META_TOKEN;
+      const metaToken = clientInfo?.[0]?.meta_access_token || FALLBACK_META_TOKEN;
 
       if (metaPixelId && metaToken) {
         const hash = (v: string) => crypto.createHash('sha256').update(v.trim().toLowerCase()).digest('hex');

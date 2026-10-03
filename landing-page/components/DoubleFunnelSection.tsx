@@ -50,23 +50,6 @@ export default function DoubleFunnelSection() {
       const fbc = readCookie("_fbc");
       const eventSourceUrl = typeof window !== "undefined" ? window.location.href : undefined;
 
-      // Browser-side Lead event with the same event_id used server-side for
-      // perfect deduplication between Pixel and Conversions API.
-      const fbq: FbqFunction | undefined =
-        typeof window !== "undefined" ? window.fbq : undefined;
-      if (fbq) {
-        fbq(
-          "track",
-          "Lead",
-          {
-            content_name: "Richiesta Progetto Wedding Architect",
-            currency: "EUR",
-            value: 0,
-          },
-          { eventID: eventId }
-        );
-      }
-
       const res = await fetch("/api/supabase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -88,8 +71,25 @@ export default function DoubleFunnelSection() {
         }),
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 800));
       if (res.ok) {
+        // Browser-side Lead event, fired ONLY once the server has confirmed the
+        // lead, with the same event_id used server-side for perfect
+        // deduplication between Pixel and Conversions API.
+        const fbq: FbqFunction | undefined =
+          typeof window !== "undefined" ? window.fbq : undefined;
+        if (fbq) {
+          fbq(
+            "track",
+            "Lead",
+            {
+              content_name: "Richiesta Progetto Wedding Architect",
+              currency: "EUR",
+              value: 0,
+            },
+            { eventID: eventId }
+          );
+        }
+
         setContactStatus("success");
       } else {
         setContactStatus("error");
