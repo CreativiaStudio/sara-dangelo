@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Star, ExternalLink, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
@@ -120,6 +120,9 @@ export default function ReviewsSection() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  const stripRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
@@ -127,6 +130,21 @@ export default function ReviewsSection() {
     }, 8500);
     return () => clearInterval(timer);
   }, [isPaused]);
+
+  useEffect(() => {
+    const activeEl = cardRefs.current[current];
+    const container = stripRef.current;
+    if (activeEl && container) {
+      const elLeft = activeEl.offsetLeft;
+      const elWidth = activeEl.offsetWidth;
+      const containerWidth = container.offsetWidth;
+      const scrollTarget = elLeft - (containerWidth - elWidth) / 2;
+      container.scrollTo({
+        left: Math.max(0, scrollTarget),
+        behavior: "smooth",
+      });
+    }
+  }, [current]);
 
   const nextReview = () => {
     setCurrent((prev) => (prev + 1) % googleReviews.length);
@@ -353,15 +371,21 @@ export default function ReviewsSection() {
 
         </div>
 
-        {/* Interactive Review Switcher Strip (All Google Reviews - Single Scrolling Row) */}
-        <div className="mt-12 md:mt-16 flex gap-4 overflow-x-auto pb-4 pt-1 px-1 no-scrollbar snap-x snap-mandatory">
+        {/* Interactive Review Switcher Strip (3 Columns on Desktop, auto-scrolls on selection) */}
+        <div
+          ref={stripRef}
+          className="mt-12 md:mt-16 flex gap-4 overflow-x-auto pb-4 pt-1 px-1 no-scrollbar scroll-smooth"
+        >
           {translatedReviews.map((rev, idx) => {
             const isSelected = idx === current;
             return (
               <button
                 key={rev.id}
+                ref={(el) => {
+                  cardRefs.current[idx] = el;
+                }}
                 onClick={() => setCurrent(idx)}
-                className={`min-w-[260px] sm:min-w-[280px] md:min-w-[300px] shrink-0 snap-start text-left p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
+                className={`w-[85%] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)] shrink-0 text-left p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
                   isSelected
                     ? "bg-white border-[#B89768] shadow-[0_10px_25px_rgba(184,151,104,0.15)] ring-1 ring-[#B89768]"
                     : "bg-white/60 border-[#4A3B32]/10 hover:bg-white hover:border-[#4A3B32]/30"
@@ -391,6 +415,23 @@ export default function ReviewsSection() {
               </button>
             );
           })}
+        </div>
+
+        {/* Carousel Dots */}
+        <div className="mt-6 flex justify-center items-center gap-2">
+          {translatedReviews.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrent(idx)}
+              aria-label={`Recensione ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === current
+                  ? "w-8 bg-[#B89768]"
+                  : "w-2 bg-[#4A3B32]/20 hover:bg-[#B89768]/50"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Bottom Call to Action for Google Profile */}
