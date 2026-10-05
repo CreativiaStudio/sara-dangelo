@@ -116,6 +116,16 @@
     "googleRatingText": "5.0 on Google Reviews · Certified Excellence",
     "list": [
       {
+        "id": "sara_fox",
+        "author": "Sara Schneider Fox",
+        "role": "Bride",
+        "googleTag": "Local Guide · 11 reviews",
+        "date": "New",
+        "leadQuote": "“Sara truly understood my vision and brought every detail to life so beautifully. The wedding turned out even better than I could have imagined.”",
+        "fullQuote": "Sara D’Angelo played such an important role in making our wedding everything I dreamed it would be and more. She truly understood my vision and brought every detail to life so beautifully. The wedding turned out even better than I could have imagined.\n\nHer attention to detail, creativity, and willingness to go above and beyond throughout the entire process were incredible. She made my dream wedding in Italy a reality, and I’m so grateful for everything she did to make our day so special. I couldn’t recommend Sara enough to anyone looking for an amazing international wedding planner!",
+        "weddingLocation": "Aquapetra Resort & Spa, Telese"
+      },
+      {
         "id": "cristiana",
         "author": "Cristiana Longobardi",
         "role": "Bride",

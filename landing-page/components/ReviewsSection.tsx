@@ -22,6 +22,21 @@ interface GoogleReview {
 
 const googleReviews: GoogleReview[] = [
   {
+    id: "sara_fox",
+    author: "Sara Schneider Fox",
+    role: "Sposa",
+    googleTag: "Local Guide · 11 recensioni",
+    isLocalGuide: true,
+    rating: 5,
+    date: "Nuova",
+    leadQuote:
+      "«Sara ha compreso davvero la mia visione e ha dato vita a ogni dettaglio in modo meraviglioso. Il matrimonio è stato persino migliore di quanto avrei mai potuto immaginare.»",
+    fullQuote:
+      "Sara D’Angelo ha avuto un ruolo fondamentale nel rendere il nostro matrimonio tutto ciò che avevo sempre sognato, e anche di più. Ha compreso davvero la mia visione e ha dato vita a ogni dettaglio in modo meraviglioso. Il matrimonio è stato persino migliore di quanto avrei mai potuto immaginare.\n\nLa sua attenzione ai dettagli, la sua creatività e la disponibilità ad andare oltre ogni aspettativa durante l'intero percorso sono state incredibili. Ha trasformato in realtà il mio matrimonio da sogno in Italia, e le sono immensamente grata per tutto ciò che ha fatto per rendere il nostro giorno così speciale. Non potrei raccomandare abbastanza Sara a chiunque cerchi una straordinaria wedding planner internazionale!",
+    imgSrc: "/media/reviews/review_sara_fox.webp",
+    weddingLocation: "Aquapetra Resort & Spa, Telese",
+  },
+  {
     id: "cristiana",
     author: "Cristiana Longobardi",
     role: "Sposa",
