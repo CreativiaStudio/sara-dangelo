@@ -56,9 +56,10 @@ interface QuestionGroupProps {
   options: string[];
   value: string;
   onSelect: (value: string) => void;
+  children?: React.ReactNode;
 }
 
-function QuestionGroup({ label, help, options, value, onSelect }: QuestionGroupProps) {
+function QuestionGroup({ label, help, options, value, onSelect, children }: QuestionGroupProps) {
   return (
     <div>
       <p className="font-sans text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#4A3B32]">
@@ -77,6 +78,7 @@ function QuestionGroup({ label, help, options, value, onSelect }: QuestionGroupP
           />
         ))}
       </div>
+      {children}
     </div>
   );
 }
@@ -95,6 +97,7 @@ export default function DoubleFunnelSection() {
   // Step 1 — touch chip selections
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [customDestination, setCustomDestination] = useState("");
   const [selectedGuests, setSelectedGuests] = useState("");
   const [selectedBudget, setSelectedBudget] = useState("");
 
@@ -143,6 +146,11 @@ export default function DoubleFunnelSection() {
       const fbc = readCookie("_fbc");
       const eventSourceUrl = typeof window !== "undefined" ? window.location.href : undefined;
 
+      const effectiveLocation =
+        selectedLocation.includes("Destination") && customDestination.trim()
+          ? `${selectedLocation}: ${customDestination.trim()}`
+          : selectedLocation;
+
       const res = await fetch("/api/supabase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -151,7 +159,7 @@ export default function DoubleFunnelSection() {
           email: contactEmail,
           phone: contactPhone,
           date: selectedYear,
-          location: selectedLocation,
+          location: effectiveLocation,
           guests: selectedGuests,
           budget: selectedBudget,
           message: contactMessage,
@@ -301,10 +309,42 @@ export default function DoubleFunnelSection() {
                           />
                           <QuestionGroup
                             label={t.funnel.step1.locationLabel}
+                            help={t.funnel.step1.locationHelp}
                             options={t.funnel.step1.locationOptions}
                             value={selectedLocation}
-                            onSelect={setSelectedLocation}
-                          />
+                            onSelect={(opt) => {
+                              setSelectedLocation(opt);
+                              if (!opt.includes("Destination")) {
+                                setCustomDestination("");
+                              }
+                            }}
+                          >
+                            <AnimatePresence initial={false}>
+                              {selectedLocation.includes("Destination") && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                                  className="overflow-hidden mt-3"
+                                >
+                                  <div className="bg-[#F5EFE6] border border-[#B89768]/40 p-3.5 rounded-sm">
+                                    <label className="block text-xs font-sans text-[#4A3B32] mb-1.5 font-medium">
+                                      {isEn ? "Which destination do you have in mind?" : "Quale destinazione avete in mente?"}
+                                    </label>
+                                    <input
+                                      type="text"
+                                      placeholder={t.funnel.step1.destinationCustomPlaceholder}
+                                      value={customDestination}
+                                      onChange={(e) => setCustomDestination(e.target.value)}
+                                      className="w-full bg-white border border-[#B89768]/50 px-3.5 py-2.5 text-xs text-[#4A3B32] rounded-sm font-sans focus:outline-none focus:border-[#B89768] transition-colors placeholder:text-[#4A3B32]/45"
+                                      autoFocus
+                                    />
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </QuestionGroup>
                           <QuestionGroup
                             label={t.funnel.step1.guestsLabel}
                             options={t.funnel.step1.guestsOptions}

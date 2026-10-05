@@ -353,15 +353,15 @@ export default function ReviewsSection() {
 
         </div>
 
-        {/* Interactive Review Switcher Strip (All 4 Google Reviews) */}
-        <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Interactive Review Switcher Strip (All Google Reviews - Single Scrolling Row) */}
+        <div className="mt-12 md:mt-16 flex gap-4 overflow-x-auto pb-4 pt-1 px-1 no-scrollbar snap-x snap-mandatory">
           {translatedReviews.map((rev, idx) => {
             const isSelected = idx === current;
             return (
               <button
                 key={rev.id}
                 onClick={() => setCurrent(idx)}
-                className={`text-left p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
+                className={`min-w-[260px] sm:min-w-[280px] md:min-w-[300px] shrink-0 snap-start text-left p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
                   isSelected
                     ? "bg-white border-[#B89768] shadow-[0_10px_25px_rgba(184,151,104,0.15)] ring-1 ring-[#B89768]"
                     : "bg-white/60 border-[#4A3B32]/10 hover:bg-white hover:border-[#4A3B32]/30"
