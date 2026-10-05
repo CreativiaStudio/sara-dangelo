@@ -14,7 +14,9 @@
     "titleLine2": "I design them, bringing life",
     "titleLine3": "to your dreams.",
     "subtitle": "Fifteen years of experience and more than 150 exclusive celebrations.\nMy method brings together the harmony of space, invisible direction and tailored precision, so that you live an experience that is flawless from the first moment to the last.",
-    "cta": "Book your Private Discovery Consultation (30 min)"
+    "cta": "Share your vision with me",
+    "microcopy": "Personal reply from Sara within 48 hours · No obligation",
+    "whatsappLink": "or message me directly on WhatsApp →"
   },
   "about": {
     "badge": "My Philosophy",
@@ -37,9 +39,9 @@
     "steps": [
       {
         "num": "01",
-        "line1": "Discovery",
-        "line2": "Consultation",
-        "desc": "We meet for thirty minutes to get to know one another, to listen to your vision of the day and to understand your wishes. I will walk you through my working method and the steps that follow, through which the design will unfold."
+        "line1": "Listening &",
+        "line2": "Vision",
+        "desc": "We begin through your story. I listen to your desires and the atmosphere you dream of, sharing initial inspiration to see how we can bring your bespoke project to life."
       },
       {
         "num": "02",
@@ -213,17 +215,63 @@
           "Separately, we then define the budget required to physically realise the design: flowers, lighting, furnishings, structures, decorative elements, stationery and everything else chosen for the installation. This second amount cannot be the same for everyone, because every wedding is born of a different design, built around the needs, the wishes and the budget of each individual couple."
         ],
         "quote": "My fee compensates the design and the professional work; the budget for the installations is what turns that design into reality."
+      },
+      {
+        "number": "05",
+        "question": "What is the indicative starting budget for a wedding designed by Sara D'Angelo?",
+        "lead": "A complete bespoke project typically starts from an overall investment of €30,000 – €40,000.",
+        "paragraphs": [
+          "This budget covers the harmonious design of floral architecture, furnishings, lighting design, bespoke stationery, and seamless direction coordinating top-tier artisans.",
+          "It is not merely about decorating, but about transforming spaces to create an authentic, unforgettable atmosphere.",
+          "If your budget is below this threshold or you are still exploring, please share your vision with me anyway: I will always give you honest, caring guidance on what is possible and how to proceed."
+        ],
+        "quote": "Transparency is the first step in building trust: I believe in giving you candid guidance rather than compromising on the beauty of your day."
       }
     ]
   },
   "funnel": {
-    "badge": "Private Discovery Consultation (30 Minutes)",
-    "titleLine1": "Let us begin",
-    "titleLine2": "designing together.",
-    "cardBadge": "An Exclusive Journey",
-    "cardTitle": "Request your Discovery Call",
-    "exclusivityNoteTitle": "A Note on Care & Exclusivity:",
-    "exclusivityNote": "To offer each couple my complete presence, a truly bespoke design and the utmost attention to every detail, I accept only a limited number of weddings each year. I will read your details with care to ensure the design is in harmony with my approach, and I will contact you personally to arrange our call.",
+    "badge": "The First Step",
+    "titleLine1": "Let us begin giving shape",
+    "titleLine2": "to your dream.",
+    "cardBadge": "Listening & Vision",
+    "cardTitle": "Tell me your idea",
+    "exclusivityNoteTitle": "A promise, before every project:",
+    "exclusivityNote": "I personally oversee only a limited number of weddings each year to ensure true, devoted presence from the first sketch to the final toast. For this reason, dates fill up well in advance.\n\nYou do not need to have everything planned or know your exact budget: this is precisely where my work begins. Tell me what you envision: within 48 hours I will reply personally to confirm date availability and share initial impressions for your wedding.\n\n— Sara",
+    "step1": {
+      "title": "Your Wedding",
+      "subtitle": "Select your preliminary preferences with a simple tap",
+      "stepIndicator": "Step 1 of 2",
+      "yearLabel": "When do you picture your wedding day?",
+      "yearOptions": ["2026", "2027", "2028", "Not decided yet"],
+      "locationLabel": "Where do you envision it?",
+      "locationOptions": ["Naples & surroundings", "Amalfi Coast", "Capri / Ischia", "Elsewhere in Campania", "Yet to choose"],
+      "guestsLabel": "Estimated guest count?",
+      "guestsOptions": ["Up to 80", "80 – 150", "Over 150", "Not sure yet"],
+      "budgetLabel": "Do you have an overall budget range in mind?",
+      "budgetHelp": "This helps me suggest suitable directions, never to exclude you.",
+      "budgetOptions": ["Up to €30,000", "€30,000 – €60,000", "€60,000 – €100,000", "Over €100,000", "I prefer discussing with Sara"],
+      "continueButton": "Continue →"
+    },
+    "step2": {
+      "title": "How can I reply to you?",
+      "subtitle": "Your contact details for Sara's personal reply",
+      "stepIndicator": "Step 2 of 2",
+      "backButton": "← Edit choices",
+      "namePlaceholder": "Couple's Names *",
+      "phonePlaceholder": "WhatsApp / Phone *",
+      "emailPlaceholder": "Email *",
+      "toggleMessage": "+ Would you like to add a detail, atmosphere or note? (optional)",
+      "messagePlaceholder": "Tell me about your desired atmosphere or a special dream...",
+      "privacyPrefix": "I have read and accept the",
+      "privacyLink": "Privacy Policy",
+      "privacySuffix": "regarding the processing of my personal data. *",
+      "submitButton": "Send your dream to Sara",
+      "submittingButton": "Sending...",
+      "submitNote": "No automated estimates or pushy calls: just a personal written reply from Sara within 48 hours.",
+      "whatsappAltPrefix": "Prefer to message immediately?",
+      "whatsappAltLink": "Write to me on WhatsApp →",
+      "errorGeneral": "An error occurred. Please make sure you have entered name, email, phone and accepted the Privacy Policy."
+    },
     "form": {
       "namePlaceholder": "Names of the Couple *",
       "emailPlaceholder": "Email *",
@@ -242,7 +290,7 @@
     },
     "success": {
       "titlePrefix": "Thank you,",
-      "message": "I have received your request. I will read your details with care and will be in touch very soon to arrange our discovery call."
+      "message": "I have received your story and will read it with care. Within 48 hours I will reply personally to let you know if your date is available and share initial impressions.\nIn the meantime, dream big: I will take care of the rest.\n\n— Sara"
     }
   },
   "footer": {

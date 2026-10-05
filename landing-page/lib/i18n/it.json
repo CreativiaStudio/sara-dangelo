@@ -14,7 +14,9 @@
     "titleLine2": "li progetto dando vita",
     "titleLine3": "ai vostri sogni.",
     "subtitle": "15 anni di esperienza con oltre 150 eventi esclusivi.\nIl mio metodo unisce armonia degli spazi, regia invisibile e precisione sartoriale per farvi vivere un'esperienza impeccabile.",
-    "cta": "Prenota la Consulenza Conoscitiva (30 min)"
+    "cta": "Raccontami il tuo sogno",
+    "microcopy": "Risposta personale di Sara entro 48 ore · Senza impegno",
+    "whatsappLink": "oppure scrivimi direttamente su WhatsApp →"
   },
   "about": {
     "badge": "La Mia Filosofia",
@@ -37,9 +39,9 @@
     "steps": [
       {
         "num": "01",
-        "line1": "Consulenza",
-        "line2": "Conoscitiva",
-        "desc": "Ci incontriamo per 30 minuti per conoscerci, ascoltare la vostra visione dell’evento e comprendere i vostri desideri. Vi illustrerò il mio metodo di lavoro e i passaggi successivi attraverso cui svilupperò il progetto."
+        "line1": "Ascolto &",
+        "line2": "Visione",
+        "desc": "Ci conosciamo attraverso il vostro racconto. Ascolto i vostri desideri, l'atmosfera che cercate e vi do i primi spunti d'ispirazione per capire insieme come dare forma al vostro progetto."
       },
       {
         "num": "02",
@@ -213,17 +215,63 @@
           "Separatamente viene poi definito il budget necessario per realizzare concretamente il progetto: fiori, luci, arredi, strutture, elementi decorativi, grafica e tutto ciò che verrà scelto per l’allestimento. E questo secondo importo non può essere uguale per tutti, perché ogni matrimonio nasce da un progetto diverso, costruito sulle esigenze, sui desideri e sul budget della singola coppia."
         ],
         "quote": "La mia parcella remunera il progetto e il lavoro professionale; il budget degli allestimenti serve invece a trasformare quel progetto in realtà."
+      },
+      {
+        "number": "05",
+        "question": "Da quale budget indicativo partono i matrimoni progettati da Sara D'Angelo?",
+        "lead": "Un progetto sartoriale completo parte indicativamente da un investimento complessivo di 30.000 € – 40.000 €.",
+        "paragraphs": [
+          "Questo budget copre l'insieme armonico di scenografia floreale, arredi, illuminotecnica, grafica personalizzata, regia e coordinamento dei migliori professionisti del settore.",
+          "Non si tratta solo di allestire, ma di trasformare gli spazi per dare vita a un'atmosfera unica ed emozionante.",
+          "Se il vostro budget è inferiore a questa soglia o non avete ancora le idee chiare, raccontatemi comunque il vostro sogno: vi dirò con totale trasparenza e serenità cosa sia possibile realizzare e quale sia la strada migliore per voi."
+        ],
+        "quote": "La trasparenza è il primo passo per costruire la fiducia: preferisco consigliarvi con sincerità piuttosto che scendere a compromessi sulla bellezza del vostro giorno."
       }
     ]
   },
   "funnel": {
-    "badge": "Consulenza Conoscitiva (30 Minuti)",
-    "titleLine1": "Iniziamo a",
-    "titleLine2": "progettare insieme.",
-    "cardBadge": "Un Percorso Esclusivo",
-    "cardTitle": "Richiedi la tua Call conoscitiva",
-    "exclusivityNoteTitle": "Nota di Cura & Esclusività:",
-    "exclusivityNote": "Per garantire a ciascuna coppia una presenza totale, uno studio sartoriale e la massima cura dei dettagli, accetto solo un numero limitato di matrimoni ogni anno. Leggerò con attenzione le vostre informazioni per verificare l'armonia del progetto e vi ricontatterò personalmente per fissare la nostra chiamata.",
+    "badge": "Il Primo Passo",
+    "titleLine1": "Iniziamo a dare forma",
+    "titleLine2": "al vostro sogno.",
+    "cardBadge": "Ascolto & Progetto",
+    "cardTitle": "Raccontami la tua idea",
+    "exclusivityNoteTitle": "Una promessa, prima di ogni progetto:",
+    "exclusivityNote": "Seguo personalmente solo un numero raccolto di matrimoni ogni anno, così da poter essere presente davvero dal primo schizzo all'ultimo brindisi. Per questo motivo le date si chiudono con largo anticipo.\n\nNon serve avere già le idee chiare né conoscere il budget esatto: è proprio da qui che comincia il mio lavoro. Raccontatemi cosa vorreste vivere: entro 48 ore vi risponderò personalmente per dirvi se la data è ancora libera e condividere le prime intuizioni sul vostro matrimonio.\n\n— Sara",
+    "step1": {
+      "title": "Il vostro matrimonio",
+      "subtitle": "Selezionate con un tocco le vostre preferenze indicative",
+      "stepIndicator": "Passo 1 di 2",
+      "yearLabel": "Quando immaginate il vostro sì?",
+      "yearOptions": ["2026", "2027", "2028", "Non abbiamo ancora deciso"],
+      "locationLabel": "Dove lo sognate?",
+      "locationOptions": ["Napoli e dintorni", "Costiera Amalfitana", "Capri / Ischia", "Altrove in Campania", "Ancora da scegliere"],
+      "guestsLabel": "Quanti ospiti, più o meno?",
+      "guestsOptions": ["Fino a 80", "80 – 150", "Oltre 150", "Non sappiamo ancora"],
+      "budgetLabel": "Avete già un'idea del budget complessivo?",
+      "budgetHelp": "Serve solo a suggerirvi le scelte più adatte, non ad escludervi.",
+      "budgetOptions": ["Fino a 30.000 €", "30.000 € – 60.000 €", "60.000 € – 100.000 €", "Oltre 100.000 €", "Preferisco parlarne con Sara"],
+      "continueButton": "Continua →"
+    },
+    "step2": {
+      "title": "Come posso rispondervi?",
+      "subtitle": "I vostri recapiti per la risposta personale di Sara",
+      "stepIndicator": "Passo 2 di 2",
+      "backButton": "← Modifica scelte",
+      "namePlaceholder": "Nomi degli Sposi *",
+      "phonePlaceholder": "WhatsApp / Telefono *",
+      "emailPlaceholder": "Email *",
+      "toggleMessage": "+ Volete aggiungere un dettaglio o un'atmosfera? (facoltativo)",
+      "messagePlaceholder": "Raccontatemi un'ispirazione, un'atmosfera o un desiderio particolare...",
+      "privacyPrefix": "Ho letto e accetto l'informativa sulla",
+      "privacyLink": "Privacy Policy",
+      "privacySuffix": "per il trattamento dei dati personali. *",
+      "submitButton": "Invia il tuo sogno a Sara",
+      "submittingButton": "Invio in corso...",
+      "submitNote": "Nessun preventivo automatico né chiamata forzata: solo una risposta personale di Sara entro 48 ore.",
+      "whatsappAltPrefix": "Preferisci scrivermi subito?",
+      "whatsappAltLink": "Scrivimi su WhatsApp →",
+      "errorGeneral": "Si è verificato un errore. Assicurati di aver inserito nome, email, telefono e accettato la Privacy Policy."
+    },
     "form": {
       "namePlaceholder": "Nomi degli Sposi *",
       "emailPlaceholder": "Email *",
@@ -242,7 +290,7 @@
     },
     "success": {
       "titlePrefix": "Grazie,",
-      "message": "Ho ricevuto la vostra richiesta. Leggerò con cura i vostri dettagli e vi ricontatterò al più presto per il nostro appuntamento conoscitivo."
+      "message": "Ho ricevuto il vostro racconto e lo leggerò con cura. Entro 48 ore vi scriverò personalmente per dirvi se la vostra data è ancora libera e darvi le prime impressioni sul vostro matrimonio.\nNel frattempo, sognate pure in grande: al resto penso io.\n\n— Sara"
     }
   },
   "footer": {

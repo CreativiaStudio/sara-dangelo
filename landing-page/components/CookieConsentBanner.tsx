@@ -338,13 +338,13 @@ export default function CookieConsentBanner() {
             <div className="overflow-hidden border border-[#B89768]/35 bg-[#1A140E]/95 text-[#FDFBF7] shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl">
               <div className="h-px w-full bg-gradient-to-r from-transparent via-[#B89768]/70 to-transparent" />
 
-              <div className="p-5 sm:p-7">
+              <div className="max-sm:max-h-[25svh] max-sm:overflow-y-auto p-4 sm:p-7">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
                     <span className="block text-[0.7rem] uppercase tracking-[0.28em] text-[#B89768]">
                       {t.cookieConsent?.badge || "Privacy & Cookie"}
                     </span>
-                    <h2 className="mt-2 font-serif text-xl leading-snug text-[#FDFBF7] sm:text-2xl">
+                    <h2 className="mt-1.5 font-serif text-lg leading-snug text-[#FDFBF7] sm:mt-2 sm:text-2xl">
                       {t.cookieConsent?.title || "La tua privacy, curata nei dettagli"}
                     </h2>
                   </div>
@@ -358,22 +358,22 @@ export default function CookieConsentBanner() {
                   </button>
                 </div>
 
-                <p className="mt-4 text-sm font-light leading-relaxed text-[#FDFBF7]/70">
+                <p className="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-[#FDFBF7]/70 sm:mt-4 sm:line-clamp-none sm:text-sm">
                   {t.cookieConsent?.description || "Utilizziamo cookie tecnici necessari al funzionamento del sito e, con il tuo consenso, cookie analitici e di profilazione per offrirti un'esperienza su misura. Puoi accettare tutti i cookie, proseguire con i soli cookie necessari oppure personalizzare le tue preferenze."}
                 </p>
 
-                <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                <div className="mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-2.5">
                   <button
                     type="button"
                     onClick={acceptAll}
-                    className="w-full cursor-pointer border border-[#B89768] bg-[#B89768] px-5 py-3 text-[0.7rem] uppercase tracking-[0.22em] text-[#1A140E] transition-colors duration-300 hover:bg-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
+                    className="w-full cursor-pointer border border-[#B89768] bg-[#B89768] px-2 py-2.5 text-[0.6rem] uppercase leading-tight tracking-[0.12em] text-[#1A140E] transition-colors duration-300 hover:bg-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E] sm:px-5 sm:py-3 sm:text-[0.7rem] sm:tracking-[0.22em]"
                   >
                     {t.cookieConsent?.acceptAll || "Accetta Tutti"}
                   </button>
                   <button
                     type="button"
                     onClick={rejectAll}
-                    className="w-full cursor-pointer border border-[#B89768]/70 bg-transparent px-5 py-3 text-[0.7rem] uppercase tracking-[0.22em] text-[#FDFBF7] transition-colors duration-300 hover:border-[#B89768] hover:bg-[#B89768]/12 hover:text-[#B89768] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
+                    className="w-full cursor-pointer border border-[#B89768]/70 bg-transparent px-2 py-2.5 text-[0.6rem] uppercase leading-tight tracking-[0.12em] text-[#FDFBF7] transition-colors duration-300 hover:border-[#B89768] hover:bg-[#B89768]/12 hover:text-[#B89768] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E] sm:px-5 sm:py-3 sm:text-[0.7rem] sm:tracking-[0.22em]"
                   >
                     {t.cookieConsent?.rejectAll || "Solo Tecnici / Rifiuta"}
                   </button>
@@ -384,7 +384,7 @@ export default function CookieConsentBanner() {
                   onClick={() => setShowDetails((value) => !value)}
                   aria-expanded={showDetails}
                   aria-controls="sda-cookie-preferences"
-                  className="mt-2.5 w-full cursor-pointer border border-transparent px-5 py-2.5 text-[0.7rem] uppercase tracking-[0.22em] text-[#B89768] transition-colors duration-300 hover:text-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768]"
+                  className="mt-1.5 w-full cursor-pointer border border-transparent px-3 py-2 text-[0.65rem] uppercase tracking-[0.16em] text-[#B89768] transition-colors duration-300 hover:text-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] sm:mt-2.5 sm:px-5 sm:py-2.5 sm:text-[0.7rem] sm:tracking-[0.22em]"
                 >
                   {showDetails ? (t.cookieConsent?.hidePreferences || "Nascondi preferenze") : (t.cookieConsent?.customize || "Personalizza")}
                 </button>

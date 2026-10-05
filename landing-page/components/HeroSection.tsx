@@ -129,6 +129,26 @@ export default function HeroSection() {
             </a>
           </motion.div>
 
+          {/* Microcopy + Discreet WhatsApp Alternative */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center"
+          >
+            <p className="mt-3.5 text-xs text-[#FDFBF7]/85 font-sans font-light tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              {t.hero.microcopy}
+            </p>
+            <a
+              href="https://wa.me/393386245838?text=Ciao%20Sara!%20Ho%20visto%20i%20tuoi%20matrimoni%20su%20Instagram%20✨%20Vorrei%20raccontarti%20come%20immaginiamo%20il%20nostro%20giorno...%20"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1.5 text-xs text-[#B89768] hover:text-[#FDFBF7] underline underline-offset-4 tracking-wider transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+            >
+              {t.hero.whatsappLink}
+            </a>
+          </motion.div>
+
         </div>
       </motion.div>
 

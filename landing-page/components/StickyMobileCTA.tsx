@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const CONSENT_STORAGE_KEY = "sda_cookie_consent";
 const CONSENT_UPDATED_EVENT = "sda_consent_updated";
@@ -57,6 +58,7 @@ function WhatsAppIcon() {
 }
 
 export default function StickyMobileCTA() {
+  const { t } = useLanguage();
   const shouldReduceMotion = useReducedMotion() ?? false;
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [funnelInView, setFunnelInView] = useState(false);
@@ -154,7 +156,7 @@ export default function StickyMobileCTA() {
               onClick={handleScrollToContact}
               className="flex flex-1 items-center justify-center gap-2 rounded-sm bg-[#B89768] px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#1A140E] shadow-[0_6px_18px_rgba(0,0,0,0.35)] transition-all duration-500 hover:bg-[#C9A97C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
             >
-              <span>Raccontami il tuo sogno</span>
+              <span>{t.hero.cta}</span>
               <ArrowIcon />
             </a>
 
@@ -163,7 +165,8 @@ export default function StickyMobileCTA() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleWhatsAppClick}
-              aria-label="Scrivi alla Wedding Concierge su WhatsApp"
+              aria-label={t.hero.whatsappLink}
+              title={t.hero.whatsappLink}
               className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-[#B89768]/50 bg-[#1A140E] text-[#B89768] transition-colors duration-300 hover:border-[#B89768] hover:bg-[#B89768]/12 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B89768] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A140E]"
             >
               <WhatsAppIcon />
