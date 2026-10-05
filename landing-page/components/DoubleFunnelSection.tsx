@@ -41,8 +41,8 @@ function Chip({ label, selected, onClick }: ChipProps) {
       aria-pressed={selected}
       className={`py-2 px-3.5 text-xs font-sans rounded-sm transition-all border ${
         selected
-          ? "border border-[#B89768] bg-[#B89768] text-[#1A140E] font-semibold shadow-sm"
-          : "border border-[#B89768]/40 bg-[#FDFBF7] text-[#4A3B32] hover:border-[#B89768] hover:bg-[#F5EFE6]"
+          ? "border-[#B89768] bg-[#B89768] text-white font-semibold shadow-sm"
+          : "border-[#B89768]/40 bg-[#FDFBF7] text-[#4A3B32] hover:border-[#B89768] hover:bg-[#F5EFE6]"
       }`}
     >
       {label}
